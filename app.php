@@ -20,7 +20,7 @@
   <!-- AdminLTE App -->
   <script src="assets/vendor/dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
-  <script src="assets/vendor/dist/js/demo.js"></script>
+  <!-- <script src="assets/vendor/dist/js/demo.js"></script> -->
   <!--  -->
 </head>
 <body class="hold-transition sidebar-mini">
