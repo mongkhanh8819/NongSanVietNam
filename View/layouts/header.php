@@ -27,18 +27,18 @@
           </li>
           <li class="nav-item nav-item_mt">
               <a class="nav-link nav-item" href="#">Về chúng tôi</a>
-            </li>
+          </li>
   
-            <li class="nav-item nav-item_mt dropdown">
-              <a class="nav-link nav-item dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <li class="nav-item nav-item_mt dropdown">
+            <a class="nav-link nav-item dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Giải pháp
-              </a>
+            </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Trái cây</a>
                 <a class="dropdown-item" href="#">Rau củ</a>
                 <a class="dropdown-item" href="#">Khác</a>
               </div>
-            </li>
+          </li>
           <li class="nav-item nav-item_mt">
             <a class="nav-link nav-item" href="#">Sản phẩm</a>
           </li>
@@ -47,7 +47,7 @@
             </li>
           <li class="nav-item nav-item_mt">
               <a class="nav-link nav-item" href="#">Tuyển dụng</a>
-            </li>
+          </li>
           
             <li class="nav-item nav-item_mt nav-item_mr">
               <a class="nav-link nav-item" href="#">Liên hệ</a>
@@ -63,10 +63,12 @@
         <div class="img-flag">
             <img  class="flag-vietnam" src="https://icons.iconarchive.com/icons/wikipedia/flags/512/VN-Vietnam-Flag-icon.png" alt="">
         </div>
+        <div class="login" style="float:left;display:flex">
+          <a class="nav-link nav-item" href="#">Đăng Nhập</a>
+          <a class="nav-link nav-item" href="#">Đăng Ký</a>
+        </div>
+
   </div>
 </nav>
-
-
-
   </div>
 </div>

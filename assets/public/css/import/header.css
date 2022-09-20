@@ -10,7 +10,7 @@
 #head-top #payment-link {
     position: relative;
     display: block;
-    color: #fff;
+    color: rgb(5, 3, 3);
     padding: 10px 0px 10px 20px;
 }
 
@@ -24,7 +24,7 @@
 
 #head-top #main-menu li a {
     display: block;
-    color: #fff;
+    color: rgb(5, 3, 3);
     padding: 10px 15px;
 }
 
@@ -33,7 +33,7 @@
 }
 
 #head-body {
-    background: #f12a43;
+    background: #1ad67b;
 }
 
 #head-body #logo {
