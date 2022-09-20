@@ -1,6 +1,9 @@
-<script src="assets/public/js/jquery-2.2.4.min.js" type="text/javascript"></script>
-<script src="assets/public/js/elevatezoom-master/jquery.elevatezoom.js" type="text/javascript"></script>
-<script src="assets/public/js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
-<script src="assets/public/js/carousel/owl.carousel.js" type="text/javascript"></script>
-<script src="assets/public/js/main.js" type="text/javascript"></script>
-<script src="assets/public/js/ajax.js" type="text/javascript"></script>
+<!-- jQuery -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="assets/vendor/dist/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="assets/vendor/dist/js/demo.js"></script>
+  <!--  -->

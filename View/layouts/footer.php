@@ -1,87 +1,92 @@
-<div id="footer-wp">
-    <div id="foot-body">
-        <div class="wp-inner clearfix">
-            <div class="block" id="info-company">
-                <h3 class="title">ISMART</h3>
-                <p class="desc">ISMART luôn cung cấp luôn là sản phẩm chính hãng có thông tin rõ ràng, chính sách ưu đãi cực lớn cho khách hàng có thẻ thành viên.</p>
-                <div id="payment">
-                    <div class="thumb">
-                        <img src="public/images/img-foot.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="block menu-ft" id="info-shop">
-                <h3 class="title">Thông tin cửa hàng</h3>
-                <ul class="list-item">
-                    <li>
-                        <p>Nguyễn Văn Bảo - Gò Vấp</p>
-                    </li>
-                    <li>
-                        <p>0365529294 </p>
-                    </li>
-                    <li>
-                        <p>Đặng Dương Anh Tuấn</p>
-                    </li>
-                    <li>
-                        <p>Huỳnh Nguyễn Đan Trường</p>
-                    </li>
-                    <li>
-                        <p>Trịnh Nhân Nghĩa</p>
-                    </li>
-                    
-                </ul>
-            </div>
-            <div class="block menu-ft policy" id="info-shop">
-                <h3 class="title">Chính sách mua hàng</h3>
-                <ul class="list-item">
-                    <li>
-                        <a href="" title="">Quy định - chính sách</a>
-                    </li>
-                    <li>
-                        <a href="" title="">Chính sách bảo hành - đổi trả</a>
-                    </li>
-                    <li>
-                        <a href="" title="">Chính sách hội viện</a>
-                    </li>
-                    <li>
-                        <a href="" title="">Giao hàng - lắp đặt</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="block" id="newfeed">
-                <h3 class="title">Bảng tin</h3>
-                <p class="desc">Đăng ký với chung tôi để nhận được thông tin ưu đãi sớm nhất</p>
-                <div id="form-reg">
-                    <form method="POST" action="">
-                        <input type="email" name="email" id="email" placeholder="Nhập email tại đây">
-                        <button type="submit" id="sm-reg">Đăng ký</button>
-                    </form>
-                </div>
-            </div>
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted" style="margin-top:200px">
+
+    <!-- Section: Links  -->
+    <section class="" style="background-color:#69a747;color: #fff">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3" >
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4" style="padding-top:30px">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4">
+                <img src="assets/public/images/logo.png" alt="">
+            </h6>
+            <p>
+                Hệ sinh thái nông nghiệp ứng dụng công nghệ. Mang nông sản xanh, sạch với giá hợp lý đến mọi người
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4" style="padding-top:30px">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+                Chính sách đổi trả
+            </h6>
+            <h6 class="text-uppercase fw-bold mb-4">
+                Tuyển dụng
+            </h6>
+            <h6 class="text-uppercase fw-bold mb-4">
+                Life at Koina
+            </h6>
+           
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4" style="padding-top:30px">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+                Điều khoản sử dụng
+            </h6>
+
+            <h6 class="text-uppercase fw-bold mb-4">
+                Tin tức Koina
+            </h6>
+
+            <h6 class="text-uppercase fw-bold mb-4">
+                <div>
+                    <a href="" class="me-4 text-reset" style="margin:0 8px">
+                      <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset" style="margin:0 8px">
+            
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset" style="margin:0 8px">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="" class="me-4   text-reset" style="margin:0 8px">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                  
+                  </div>
+            </h6>
+           
+          </div>
+          <!-- Grid column -->
         </div>
-    </div>
-    <div id="foot-bot">
-        <div class="wp-inner">
-            <p id="copyright">© Bản quyền thuộc về Dương Mộng Khánh</p>
+
+        <div class="text-center p-4" >
+            Koina 2022
         </div>
-    </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+  
+  </footer>
+  <!-- Footer -->
+
+ <!-- Footer -->
+
+
 </div>
-</div>
-<div id="btn-top"><img src="public/images/icon-to-top.png" alt=""/></div>
-<div id="fb-root"></div>
-<footer class="footer mt-auto py-3 bg-dark text-white">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-10">
-                <span>Bản quyền &copy; bởi <a href="https://nentang.vn">Nền Tảng</a> - <script>document.write(new Date().getFullYear());</script>.</span>
-                <span class="text-muted">Hành trang tới Tương lai</span>
-            </div>
-        </div>
-    </div>
-</footer>
+
+
+<!-- ./wrapper -->
+
+
 </body>
 </html>
-<!-- FOOTER -->
-
-

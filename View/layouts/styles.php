@@ -1,9 +1,8 @@
-<link href="assets/public/css/bootstrap/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-<link href="assets/public/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="assets/public/reset.css" rel="stylesheet" type="text/css" />
-<link href="assets/public/css/carousel/owl.carousel.css" rel="stylesheet" type="text/css" />
-<link href="assets/public/css/carousel/owl.theme.css" rel="stylesheet" type="text/css" />
-<link href="assets/public/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-<link href="assets/public/style.css" rel="stylesheet" type="text/css" />
-<link href="assets/public/responsive.css" rel="stylesheet" type="text/css" />	
+<!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="assets/public/style2.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="assets/vendor/font-awesome/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="assets/vendor/dist/css/adminlte.min.css">
 	
