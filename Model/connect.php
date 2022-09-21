@@ -1,7 +1,7 @@
 <?php 
 
 	class ketnoi{
-		function moketnoi(&$conn){
+		public function moketnoi(&$conn){
 			$conn = mysqli_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
 			//set charset utf8
 			mysqli_set_charset($conn,'utf8');
@@ -13,7 +13,7 @@
 				return $conn;
 			}
 		}
-		function dongketnoi($conn){
+		public function dongketnoi($conn){
 			mysqli_close($conn);
 		}
 	}

@@ -318,7 +318,7 @@
     <div class="float-right d-none d-sm-block">
       <b>IUH</b> 2022
     </div>
-    <h5>Hệ thống phân phối nông sản sạch </h1>
+    <h5>Hệ thống phân phối nông sản sạch</h1>
   </footer>
 
   <!-- Control Sidebar -->
