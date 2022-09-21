@@ -22,53 +22,28 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav navbar-list" >
-          <li class="nav-item nav-logo">
-           <a href="#"> <img src="assets/public/images/logo.png"></a>
+          <li class="nav-item nav-logo"style="margin-top:16px">
+           <a href="#"> <img src="https://theme.hstatic.net/200000401005/1000921080/14/logo.svg?v=20" alt=""></a>
           </li>
-          <li class="nav-item nav-item_mt">
-              <a class="nav-link nav-item" href="#">Về chúng tôi</a>
-          </li>
-  
-          <li class="nav-item nav-item_mt dropdown">
-            <a class="nav-link nav-item dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Giải pháp
-            </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Trái cây</a>
-                <a class="dropdown-item" href="#">Rau củ</a>
-                <a class="dropdown-item" href="#">Khác</a>
-              </div>
-          </li>
-          <li class="nav-item nav-item_mt">
-            <a class="nav-link nav-item" href="#">Sản phẩm</a>
-          </li>
-          <li class="nav-item nav-item_mt">
-              <a class="nav-link nav-item" href="#">Tin tức</a>
-            </li>
-          <li class="nav-item nav-item_mt">
-              <a class="nav-link nav-item" href="#">Tuyển dụng</a>
-          </li>
-          
-            <li class="nav-item nav-item_mt nav-item_mr">
-              <a class="nav-link nav-item" href="#">Liên hệ</a>
-            </li>
-        </ul>
-        <span>
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-        </span>
         <div class="searchSpace">
             <input type="text" class="input-search">
             <i class="fa fa-search search-icon"></i>
         </div>
+        <span>
+            <i class="fa fa-shopping-cart" aria-hidden="true"style="margin-top:35px;margin-left:5px"></i>
+        </span>
         <div class="img-flag">
             <img  class="flag-vietnam" src="https://icons.iconarchive.com/icons/wikipedia/flags/512/VN-Vietnam-Flag-icon.png" alt="">
         </div>
         <div class="login" style="float:left;display:flex">
-          <a class="nav-link nav-item" href="#">Đăng Nhập</a>
-          <a class="nav-link nav-item" href="#">Đăng Ký</a>
+          <a class="nav-link nav-item" href="#" style="margin-top:25px">Đăng Nhập</a>
+          <a class="nav-link nav-item" href="#"style="margin-top:25px">Đăng Ký</a>
         </div>
 
   </div>
 </nav>
-  </div>
+
+
+
+</div>
 </div>
