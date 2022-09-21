@@ -40,6 +40,7 @@
           <a class="nav-link nav-item" href="#"style="margin-top:25px">Đăng Ký</a>
         </div>
 
+<<<<<<< HEAD
   </div>
 </nav>
 
@@ -86,21 +87,24 @@
               <a class="nav-link nav-item" href="#"style="color:black">Liên hệ</a>
             </li>
         </ul>
+=======
+>>>>>>> c6e6fd2283a2a289a62160dacea813ff03fcccaa
   </div>
 </nav>
 
 
 
 </div>
+<<<<<<< HEAD
 </div>
 
 <!-- Slider -->
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner"> 
-      <!-- <div class="carousel-item active"> -->
-        <!-- <img style="height:500px; " class="d-block w-100" src="assets/public/images/banner_nongsan.png" alt="First slide"> -->
-      <!-- </div> -->
+       <div class="carousel-item active"> 
+        <img style="height:500px; " class="d-block w-100" src="assets/public/images/banner_nongsan.png" alt="First slide">
+      </div>
       <!-- <div class="carousel-item">
         <img style="height:500px; " class="d-block w-100" src="https://growmax.weba.vn/shop/images/growmax/slider/banner-traicay.jpg" alt="Third slide">
       </div> 
@@ -121,3 +125,6 @@
 
   <div class="background-circle">  
 </div>
+=======
+</div>
+>>>>>>> c6e6fd2283a2a289a62160dacea813ff03fcccaa
