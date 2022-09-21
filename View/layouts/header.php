@@ -44,5 +44,52 @@
 </nav>
 
 
+
+</div>
+</div>
+<div class="block-nav" style="background-color:white;">
+    <div class="container">
+<!-- Menu -->
+<nav class="navbar navbar-expand-lg ">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav navbar-list" >
+          
+          <li class="nav-item nav-item_mt">
+              <a class="nav-link nav-item" href="#"style="color:black;margin-left: 250px";>Về chúng tôi</a>
+          </li>
+  
+            <li class="nav-item nav-item_mt dropdown">
+              <a class="nav-link nav-item dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"style="color:black">
+              Giải pháp
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Trái cây</a>
+                <a class="dropdown-item" href="#">Rau củ</a>
+                <a class="dropdown-item" href="#">Khác</a>
+              </div>
+            </li>
+          <li class="nav-item nav-item_mt">
+            <a class="nav-link nav-item" href="#"style="color:black">Sản phẩm</a>
+          </li>
+          <li class="nav-item nav-item_mt">
+              <a class="nav-link nav-item" href="#"style="color:black">Tin tức</a>
+            </li>
+          <li class="nav-item nav-item_mt">
+              <a class="nav-link nav-item" href="#"style="color:black">Tuyển dụng</a>
+            </li>
+          
+            <li class="nav-item nav-item_mt nav-item_mr">
+              <a class="nav-link nav-item" href="#"style="color:black">Liên hệ</a>
+            </li>
+        </ul>
+  </div>
+</nav>
+
+
+
 </div>
 </div>
