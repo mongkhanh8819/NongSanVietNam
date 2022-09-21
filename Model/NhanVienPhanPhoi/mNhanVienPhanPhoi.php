@@ -1,6 +1,6 @@
 <?php 
 
-	include("Model/connect.php");
+	include_once("Model/connect.php");
 
 	class mNhanVienPhanPhoi{
 		public function select_nvpp(){

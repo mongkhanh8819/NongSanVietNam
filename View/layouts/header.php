@@ -36,8 +36,17 @@
             <img  class="flag-vietnam" src="https://icons.iconarchive.com/icons/wikipedia/flags/512/VN-Vietnam-Flag-icon.png" alt="">
         </div>
         <div class="login" style="float:left;display:flex">
-          <a class="nav-link nav-item" href="#" style="margin-top:25px">Đăng Nhập</a>
-          <a class="nav-link nav-item" href="#"style="margin-top:25px">Đăng Ký</a>
+          <?php if (isset($_SESSION['LoginSuccess']) == true){
+      echo "<a class='nav-link nav-item' href='?dangxuat' style='margin-top:25px'>Đăng Xuất</a>";}else{ ?>
+          <a class="nav-link nav-item" href="?dangnhap" style="margin-top:25px">Đăng Nhập</a>
+        <?php } ?>
+          <a class="nav-link nav-item" href="?dangky" style="margin-top:25px">Đăng Ký</a>
+          <!--  -->
+          <?php if (isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 1){
+      echo "<a class='nav-link nav-item' href='' style='margin-top:25px'>ADMIN</a>";}elseif(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 2){ ?>
+          <a class="nav-link nav-item" href="" style="margin-top:25px">NHÂN VIÊN</a>
+        <?php }else{} ?>
+      
         </div>
 
   </div>
