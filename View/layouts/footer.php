@@ -83,10 +83,6 @@
 
 
 </div>
-
-
 <!-- ./wrapper -->
-
-
 </body>
 </html>
