@@ -40,7 +40,7 @@
 
 	if(isset($_SESSION['LoginSuccess']) && ($_SESSION['MaVaiTro']) == 2)
 	{
-		include_once("View/DanhSachNhanVien/vGetDSNVPP.php");
+		include_once("View/NhanVienPhanPhoi/vGetDSNVPP.php");
 	}
 	else{
 
