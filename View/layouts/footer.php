@@ -1,6 +1,6 @@
 <!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted" style="margin-top:200px">
-
+<footer class="text-center text-lg-start bg-light text-muted" >
+<!-- style="margin-top:500px" -->
     <!-- Section: Links  -->
     <section class="" style="background-color:#69a747;color: #fff">
       <div class="container text-center text-md-start mt-5">
@@ -28,7 +28,7 @@
                 Tuyển dụng
             </h6>
             <h6 class="text-uppercase fw-bold mb-4">
-                Life at Koina
+                Thông báo
             </h6>
            
           </div>
@@ -42,7 +42,7 @@
             </h6>
 
             <h6 class="text-uppercase fw-bold mb-4">
-                Tin tức Koina
+                Tin tức
             </h6>
 
             <h6 class="text-uppercase fw-bold mb-4">
@@ -69,7 +69,7 @@
         </div>
 
         <div class="text-center p-4" >
-            Koina 2022
+            <h3>IUH - 2022</h3>
         </div>
         <!-- Grid row -->
       </div>
