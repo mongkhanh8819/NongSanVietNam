@@ -40,7 +40,7 @@
 		include("View/DangKy/vDangky.php");
 	}
 	//
-	if(isset($_SESSION['LoginSuccess']) && ($_SESSION['MaVaiTro']) == 2)
+	if(isset($_SESSION['LoginSuccess']) && ($_SESSION['MaVaiTro']) == 3)
 	{
 		include_once("View/NhanVienPhanPhoi/vGetDSNVPP.php");
 	}

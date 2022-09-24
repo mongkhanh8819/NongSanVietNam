@@ -10,8 +10,13 @@ $(document).ready(function(){
         $("#themmst").html(data2);
         $("#themgioithieu").html(data3);
     } 
+    // else if(l == 3){
+    //   var data1 = "<div class='input-group mb-3'><input type='text' class='form-control' name='tenncc' placeholder='Tên nhà cung cấp'></div>";
+    //     $("#themtendn").html(data1);
+    //     $("#date").hide();
+    // }
     else{
-    	$("#themtendn").html("");
+        $("#themtendn").html("");
         $("#themmst").html("");
         $("#themgioithieu").html("");
     }

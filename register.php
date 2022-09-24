@@ -3,6 +3,8 @@
   require_once("config/config.php");
   include_once("Controller/CONTROLLER_AJAX/cDiaChi.php");
   include_once("Controller/KhachHangThanhVien/cKhachHangThanhVien.php");
+  include_once("Controller/KhachHangDoanhNghiep/cKhachHangDoanhNghiep.php");
+  include_once("Controller/NhaCungCapNongSan/cNhaCungCapNongSan.php");
   include_once("Controller/TaiKhoan/cTaikhoan.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,13 +29,15 @@
   <!--  -->
   <script src="assets/public/ajax/ajax_tinh_thanh.js" type="text/javascript"></script>
   <script src="assets/public/ajax/ajax_loainguoidung.js" type="text/javascript"></script>
+  <script src="assets/public/ajax/ajax_user_nhacungcap.js" type="text/javascript"></script>
   <!-- Bootstrap 4 -->
   <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE App -->
   <script src="assets/vendor/dist/js/adminlte.min.js"></script>
 </head>
 <body class="hold-transition register-page">
-<div style="margin-top:200px"></div>
+<div style="margin-top:200px">
+</div>
 <div class="register-box">
   <div class="register-logo" style="">
     <a href="../../index2.html"><b>NÔNG SẢN </b>VIỆT</a>
@@ -56,6 +60,10 @@
               <span class="fas fa-user"></span>
             </div>
           </div>
+        </div>
+        <!-- TÊN DOANH NGHIỆP -->
+        <div class="" id="themtenncc">
+          
         </div>
         <!-- TÊN DOANH NGHIỆP -->
         <div class="" id="themtendn">
@@ -90,7 +98,7 @@
         </div>
         <!--  -->
         <!-- CHỌN GIỚI TÍNH -->
-        <div class="input-group mb-3">
+        <div class="input-group mb-3" id="div_gioitinh">
           <select class="form-control" id="slgioitinh" name="slgioitinh" required>
             <option value=""> Chọn giới tính</option>
             <option value="0">Nam</option>
@@ -115,7 +123,7 @@
         <!--  -->
         <!-- NHẬP NGÀY SINH HOẶC NGÀY THÀNH LẬP -->
         <div class="input-group mb-3">
-          <input type="date" class="form-control" name="date" placeholder="Ngày sinh" required>
+          <input type="date" class="form-control" name="date" id="date" placeholder="Ngày sinh" required>
         </div>
         <!-- NHẬP ĐỊA CHỈ -->
         <div class="input-group mb-3">
@@ -254,10 +262,12 @@
               echo "<script>window.location.href = 'index.php';</script>";
             } else {
               echo "<script>alert('Đăng ký thất bại');</script>";
+              echo "<script>window.location.href = 'register.php';</script>";
             }
             
           }else {
             echo "<script>alert('Đăng ký thất bại');</script>";
+            echo "<script>window.location.href = 'register.php';</script>";
           }
           
       } elseif ($_REQUEST['vaitro'] == 4) { //người dùng doanh nghiệp
@@ -284,26 +294,70 @@
           $mst = $_REQUEST['mst'];
           $gioithieu = $_REQUEST['gioithieu'];
 
-          echo $hoten_ndd."<br>";
-          echo $sdt."<br>";
-          echo $diachidn."<br>";
-          echo $ngaythanhlap."<br>";
-          echo $email."<br>";
-          echo $gioitinh."<br>";
-          echo $maxa."<br>";
-          echo $mahuyen."<br>";
-          echo $matinh."<br>";
-          echo $vaitro."<br>";
-          echo $username ."<br>";
-          echo $password."<br>";
-          echo $tendn."<br>";
-          echo $mst ."<br>";
-          echo $gioithieu."<br>";
-      } 
+
+          $dk = new cTaikhoan();
+          $user_dn = new cKhachHangDoanhNghiep();
+          $insert = $dk -> them_taikhoan($username,$password,$vaitro);
+          if ($insert == 1) {
+            $ins_khdn = $user_dn -> them_khdn($tendn,$sdt,$diachidn,$email,$ngaythanhlap,$gioithieu,$hoten_ndd,$username,$maxa);
+            if ($ins_khdn == 1) {
+              echo "<script>alert('Đăng ký thành công');</script>";
+              echo "<script>window.location.href = 'index.php';</script>";
+            } else {
+              echo "<script>alert('Đăng ký thất bại');</script>";
+              echo "<script>window.location.href = 'register.php';</script>";
+            }
+            
+          }else {
+            echo "<script>alert('Đăng ký thất bại');</script>";
+            echo "<script>window.location.href = 'register.php';</script>";
+          }
+
+      } elseif ($_REQUEST['vaitro'] == 3) {
+        //----------------------------------------------------
+        //----------------------------------------------------
+        //----------------------------------------------------
+        //------------------ĐĂNG KÝ TÀI KHOẢN NGƯỜI DÙNG NHÀ CUNG CẤP NÔNG SẢN
+        //----------------------------------------------------
+        //----------------------------------------------------
+        //----------------------------------------------------
+          $tenncc = $_REQUEST['tenncc'];
+          $hoten_ndd = $_REQUEST['hoten'];
+          $sdt = $_REQUEST['sdt'];
+          $diachincc = $_REQUEST['diachi'];
+          $ngaythanhlap = $_REQUEST['date'];
+          $email = $_REQUEST['email'];
+          $gioitinh = $_REQUEST['slgioitinh'];
+          $maxa = $_REQUEST['xa'];
+          $mahuyen = $_REQUEST['huyen'];
+          $matinh = $_REQUEST['tinh'];
+          $vaitro = $_REQUEST['vaitro'];
+          $username = $_REQUEST['username'];
+          $password = $_REQUEST['password'];
+
+          $dk = new cTaikhoan();
+          $user_ncc = new cNhaCungCapNongSan();
+          $insert = $dk -> them_taikhoan($username,$password,$vaitro);
+          if ($insert == 1) {
+            $ins_ncc = $user_ncc -> them_ncc($tenncc,$hoten_ndd,$diachincc,$sdt,$email,$username,$maxa);
+            if ($ins_ncc == 1) {
+              echo "<script>alert('Đăng ký thành công');</script>";
+              echo "<script>window.location.href = 'index.php';</script>";
+            } else {
+              echo "<script>alert('Đăng ký thất bại');</script>";
+              echo "<script>window.location.href = 'register.php';</script>";
+            }
+            
+          }else {
+            echo "<script>alert('Đăng ký thất bại');</script>";
+            echo "<script>window.location.href = 'register.php';</script>";
+          }
+          
+      }
       
     }
     else{
-      echo "cc";
+        echo "cc";
     }
 
  ?>

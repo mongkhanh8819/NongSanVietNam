@@ -42,7 +42,7 @@
         <?php } ?>
           <a class="nav-link nav-item" href="register.php" style="margin-top:25px">Đăng Ký</a>
           <!--  -->
-          <?php if (isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 5){
+          <?php if (isset($_SESSION['MaVaiTro'])){
       echo "<a class='nav-link nav-item' href='' style='margin-top:25px'>".$_SESSION['username']."</a>";}elseif(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 2){ ?>
           <a class="nav-link nav-item" href="" style="margin-top:25px"><?php echo $_SESSION['username']; ?></a>
         <?php }else{} ?>

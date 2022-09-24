@@ -17,19 +17,33 @@
 				return false;
 			}
 		}
-		//hàm thêm khách hàng doanh nghiệp
-		public function add_khdn($madn,$ten,$sdt,$diachi,$ngaysinh,$email,$gioitinh,$username,$maxa){
-		$conn;
-		$p = new ketnoi();
-		if($p -> moketnoi($conn)){
-			$sql = "INSERT INTO khachhangdoanhnghiep(MaDN, TenDoanhNghiep, SDT, DiaChi, Email, NgayThanhLap, GioiThieu, TenNguoiDaiDien, username, MaXa) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9],[value-10],[value-11],[value-12],[value-13],[value-14])";
-			$result = mysqli_query($conn,$sql);
-			$p -> dongketnoi($conn);
-			return $result;
-		}else{
-			return false;
+		//hàm get mã doanh nghiệp thuộc bản ghi mới nhất
+		public function select_max_madn(){
+			$conn;
+			$p = new ketnoi();
+			if($p -> moketnoi($conn)){
+				$string = "SELECT MaDN FROM khachhangdoanhnghiep ORDER BY MaDN DESC LIMIT 1";
+				$madn = mysqli_query($conn,$string);
+				$p -> dongketnoi($conn);
+				//
+				return $madn;
+			}else{
+				return false;
+			}
 		}
-	}
+		//hàm thêm khách hàng doanh nghiệp
+		public function add_khdn($madn,$tendn,$sdt,$diachi,$email,$ngaythanhlap,$gioithieu,$tenndd,$username,$maxa){
+			$conn;
+			$p = new ketnoi();
+			if($p -> moketnoi($conn)){
+				$sql = "INSERT INTO khachhangdoanhnghiep(MaDN, TenDoanhNghiep, SDT, DiaChi, Email, NgayThanhLap, GioiThieu, TenNguoiDaiDien, username, MaXa) VALUES ('".$madn."','".$tendn."','".$sdt."','".$diachi."','".$email."','".$ngaythanhlap."','".$gioithieu."','".$tenndd."','".$username."',".$maxa.")";
+				$result = mysqli_query($conn,$sql);
+				$p -> dongketnoi($conn);
+				return $result;
+			}else{
+				return false;
+			}
+		}
 	}
 
 
