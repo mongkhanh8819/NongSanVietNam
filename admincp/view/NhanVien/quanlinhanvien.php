@@ -36,8 +36,8 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <!-- <div class="card-header"> 
-                <h3 class="card-title">Danh sách thông tin khách hàng</h3>  | <a href="#">Thêm khách hàng mới</a> 
+              <div class="card-header">
+                <h3 class="card-title">Danh sách thông tin khách hàng</h3>  | <a href="#">Thêm khách hàng mới</a>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -50,9 +50,9 @@
                     </div>
                   </div>
                 </div>
-              </div> -->
+              </div>
               <!-- /.card-header -->
-              <!-- <div class="card-body table-responsive p-0">
+              <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
@@ -71,7 +71,7 @@
                   <tbody>
                     <tr>
                       <td>183</td>
-                      <td>John Doe</td>
+                      <td>Lang Tuan Kiet</td>
                       <td>012345667</td>
                       <td>johndoe@gmail.com</td>
                       <td>3421312</td>
@@ -119,7 +119,7 @@
                       <td> User1</td>
                       <td>#0001</td>
                       <td>
-                        <a href="#"><i class="fa fa-pen" aria-hidden="true"></i></a> |
+                        <a href="#"><i class="fa fa-pen" aria-hidden="true"></i></a>|
                         <a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a>
                       </td>
 
@@ -127,74 +127,8 @@
                   </tbody>
                 </table>
               </div>
-              /.card-body -->
-              <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>150</h3>
-
-                <p>New Orders</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <!-- /.card-body -->
             </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                <p>Bounce Rate</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>44</h3>
-
-                <p>User Registrations</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>65</h3>
-
-                <p>Unique Visitors</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-        </div>
-        
-        </div>
             <!-- /.card -->
           </div>
         </div>

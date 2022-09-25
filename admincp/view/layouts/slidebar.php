@@ -14,7 +14,7 @@
           <img src="assets/dist1/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">DƯƠNG MỘNG KHÁNH</a>
+          <a href="#" class="d-block">Lăng Tuấn Kiệt</a>
         </div>
       </div>
 
@@ -46,13 +46,13 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="./quanlythongtinnguoidung.html" class="nav-link">
+              <a href="?qlkhdn" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Quản lý thông tin người dùng</p>
+                <p>Quản lý thông tin khách hàng doanh nghiệp</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="./quanlynhanvien.html" class="nav-link">
+              <a href="?qlnv" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Quản lý thông tin nhân viên</p>
               </a>
