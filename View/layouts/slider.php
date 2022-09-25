@@ -29,7 +29,3 @@
 
 
   <!-- Slider -->
-
-
-<!-- List item -->
-</div>

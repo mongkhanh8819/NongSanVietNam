@@ -23,7 +23,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav navbar-list" >
           <li class="nav-item nav-logo"style="margin-top:16px">
-           <a href="#"> <img src="https://theme.hstatic.net/200000401005/1000921080/14/logo.svg?v=20" alt=""></a>
+           <a href="index.php"> <!-- <img src="https://theme.hstatic.net/200000401005/1000921080/14/logo.svg?v=20" alt=""> --><img src="assets/public/images/logo.png" alt=""></a>
           </li>
         <div class="searchSpace">
             <input type="text" class="input-search">
@@ -40,11 +40,11 @@
       echo "<a class='nav-link nav-item' href='?dangxuat' style='margin-top:25px'>Đăng Xuất</a>";}else{ ?>
           <a class="nav-link nav-item" href="?dangnhap" style="margin-top:25px">Đăng Nhập</a>
         <?php } ?>
-          <a class="nav-link nav-item" href="?dangky" style="margin-top:25px">Đăng Ký</a>
+          <a class="nav-link nav-item" href="register.php" style="margin-top:25px">Đăng Ký</a>
           <!--  -->
-          <?php if (isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 1){
-      echo "<a class='nav-link nav-item' href='' style='margin-top:25px'>ADMIN</a>";}elseif(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 2){ ?>
-          <a class="nav-link nav-item" href="" style="margin-top:25px">NHÂN VIÊN</a>
+          <?php if (isset($_SESSION['MaVaiTro'])){
+      echo "<a class='nav-link nav-item' href='' style='margin-top:25px'>".$_SESSION['username']."</a>";}elseif(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 2){ ?>
+          <a class="nav-link nav-item" href="" style="margin-top:25px"><?php echo $_SESSION['username']; ?></a>
         <?php }else{} ?>
       
         </div>

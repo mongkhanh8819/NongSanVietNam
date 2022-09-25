@@ -11,7 +11,7 @@
 	//DIFINE CONNECT
 	require_once("config/config.php");
 	//
-	include_once("Controller/DangNhap/cTaikhoan.php");
+	include_once("Controller/TaiKhoan/cTaikhoan.php");
 	$account = new cTaikhoan();
 	if (isset($_POST['username'])) {
     	$us = $_POST['username'];
@@ -34,11 +34,13 @@
 	//include slider
 	include("View/layouts/slider.php");
 	//main contain - dang nhap
-	if (isset($_GET['dangnhap'])){
+	if (isset($_REQUEST['dangnhap'])){
 		include("View/DangNhap/vDangnhap.php");
+	}elseif(isset($_REQUEST['dangky'])) {
+		include("View/DangKy/vDangky.php");
 	}
-
-	if(isset($_SESSION['LoginSuccess']) && ($_SESSION['MaVaiTro']) == 2)
+	//
+	if(isset($_SESSION['LoginSuccess']) && ($_SESSION['MaVaiTro']) == 3)
 	{
 		include_once("View/NhanVienPhanPhoi/vGetDSNVPP.php");
 	}

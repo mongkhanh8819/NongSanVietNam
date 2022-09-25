@@ -135,13 +135,12 @@
 
   <div class="background-circle">
   
-</div>
+  </div>
 
 
   <!-- Slider -->
 
 <!-- List item -->
-</div>
 
  <!-- Footer -->
 <footer class="text-center text-lg-start bg-light text-muted" style="margin-top:200px">

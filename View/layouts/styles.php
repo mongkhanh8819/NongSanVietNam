@@ -6,3 +6,4 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="assets/vendor/dist/css/adminlte.min.css">
 	
+  <link rel="stylesheet" type="text/css" href="assets/public/css/dangky.css">
