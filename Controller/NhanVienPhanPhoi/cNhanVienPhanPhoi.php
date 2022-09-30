@@ -8,6 +8,18 @@
 			$table = $p -> select_nvpp();
 			return $table;
 		}
+		//------------------
+		//----------------------
+		//-------------------------
+		//---------------------------
+		//---GET THÔNG TIN NHÂN VIÊN THUỘC MỘT XÃ
+		//----------------------------
+		//----------------------------
+		public function get_nvpp_by_diachi($maxa){
+			$p = new mNhanVienPhanPhoi();
+			$table = $p -> select_nvpp_by_diachi($maxa);
+			return $table;
+		}
 	}
 
  ?>

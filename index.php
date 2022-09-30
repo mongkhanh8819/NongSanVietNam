@@ -11,6 +11,8 @@
 	//DIFINE CONNECT
 	require_once("config/config.php");
 	//
+		
+  	include_once("Controller/NongSan/cNhomNongSan.php");
 	include_once("Controller/TaiKhoan/cTaikhoan.php");
 	$account = new cTaikhoan();
 	if (isset($_POST['username'])) {
@@ -40,14 +42,50 @@
 		include("View/DangKy/vDangky.php");
 	}
 	//
-	if(isset($_SESSION['LoginSuccess']) && ($_SESSION['MaVaiTro']) == 3)
-	{
-		include_once("View/NhanVienPhanPhoi/vGetDSNVPP.php");
-	}
-	else{
-
+	if (isset($_SESSION['LoginSuccess']) && $_SESSION['LoginSuccess'] == true) {
+		switch ($_SESSION['MaVaiTro']) {
+			case '1':
+				echo "ĐIỀU HƯỚNG RA TRANG ADMINCP";
+				break;
+			case '2':
+				include_once("View/NhanVienPhanPhoi/vGiaoDienNVPP.php");
+				break;
+			case '3':
+				include_once("Controller/NongSan/cNongSan.php");
+				include_once("View/NhaCungCapNongSan/vGiaoDienNCC.php");
+				break;
+			case '4':
+				include_once("View/KhachHangDoanhNghiep/vGiaoDienDN.php");
+				break;
+			case '5':
+				include_once("View/KhachHangThanhVien/vGiaoDienTV.php");
+				break;
+			default:
+				break;
+		}
+	} else {
+		include_once("View/NongSan/vThongTinNongSan.php");
 	}
 	
+
+	//
+	// if(isset($_SESSION['LoginSuccess']) && ($_SESSION['MaVaiTro']) == 2)
+	// {
+	// 	include_once("View/NhanVienPhanPhoi/vGiaoDienNVPP.php");
+	// }
+	// elseif(isset($_SESSION['LoginSuccess']) && ($_SESSION['MaVaiTro']) == 3){
+	// 	include_once("View/NhaCungCapNongSan/vGiaoDienNCC.php");	
+	// }
+	// elseif(isset($_SESSION['LoginSuccess']) && ($_SESSION['MaVaiTro']) == 4){
+	// 	include_once("View/KhachHangDoanhNghiep/vGiaoDienDN.php");	
+	// }
+	// elseif(isset($_SESSION['LoginSuccess']) && ($_SESSION['MaVaiTro']) == 5){
+	// 	include_once("View/KhachHangThanhVien/vGiaoDienTV.php");	
+	// }
+	// elseif(isset($_SESSION['LoginSuccess']) && ($_SESSION['MaVaiTro']) == 1){
+	// 	echo "ĐIỀU HƯỚNG RA TRANG ADMINCP";	
+	// }
+	//
 	//include footer
 	include("View/layouts/footer.php");
 

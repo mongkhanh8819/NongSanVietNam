@@ -11,11 +11,11 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-
+<div style="position: fixed;top: 0;width: 100%;z-index: 99;">
 <div class="block-nav">
     <div class="container">
 <!-- Menu -->
-<nav class="navbar navbar-expand-lg ">
+<nav class="navbar navbar-expand-lg">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -40,18 +40,25 @@
       echo "<a class='nav-link nav-item' href='?dangxuat' style='margin-top:25px'>Đăng Xuất</a>";}else{ ?>
           <a class="nav-link nav-item" href="?dangnhap" style="margin-top:25px">Đăng Nhập</a>
         <?php } ?>
-          <a class="nav-link nav-item" href="register.php" style="margin-top:25px">Đăng Ký</a>
+          <!-- <a class="nav-link nav-item" href="register.php" style="margin-top:25px">Đăng Ký</a> -->
           <!--  -->
-          <?php if (isset($_SESSION['MaVaiTro'])){
-      echo "<a class='nav-link nav-item' href='' style='margin-top:25px'>".$_SESSION['username']."</a>";}elseif(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 2){ ?>
-          <a class="nav-link nav-item" href="" style="margin-top:25px"><?php echo $_SESSION['username']; ?></a>
-        <?php }else{} ?>
+          <?php if (isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 1){
+      echo "<a class='nav-link nav-item' href='' style='margin-top:25px'>".$_SESSION['TenAdmin']."</a>";}elseif(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 2){ ?>
+          <a class="nav-link nav-item" href="" style="margin-top:25px"><?php echo $_SESSION['TenNVPP']; ?></a>
+        <?php }elseif(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 3){ ?>
+          <a class="nav-link nav-item" href="" style="margin-top:25px"><?php echo $_SESSION['TenNhaCungCap']; ?></a>
+        <?php }elseif(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 4){ ?>
+          <a class="nav-link nav-item" href="" style="margin-top:25px"><?php echo $_SESSION['TenDoanhNghiep']; ?></a>
+        <?php }elseif(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 5){ ?>
+          <a class="nav-link nav-item" href="" style="margin-top:25px"><?php echo $_SESSION['Ten_KHTV']; ?></a>
+        <?php }else{
+          echo "<a class='nav-link nav-item' href='register.php' style='margin-top:25px'>Đăng Ký</a>";
+        } ?>
       
         </div>
 
   </div>
 </nav>
-
 
 
 </div>
@@ -100,5 +107,6 @@
 
 
 
+</div>
 </div>
 </div>
