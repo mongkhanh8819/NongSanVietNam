@@ -52,10 +52,30 @@
               </a>
             </li>
             <li class="nav-item">
+              <a href="?qlkhtv" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Quản lý thông tin khách hàng thành viên</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="?qlncc" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Quản lý thông tin nhà cung cấp</p>
+              </a>
+            </li>
+            
+            <li class="nav-item">
               <a href="?qlnv" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Quản lý thông tin nhân viên</p>
               </a>
+            </li>
+            <li clas="nav-item">
+              <a href="?qltk" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Quản lý tài khoản</p>
+              </a>
+
             </li>
 
           </ul>

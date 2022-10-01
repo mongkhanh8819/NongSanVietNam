@@ -14,6 +14,7 @@
   <!-- scripts -->
   <!-- jQuery -->
   <script src="assets/plugins/jquery/jquery.min.js"></script>
+  <script src="assets/public/ajax/ajax_tinh_thanh.js"></script>
   <!-- Bootstrap 4 -->
   <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE App -->

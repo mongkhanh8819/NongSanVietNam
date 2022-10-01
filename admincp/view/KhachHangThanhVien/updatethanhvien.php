@@ -1,9 +1,9 @@
 <?php
-    include("controller/KhachHangDoanhNghiep/cdoanhnghiep.php");
-     $MaDN = $_REQUEST['MaDN'];
+    include("controller/KhachHangThanhVien/cthanhvien.php");
+     $MaKHTV = $_REQUEST['MaKHTV'];
     //echo $Mabv;
-    $p = new cKHDN();
-    $table = $p-> select_DN_byid($MaDN);
+    $p = new cKHTV();
+    $table = $p-> select_thanhvien_byid($MaKHTV);
 ?> 
  <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
@@ -12,12 +12,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Quản lý Thông Tin Doanh Nghiệp</h1>
+            <h1>Quản lý Thông Tin Khách Hàng Thành Viên</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-              <li class="breadcrumb-item active">Quản lý khách hàng</li>
+              <li class="breadcrumb-item active">Quản lý khách hàng thành viên</li>
             </ol>
           </div>
         </div>
@@ -59,7 +59,7 @@
                 </div>
               </div>-->
               <!-- /.card-header -->
-              <h3 style="text-align:center">Cập nhật thông tin doanh nghiệp</h3>
+              <h3 style="text-align:center">Cập nhật thông tin khách hàng thành viên</h3>
               <form action="#">
                 <div class="row">
                   <div class="col">
@@ -67,82 +67,78 @@
                       if($table){
                         if(mysqli_num_rows($table)>0){
                           while ($row=mysqli_fetch_assoc($table)) {
-                            echo "<td>Mã doanh nghiệp</td>";
-                            echo "<td><input type='text'class='form-control' name='txtMaDN' value='" . $row['MaDN'] . "'></td>";
-                            echo "<td>Tên doanh nghiệp</td>";
-                            echo "<td><input type='text'class='form-control' name='txtTenDN' value='" . $row['TenDoanhNghiep'] . "'></td>";
+                            echo "<td>Mã thành viên</td>";
+                            echo "<td><input type='text'class='form-control' name='txtMaKHTV' value='" . $row['MaKHTV'] . "'></td>";
+                            echo "<td>Tên khách hàng thành viên</td>";
+                            echo "<td><input type='text'class='form-control' name='txtTenKHTV' value='" . $row['Ten_KHTV'] . "'></td>";
                             echo "<td> Số điện thoại </td>";
                             echo "<td><input type='text' class='form-control' name='txtsdt' value='" . $row['SDT'] . "'></td>";
                             echo "<td>Địa chỉ</td>";
                             echo "<td><input type='text'class='form-control name='txtDiaChi' value='" . $row['DiaChi'] . "'></td>";
+                            echo "<td>Ngày sinh</td>";
+                            echo "<td><input type='date'class='form-control name='txtngaysinh' value='" . $row['NgaySinh'] . "'></td>";
+                            echo "<td>Hình ảnh</td>";
+                            echo "<td><input type='file'class='form-control name='txthinhanh' value='" . $row['HinhAnh'] . "'></td>";
                             echo "<td>Email</td>";
                             echo "<td><input type='text' class='form-control name='txtEmail' value='" . $row['Email'] . "'></td>";
-                            echo "<td>Mã số thuế</td>";
-                            echo "<td><input type='text' class='form-control' name='txtMST' value='" . $row['MST'] . "'></td>";
-                            echo "<td>Ngày Thành Lập</td>";
-                            echo "<td><input type='text'class='form-control' name='txtNgayThanhLap' value='" . $row['NgayThanhLap'] . "'></td>";
+                            echo "<td>Giới Tính</td>";
                             
-                            echo "<td>Giới thiệu</td>";
-                            // echo "<td><input type='text'class='form-control' name='txtsl' value='" . $row['GioiThieu'] . "' ></td>";
-                            echo "<textarea type='text' name='txtGioiThieu' class='form-control'cols='80' rows='4' style='border-radius:10px'>'" . $row['GioiThieu'] . "'</textarea>";
-                            
-                            echo "<td>Tên người đại diện</td>";
-                            echo "<td><input type='text'class='form-control' name='txtTen_NDD' value='" . $row['TenNguoiDaiDien'] . "'></td>";
-                            
-                            echo "<td>Địa chỉ người đại diện</td>";
-                            echo "<td><input type='text' class='form-control' name='txtDiaChi_NDD' value='" . $row['DiaChi_NDD'] . "'></td>";  
-                            
-                            echo "<td>Số điện thoại người dại diện</td>";
-                            echo "<td><input type='text'class='form-control' name='txtSDT_NDD' value='" . $row['SDT_NDD'] . "' ></td>";
-                            
-                            echo "<td>Email người dại diện</td>";
-                            echo "<td><input type='text'class='form-control' name='txtEmail_NDD' value='" . $row['Email_NDD'] . "'></td>";
+                            echo "<td><input type='text' class='form-control' name='txtgioitinh' value='" . $row['GioiTinh'] . "'></td>";
+                           
                             
                             echo "<td>Username</td>";
                             echo "<td><input type='text'class='form-control' name='txtUsername' value='" . $row['username'] . "'></td>";
-                            
                             echo "<td>Mã xã</td>";
                             ?>
-                             <td><select class='form-control' name='tinh' id='Tinh' ><option value='".$row[]."'>Chưa chọn Tỉnh/Thành</option></select></td>
+                              <td>
+                                <select class='form-control' name='tinh' id='Tinh' >
+                                  <option value='".$row[]."'>Chưa chọn Tỉnh/Thành</option>
+                                  
+                                </select>
+                              </td>
                             <?php
                             ?>
                             <select class='form-control' name='huyen' id='Huyen'><option value=''>Chưa chọn Huyện/Quận</option> </select>
                             <?php
                             ?>
-                            <td><select class='form-control' name='xa' id='Xa'>
-                              <option value='<?php echo $row['MaXa'] ?>' selected><?php echo $row['MaXa']; ?></option>
-                            </select></td>
+                            <td>
+                                <select class='form-control' name='xa' id='Xa'>
+                                  <option value='<?php echo $row['MaXa'] ?>' selected><?php echo $row['MaXa']; ?></option>
+                                  
+                                </select>
+                            </td>
+                          </br>
+                            <!-- <div class="input-group mb-3">
+                                <select class="form-control" name="tinh" id="tinh" required>
+                                  <option value="">Chưa chọn Tỉnh/Thành</option>
+                                    <?php include_once("View/process_ajax/tinh.php"); ?>  
+                                </select> 
+                              <div class="input-group-append">
+                                <div class="input-group-text">
+                                  <span class="fas fa-industry"></span>
+                                </div>
+                              </div>
+                            </div>
                             <div class="input-group mb-3">
-                      <select class="form-control" name="tinh" id="tinh" required>
-                        <option value="">Chưa chọn Tỉnh/Thành</option>
-                        <?php include_once("View/process_ajax/tinh.php"); ?>  
-                      </select> 
-                      <div class="input-group-append">
-                        <div class="input-group-text">
-                          <span class="fas fa-industry"></span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="input-group mb-3">
-                      <select class="form-control" name="huyen" id="huyen" required>
-                        <option value="">Chưa chọn Huyện/Quận</option>  
-                      </select> 
-                      <div class="input-group-append">
-                        <div class="input-group-text">
-                          <span class="fas fa-industry"></span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="input-group mb-3">
-                      <select class="form-control" name="xa" id="xa" required>
-                        <option value="">Chưa chọn Xã/Phường</option>
-                      </select> 
-                      <div class="input-group-append">
-                        <div class="input-group-text">
-                          <span class="fas fa-industry"></span>
-                        </div>
-                      </div>
-                    </div>
+                                <select class="form-control" name="huyen" id="huyen" required>
+                                  <option value="">Chưa chọn Huyện/Quận</option>  
+                                </select> 
+                              <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-industry"></span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="input-group mb-3">
+                                <select class="form-control" name="xa" id="xa" required>
+                                  <option value="">Chưa chọn Xã/Phường</option>
+                                </select> 
+                              <div class="input-group-append">
+                                <div class="input-group-text">
+                                  <span class="fas fa-industry"></span>
+                                </div>
+                              </div>
+                            </div> -->
                             <?php
                             
                           }

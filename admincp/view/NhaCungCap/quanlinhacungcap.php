@@ -1,10 +1,10 @@
 <?php 
 
-	include_once("Controller/KhachHangDoanhNghiep/cDoanhNghiep.php");
+	include_once("controller/NhaCungCap/cNCC.php");
 
-	$p = new cKHDN();
+	$p = new cNCC();
 
-	$table = $p -> select_KHDN();
+	$table = $p -> select_NCC();
 
 ?>
   <!-- Content Wrapper. Contains page content -->
@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Quản lý Thông Tin Doanh Nghiệp</h1>
+            <h1>Quản lý Thông Tin Nhà Cung Cấp</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-              <li class="breadcrumb-item active">Quản lý khách hàng</li>
+              <li class="breadcrumb-item active">Quản lý Nhà Cung Cấp</li>
             </ol>
           </div>
         </div>
@@ -46,7 +46,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Danh sách thông tin doanh nghiệp</h3>  | <a href="?adddn">Thêm doanh nghiệp mới</a>
+                <h3 class="card-title">Danh sách thông tin nhà cung cấp</h3>  | <a href="index.php?addncc">Thêm nhà cung cấp mới</a>
                 
 
                 <div class="card-tools">
@@ -66,15 +66,16 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th>Mã doanh nghiệp</th>
-                      <th>Tên doanh nghiệp</th>
-                      <th>Số điện thoại</th>
-                      <th>Địa chỉ</th>
-                      <th>Email</th>
-                      <th>Mã số thuế</th>
-                      <th>Ngày lập </th>
-                      <th>Giới thiệu</th>
+                      <th>Mã NCC</th>
+                      <th>Tên NCC</th>
                       <th>Tên người đại diện</th>
+                      <th>Hình ảnh</th>
+                      <th>Địa chỉ_NCC</th>
+                      <td>Địa chỉ_NDD</td>
+                      <th>SDT_NCC</th>
+                      <th>SDT_NDD</th>
+                      <th>Email_NCC</th>
+                      <th>Email_NDD</th>
                       <th>Tác vụ</th>                 
                     </tr>
                   </thead>
@@ -85,17 +86,17 @@
 		                    if(mysqli_num_rows($table) > 0){
 			                    while($row = mysqli_fetch_assoc($table)) {
                                     echo "<tr>";
-                                    echo "<td>".$row['MaDN']."</td>";
-                                    echo "<td>".$row['TenDoanhNghiep']."</td>";
-                                    echo "<td>".$row['SDT']."</td>";
-                                    echo "<td>".$row['DiaChi']."</td>";
-                                    echo "<td>".$row['Email']."</td>";
-                                    echo "<td>".$row['MST']."</td>";
-                                    echo "<td>".$row['NgayThanhLap']."</td>";
-                                    //echo "<td>".$row['GioiThieu']."</td>";
-                                    echo "<td><textarea cols='45' rows='4'style='border-radius:10px'readonly>" . $row['GioiThieu'] . "</textarea></td>";
+                                    echo "<td>".$row['MaNCC']."</td>";
+                                    echo "<td>".$row['TenNhaCungCap']."</td>";
                                     echo "<td>".$row['TenNguoiDaiDien']."</td>";
-                                    echo "<td><a href='?updatedn&&MaDN=".$row['MaDN']."'><i class='fa fa-pen' aria-hidden='true'></i></a> | <a href='#'><i class='fa fa-trash' aria-hidden='true'></i></a></td>";
+                                    echo "<td>".$row['HinhAnh']."</td>";
+                                    echo "<td>".$row['DiaChi_NCC']."</td>";
+                                    echo "<td>".$row['DiaChi_NDD']."</td>";
+                                    echo "<td>".$row['SDT_NCC']."</td>";
+                                    echo "<td>".$row['SDT_NDD']."</td>";
+                                    echo "<td>".$row['EmailNCC']."</td>";
+                                    echo "<td>".$row['EmailNDD']."</td>";
+                                    echo "<td><a href='?updatencc&&MaNCC=".$row['MaNCC']."'><i class='fa fa-pen' aria-hidden='true'></i></a> | <a href='#'><i class='fa fa-trash' aria-hidden='true'></i></a></td>";
                                     echo "</tr>";
 			                    }
 		                    }
@@ -119,3 +120,5 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+

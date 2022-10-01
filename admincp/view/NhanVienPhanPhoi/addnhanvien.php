@@ -5,12 +5,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Quản lý Thông Tin Doanh Nghiệp</h1>
+            <h1>Quản lý Thông Tin Nhân Viên Phân Phối</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-              <li class="breadcrumb-item active">Quản lý khách hàng</li>
+              <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
+              <li class="breadcrumb-item active">Quản lý nhân viên phân phối</li>
             </ol>
           </div>
         </div>
@@ -52,39 +52,27 @@
                 </div>
               </div>-->
               <!-- /.card-header -->
-              <h3 style="text-align:center">Thêm Doanh Nghiệp</h3>
+              <h3 style="text-align:center">Thêm Nhân Viên Phân Phối</h3>
               <form action="#">
                 <div class="row">
                   <div class="col">
-                    <td>Mã doanh nghiệp</td>
-                    <input type="text" class="form-control" id="madn" placeholder="Enter Mã doanh nghiệp" name="madn"></br>
-                    <td>Tên doanh nghiệp</td>
-                    <input type="text" class="form-control" id="madn" placeholder="Enter Tên doanh nghiệp" name="madn"></br>
+                    <td>Mã nhân viên phân phối</td>
+                    <input type="text" class="form-control" id="manvpp" placeholder="Enter Mã nhân viên phân phối" name="manvpp"></br>
+                    <td>Tên nhân viên phân phối</td>
+                    <input type="text" class="form-control" id="tennvpp" placeholder="Enter Tên nhân viên phân phối" name="tennvpp"></br>
                     <td>Số điện thoại</td>
-                    <input type="text" class="form-control" id="madn" placeholder="Enter Số điện thoại" name="madn"></br>
+                    <input type="text" class="form-control" id="sdt" placeholder="Enter Số điện thoại" name="sdt"></br>
                     <td>Địa chỉ</td>
-                    <input type="text" class="form-control" id="madn" placeholder="Enter Địa chỉ" name="madn"></br>
+                    <input type="text" class="form-control" id="diachi" placeholder="Enter Địa chỉ" name="diachi"></br>
+                    <td>Ngày sinh</td>
+                    <input type="date" class="form-control" id="ngaysinh" placeholder="Enter Ngày sinh" name="ngaysinh"></br>
+                    <td>Hình ảnh</td>
+                    <input type="file" class="form-control" id="hinhanh" placeholder="Chọn hình ảnh" name="hinhanh"></br>
                     <td>Email</td>
-                    <input type="text" class="form-control" id="madn" placeholder="Enter Email" name="madn"></br>
-                    <td>Mã số thuế</td>
-                    <input type="text" class="form-control" id="madn" placeholder="Enter Mã số thuế" name="madn"></br>
-                    <td>Giới thiệu</td>
-                    <textarea name="gioithieu" id="gioithieu" cols="80" rows="4" placeholder="Enter Giới thiệu thông tin doanh nghiệp" style="border-radius:10px"></textarea></br></br>
-
-                  </div>
-                  <div class="col"></br>
-                    <td>Ngày thành lập</td>
-                    <input type="text" class="form-control" id="madn" placeholder="Enter Ngày thành lập" name="madn"></br>
-                    <td>Tên người đại diện</td>
-                    <input type="text" class="form-control" id="madn" placeholder="Enter Tên người đại diện" name="madn"></br>
-                    <td>Địa chỉ người đại diện</td>
-                    <input type="text" class="form-control" id="madn" placeholder="Enter Địa chỉ người đại diện" name="madn"></br>
-                    <td>Số điện thoại người đại diện</td>
-                    <input type="text" class="form-control" id="madn" placeholder="Enter Số điện thoại người đại diện" name="madn"></br>
-                    <td>Email người đại diện</td>
-                    <input type="text" class="form-control" id="madn" placeholder="Enter Email người đại diện" name="madn"></br>
-                    <td>Username</td>
-                    <input type="text" class="form-control" id="madn" placeholder="Enter Username" name="madn"></br>
+                    <input type="text" class="form-control" id="email" placeholder="Enter email" name="email"></br>
+                    <td>Giới tính</td>
+                    <input type="text" class="form-control" id="gioitinh" placeholder="Enter Giới tính" name="gioitinh      "></br>
+                    
                     <td>Mã xã</td>
                     <!-- <input type="text" class="form-control" id="madn" placeholder="Enter Mã xã" name="madn"> -->
                     <div class="input-group mb-3">
@@ -118,7 +106,17 @@
                         </div>
                       </div>
                     </div>
+                    <td>Mã trung tâm phân phối<p></p></td>
+                    <input type="text" class="form-control" id="mattpp" placeholder="Enter Mã trung tâm phân phối" name="mattpp"></br>
+
+                    <td>Username</td>
+                    <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username"></br>
+
                   </div>
+
+                   
+                    <!--  -->
+                 
                 </div>
                 <button type="submit" class="btn btn-primary" style="margin-left:45%">Submit</button>
                 <button type="reset" class="btn btn-primary" >Reset</button>

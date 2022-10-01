@@ -14,6 +14,16 @@
             //var_dump($table);
             return $table;
         }
+		public function update_DN($MaDN, $TenDoanhNghiep, $SDT, $DiaChi, $Email, $MST, $NgayThanhLap, $GioiThieu, $TenNguoiDaiDien, $DiaChi_NDD, $SDT_NDD, $Email_NDD, $username, $MaXa){
+            $p = new mqlbenhvien();
+            $update = $p -> update_KHDN($MaDN, $TenDoanhNghiep, $SDT, $DiaChi, $Email, $MST, $NgayThanhLap, $GioiThieu, $TenNguoiDaiDien, $DiaChi_NDD, $SDT_NDD, $Email_NDD, $username, $MaXa);
+            //var_dump($update);
+            if($update){
+                return 1;
+            }else{
+                return 0;
+            }
+        }
 	}
 
  ?>
