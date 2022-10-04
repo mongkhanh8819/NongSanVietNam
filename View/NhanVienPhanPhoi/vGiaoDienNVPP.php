@@ -146,7 +146,7 @@
     }elseif (isset($_REQUEST['dangban'])){
       //include("vGuiYcKiemDinh.php");
     } else{
-      echo "<div class='col-md-9'><h1>NHÂN VIÊN PHÂN PHỐI</h1></div>";
+      include("vGioithieu_nvpp.php");
     }
     ?>
   <!-- /.container-fluid -->
