@@ -43,7 +43,6 @@
                 return false;
             }
         }
-<<<<<<< HEAD
         // public function updatetaikhoan($MaVaiTro,$username,$password){
             // $conn;
             // $p=new ketnoi();
@@ -59,7 +58,7 @@
                 // return false;
             // }
         // }
-=======
+
         //LOGIN
         //hàm đăng nhập
         public function login($username, $password){
@@ -90,7 +89,6 @@
                 return false;
             }
         }
->>>>>>> b88f74a166f68903fd6f1129490ff830b120e7e7
     }
 
 ?>

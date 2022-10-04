@@ -24,17 +24,6 @@
             $table=$p->select_taikhoan_username($username);
             return $table;
         }
-<<<<<<< HEAD
-        // public function update_taikhoan($MaVaiTro,$username,$password){
-            // $p=new mtaikhoan;
-            // $update=$p->updatetaikhoan($MaVaiTro,$username,$password);
-            // if($update){
-                // return 1; //update thành công
-            // }else {
-                // return 0; //update không thành công
-            // }
-        // }
-=======
         //hàm lấy thông tin chi tiết tài khoản
         public function get_tt_dangnhap($username)
         {
@@ -63,6 +52,5 @@
             }
         }
         //
->>>>>>> b88f74a166f68903fd6f1129490ff830b120e7e7
     }
 ?>
