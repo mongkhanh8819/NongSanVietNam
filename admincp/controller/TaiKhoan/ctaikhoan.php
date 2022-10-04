@@ -24,9 +24,8 @@
             $table=$p->select_taikhoan_username($username);
             return $table;
         }
-<<<<<<< HEAD
        
-=======
+
         //hàm lấy thông tin chi tiết tài khoản
         public function get_tt_dangnhap($username)
         {
@@ -55,6 +54,6 @@
             }
         }
         //
->>>>>>> fb1123f1663f2aea2e865cd682364bf2954494dd
+
     }
 ?>

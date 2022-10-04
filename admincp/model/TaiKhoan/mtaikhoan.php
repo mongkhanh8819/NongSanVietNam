@@ -43,9 +43,6 @@
                 return false;
             }
         }
-<<<<<<< HEAD
-        
-=======
         // public function updatetaikhoan($MaVaiTro,$username,$password){
             // $conn;
             // $p=new ketnoi();
@@ -92,7 +89,6 @@
                 return false;
             }
         }
->>>>>>> fb1123f1663f2aea2e865cd682364bf2954494dd
     }
 
 ?>
