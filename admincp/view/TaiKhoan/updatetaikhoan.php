@@ -68,11 +68,19 @@
                         if(mysqli_num_rows($table)>0){
                           while ($row=mysqli_fetch_assoc($table)) {
                             echo "<td>Vai trò</td>";
-                            echo "<td><input type='text'class='form-control' name='txtNVPP' value='" . $row['MaVaiTro'] . "'></td>";
+                            // echo "<td><input type='text'class='form-control' name='txtNVPP' value='" . $row['MaVaiTro'] . "'></td>";
+                            echo "<td>";
+                            echo "<select name='mavaitro' id='mavaitro' class='form-control'>";
+                            echo "<option value='2'>Nhân viên phân phối</option>";
+                            echo "<option value='3'>Nhà cung cấp nông sản</option>";
+                            echo "<option value='4'>Khách hàng doanh nghiệp</option>";
+                            echo "<option value='5'>Khách hàng thành viên</option>";
+                            echo "</select>";
+                            echo "</td>";
                             echo "<td>Username</td>";
                             echo "<td><input type='text'class='form-control' name='username' value='" . $row['username'] . "'></td>";
                             echo "<td>Password</td>";
-                            echo "<td><input type='text'class='form-control name='sdt' value='" . $row['password'] . "'></td>";
+                            echo "<td><input type='text'class='form-control name='password' value='" . $row['password'] . "'></td>";
                             
                           }
                         }
@@ -80,35 +88,15 @@
                       
                       
                     ?>
+                  <br>
                   </div>
                   
                 </div>
-                <button type="submit" class="btn btn-primary" style="margin-left:45%">Submit</button>
-                <button type="reset" class="btn btn-primary" >Reset</button>
+                <button type="submit" class="btn btn-primary" name="submit" style="margin-left:45%">Submit</button>
+                <button type="reset" class="btn btn-primary" name="reset">Reset</button>
                 <!-- <input type="submit" value="Thêm Doanh Nghiệp" style="text-align:center"> -->
               </form>
-              <!-- <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
-                  <thead>
-                    <tr>
-                      <th>Mã doanh nghiệp</th>
-                      <th>Tên doanh nghiệp</th>
-                      <th>Số điện thoại</th>
-                      <th>Địa chỉ</th>
-                      <th>Email</th>
-                      <th>Mã số thuế</th>
-                      <th>Ngày lập </th>
-                      <th>Giới thiệu</th>
-                      <th>Tên người đại diện</th>
-                      <th>Tác vụ</th>                 
-                    </tr>
-                  </thead>
-                  <tbody>
-                  
-                  </tbody>
-                </table>
-              </div>-->
-              <!-- /.card-body -->
+             
             </div>
             <!-- /.card -->
           </div>
@@ -120,3 +108,4 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  

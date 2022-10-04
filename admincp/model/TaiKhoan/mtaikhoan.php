@@ -35,6 +35,7 @@
             $p=new ketnoi;
             if ($p->moketnoi($conn)){
                 $string="SELECT *FROM taikhoan WHERE username='".$username."'";
+                // $string="SELECT TK.username, TK.password, VT.LoaiVaiTro FROM taikhoan JOIN vaitro on TK.MaVaiTro = VT.MaVaiTro WHERE username='".$username."'";
                 $table=mysqli_query($conn,$string);
                 $p->dongketnoi($conn);
                 return $table;
@@ -42,6 +43,21 @@
                 return false;
             }
         }
+        // public function updatetaikhoan($MaVaiTro,$username,$password){
+            // $conn;
+            // $p=new ketnoi();
+            // if($p->moketnoi($conn)){
+                // $password=md5($password);
+                // $string="update taikhoan"
+                // $string .="set MaVaiTro='".$MaVaiTro."', username='".$username."', password='".$password."'";
+                // $string .= "where username='".$username."'";
+                // $table = mysqli_query($conn, $string);
+                // $p->dongketnoi($conn);
+                // return $table;
+            // }else {
+                // return false;
+            // }
+        // }
     }
 
 ?>

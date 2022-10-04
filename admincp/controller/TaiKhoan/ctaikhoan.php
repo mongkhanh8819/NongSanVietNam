@@ -24,5 +24,14 @@
             $table=$p->select_taikhoan_username($username);
             return $table;
         }
+        // public function update_taikhoan($MaVaiTro,$username,$password){
+            // $p=new mtaikhoan;
+            // $update=$p->updatetaikhoan($MaVaiTro,$username,$password);
+            // if($update){
+                // return 1; //update thành công
+            // }else {
+                // return 0; //update không thành công
+            // }
+        // }
     }
 ?>
