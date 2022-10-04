@@ -48,12 +48,12 @@
           <a class="nav-link nav-item" href="?dangnhap" style="margin-top:25px">Đăng Nhập</a>
         <?php } ?>
           </li>
-          <li class="dropdown user user-menu" style="height: 52px; padding: 0px">
+          <li class="dropdown user user-menu" style="height: 70px; padding: 0px">
           <!-- <a class="nav-link nav-item" href="register.php" style="margin-top:25px">Đăng Ký</a> -->
           <!--  -->
           <?php if (isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 1){
-      echo "<a class='nav-link nav-item' href='' style='margin-top:25px'>".$_SESSION['TenAdmin']."</a>";
-      echo "<a class='nav-link nav-item' href='admincp/' style='margin-top:25px'>Về ADMINCP</a>";}elseif(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 2){ ?>
+      echo "<a class='nav-link nav-item' href=''>".$_SESSION['TenAdmin']."</a>";
+      echo "<a class='nav-link nav-item' href='admincp/'>Về ADMINCP</a>";}elseif(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 2){ ?>
           <a class="nav-link nav-item dropdown-toggle" data-toggle="dropdown" href="" style="margin-top:25px">
             <span><i class="fa fa-user" aria-hidden="true"></i></span>
             <span class="hidden-xs"><?php echo $_SESSION['TenNVPP']; ?></span></a>
