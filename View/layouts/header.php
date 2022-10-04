@@ -36,21 +36,25 @@
             <img  class="flag-vietnam" src="https://icons.iconarchive.com/icons/wikipedia/flags/512/VN-Vietnam-Flag-icon.png" alt="">
         </div>
         <div class="login" style="float:left;display:flex">
-          <?php if (isset($_SESSION['LoginSuccess']) == true){
+          <?php if (isset($_SESSION['LoginSuccess']) == true || isset($_SESSION['login_id']) || isset($_SESSION['login_admin'])){
       echo "<a class='nav-link nav-item' href='?dangxuat' style='margin-top:25px'>Đăng Xuất</a>";}else{ ?>
           <a class="nav-link nav-item" href="?dangnhap" style="margin-top:25px">Đăng Nhập</a>
         <?php } ?>
           <!-- <a class="nav-link nav-item" href="register.php" style="margin-top:25px">Đăng Ký</a> -->
           <!--  -->
           <?php if (isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 1){
-      echo "<a class='nav-link nav-item' href='' style='margin-top:25px'>".$_SESSION['TenAdmin']."</a>";}elseif(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 2){ ?>
+      echo "<a class='nav-link nav-item' href='' style='margin-top:25px'>".$_SESSION['TenAdmin']."</a>";
+      echo "<a class='nav-link nav-item' href='admincp/' style='margin-top:25px'>Về ADMINCP</a>";}elseif(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 2){ ?>
           <a class="nav-link nav-item" href="" style="margin-top:25px"><?php echo $_SESSION['TenNVPP']; ?></a>
+          <img src="assets/uploads/avatar/<?php echo $_SESSION['avatar']; ?>" alt="" width="60px" height="70px">
         <?php }elseif(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 3){ ?>
           <a class="nav-link nav-item" href="" style="margin-top:25px"><?php echo $_SESSION['TenNhaCungCap']; ?></a>
         <?php }elseif(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 4){ ?>
           <a class="nav-link nav-item" href="" style="margin-top:25px"><?php echo $_SESSION['TenDoanhNghiep']; ?></a>
         <?php }elseif(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 5){ ?>
           <a class="nav-link nav-item" href="" style="margin-top:25px"><?php echo $_SESSION['Ten_KHTV']; ?></a>
+        <?php }elseif(isset($_SESSION['login_id'])){ ?>
+          <a class="nav-link nav-item" href="" style="margin-top:25px"><?php echo $_SESSION['name']; ?></a>
         <?php }else{
           echo "<a class='nav-link nav-item' href='register.php' style='margin-top:25px'>Đăng Ký</a>";
         } ?>

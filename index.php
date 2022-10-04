@@ -5,6 +5,7 @@
 	//----------
 	//session
 	session_start();
+	session_regenerate_id(true);
 	//
 	date_default_timezone_set('Asia/Ho_Chi_Minh');
 	//
@@ -42,7 +43,11 @@
 		include("View/DangKy/vDangky.php");
 	}
 	//
-	if (isset($_SESSION['LoginSuccess']) && $_SESSION['LoginSuccess'] == true) {
+	//echo $_SESSION['login_id'];
+	if(isset($_SESSION['login_id'])) {
+		include_once("View/KhachHangThanhVien/vGiaoDienTV.php");
+	}
+	elseif (isset($_SESSION['LoginSuccess']) && $_SESSION['LoginSuccess'] == true) {
 		switch ($_SESSION['MaVaiTro']) {
 			case '1':
 				echo "ĐIỀU HƯỚNG RA TRANG ADMINCP";
@@ -63,7 +68,7 @@
 			default:
 				break;
 		}
-	} else {
+	} else{
 		include_once("View/NongSan/vThongTinNongSan.php");
 	}
 	

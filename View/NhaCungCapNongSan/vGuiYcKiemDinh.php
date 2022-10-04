@@ -66,6 +66,9 @@
                         <?php 
 
                             $list_phieukd = $kd -> get_phieukiemdinh($_SESSION['MaNCC']);
+                            // echo "<pre>";
+                            // var_dump(mysqli_fetch_array($list_phieukd));
+                            // echo "</pre>";
                             if($list_phieukd){
                               while ($rowkd = mysqli_fetch_array($list_phieukd)) {
                               
@@ -74,7 +77,7 @@
                            <td><?php echo $rowkd['MaPhieuKiemDinh']?></td>
                            <td><?php echo $rowkd['ThoiGianLap']?></td>
                            <td><?php 
-                           if ($rowkd['TrangThaiKiemDinh'] == 2) {
+                           if ($rowkd['TrangThaiKiemDinh'] == 3) {
                              echo "Chờ kiểm định";
                            } elseif ($rowkd['TrangThaiKiemDinh'] == 0) {
                              echo "Đạt chuẩn";
@@ -83,9 +86,9 @@
                            }
                            
                            ?></td>
-                           <td><?php echo $rowkd['MaNongSan']?></td>
-                           <td><?php echo $rowkd['MaNCC']?></td>
-                           <td><?php echo $rowkd['MaNVPP']?></td>
+                           <td><?php echo $rowkd['TenNongSan']?></td>
+                           <td><?php echo $_SESSION['TenNhaCungCap']?></td>
+                           <td><?php echo $rowkd['TenNVPP']?></td>
                            <td>
                             <button class="btn btn-primary editbtn">Xem chi tiết</button>
                           </td>
