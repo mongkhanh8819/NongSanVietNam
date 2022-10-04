@@ -42,6 +42,36 @@
                 return false;
             }
         }
+        //LOGIN
+        //hàm đăng nhập
+        public function login($username, $password){
+            $conn;
+            $p = new ketnoi();
+            if($p -> moketnoi($conn)){
+                $sql = "SELECT * FROM taikhoan WHERE username = '".$username."' and password = '".$password."'";
+                $sql .= " and MaVaiTro = 1";
+                //echo $sql;
+                $result = mysqli_query($conn,$sql);
+                $p -> dongketnoi($conn);
+                return $result;
+            }else{
+                return false;
+            }
+        }
+        //hàm lấy thông tin người dùng đã đăng nhập vào tài khoản
+        public function select_tt_taikhoan($username){
+            $conn;
+            $p = new ketnoi();
+            if($p -> moketnoi($conn)){
+                $sql = "SELECT * FROM taikhoan JOIN admin ON taikhoan.username = admin.username WHERE taikhoan.username = '".$username."'";
+
+                $result = mysqli_query($conn,$sql);
+                $p -> dongketnoi($conn);
+                return $result;
+            }else{
+                return false;
+            }
+        }
     }
 
 ?>

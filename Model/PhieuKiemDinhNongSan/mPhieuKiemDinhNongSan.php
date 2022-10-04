@@ -15,7 +15,8 @@
 			$conn;
 			$p = new ketnoi();
 			if($p -> moketnoi($conn)){
-				$string = "SELECT * FROM phieukiemdinhnongsan WHERE MaNCC = ".$mancc;
+				$string = "SELECT * FROM nhanvienphanphoi JOIN phieukiemdinhnongsan ON nhanvienphanphoi.MaNVPP = phieukiemdinhnongsan.MaNVPP JOIN nongsan ON phieukiemdinhnongsan.MaNongSan = nongsan.MaNongSan WHERE phieukiemdinhnongsan.MaNCC = ".$mancc;
+				//echo $string;
 				$table = mysqli_query($conn,$string);
 				$p -> dongketnoi($conn);
 				//

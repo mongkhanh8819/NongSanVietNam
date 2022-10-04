@@ -1,7 +1,13 @@
 <?php 
-
+  session_start();
   // include config 
   require_once 'config/config.php';
+  if (empty($_SESSION['login_admin'])){
+    include("login.php");
+  }elseif (isset($_SESSION['login_admin']) && $_SESSION['login_admin'] == false){
+    include("login.php");
+  } elseif (isset($_SESSION['login_admin']) && $_SESSION['login_admin'] == true) {
+    
   include_once 'controller/CONTROLLER_AJAX/cdiachi.php';
   // include header
   include_once("view/layouts/header.php");
@@ -66,5 +72,5 @@
   // -------
   // include footer
   include_once("view/layouts/footer.php");
-
+}
  ?>

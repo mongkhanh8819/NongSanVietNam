@@ -14,10 +14,43 @@
           <img src="assets/dist1/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Lăng Tuấn Kiệt</a>
+          <a href="#" class="d-block dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['TenAdmin']; ?></a>
+          <ul class="dropdown-menu">
+            <li class="user-header">
+              <img src="assets/public/images/alert_cart.jpg" class="img-circle" alt="User Image">
+              <p>Khánh<small>CC</small></p>
+            </li>
+            <li class="user-footer">
+              <div class="pull-left">
+                <a href="admin/useradmin/update/" class="btn btn-default btn-flat">Chi tiết</a>
+              </div>
+              <div class="pull-right">
+                <a href="admin/user/logout.html" class="btn btn-default btn-flat">Thoát</a>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
-
+      <!-- <li class="dropdown user user-menu" style="height: 52px; padding: 0px">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <img src="public/images/admin/" class="user-image" alt="User Image">
+          <span class="hidden-xs">Khánh</span>
+        </a>
+        <ul class="dropdown-menu">
+          <li class="user-header">
+            <img src="public/images/admin/" class="img-circle" alt="User Image">
+            <p>Khánh<small>CC</small></p>
+          </li>
+          <li class="user-footer">
+            <div class="pull-left">
+                <a href="admin/useradmin/update/" class="btn btn-default btn-flat">Chi tiết</a>
+            </div>
+            <div class="pull-right">
+                <a href="admin/user/logout.html" class="btn btn-default btn-flat">Thoát</a>
+            </div>
+          </li>
+        </ul>
+      </li> -->
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">

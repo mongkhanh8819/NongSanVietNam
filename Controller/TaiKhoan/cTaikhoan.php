@@ -15,7 +15,8 @@
         	}elseif ($mavaitro == 2){
 				while($row1 = mysqli_fetch_assoc($tt)){
         		$_SESSION['MaNVPP'] = $row1['MaNVPP'];
-        		$_SESSION['TenNVPP'] = $row1['TenNVPP'];}
+        		$_SESSION['TenNVPP'] = $row1['TenNVPP'];
+        		$_SESSION['avatar'] = $row1['HinhAnh'];}
 			}elseif ($mavaitro == 3){
 				while($row1 = mysqli_fetch_assoc($tt)){
         		$_SESSION['MaNCC'] = $row1['MaNCC'];
@@ -44,7 +45,11 @@
             	$_SESSION['username'] = $row['username'];
             	$_SESSION['password'] = $row['password'];
             	$_SESSION['MaVaiTro'] = $row['MaVaiTro'];
-            	$_SESSION['LoginSuccess'] = true;
+            	if($row['MaVaiTro'] != 1){
+            	$_SESSION['LoginSuccess'] = true;}
+            	else{
+            	$_SESSION['login_admin'] = true;
+            	}
             	$tt_dn = $this -> get_tt_dangnhap($username,$row['MaVaiTro']);
         	}else {
             	echo "<script>alert('Đăng nhập thất bại')</script>";

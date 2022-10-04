@@ -1,3 +1,6 @@
+<?php  
+    include_once("modules/login-google/login.php");
+ ?>
 <div class="bg"></div>
 <div class="star-field">
     <div class="layer"></div>
@@ -26,6 +29,16 @@
                                 </div>
                                 <button type="submit" name="submit" class="btn btn-primary btn-block mt-3" id="loginbtn" value="login">Đăng nhập</button> 
                             </form>
+                            <div class="social-auth-links text-center">
+                                <p>- OR -</p>
+                                <a href="<?php
+                                echo $client->createAuthUrl(); ?>" class="btn btn-block btn-danger">
+                                <!-- <a href="modules/login-google/login.php" class="btn btn-block btn-danger">  -->
+                                  <i class="fab fa-google mr-2"></i>
+                                  Đăng nhập bằng Google
+                                </a>
+                                <!-- <a href="modules/login-google/logout.php">Logout</a> -->
+                            </div>
                         </div>
                     </div>
                 </div>
