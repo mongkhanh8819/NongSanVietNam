@@ -1,6 +1,5 @@
 <!-- Slider -->
-
-<div id="carouselExampleIndicators" style="margin-top: 150px;" class="carousel slide" data-ride="carousel">
+  <div id="carouselExampleIndicators" style="margin-top: 150px;" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner"> 
       <div class="carousel-item active">
         <img style="height:450px; " class="d-block w-100" src="assets/public/images/banner_nongsan.png" alt="First slide">
@@ -23,9 +22,7 @@
     </a>
   </div>
 
-  <div class="background-circle">
+  <!-- <div class="background-circle">
   
-  </div>
-
-
+  </div> -->
   <!-- Slider -->

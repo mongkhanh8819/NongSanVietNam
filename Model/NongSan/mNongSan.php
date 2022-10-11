@@ -49,7 +49,7 @@
 		//---------------------------
 		//---------------------------
 		//---------------------------
-		//-----LẤY NÔNG SẢN THEO NHÀ CUNG CẤP (CHƯA LÀM)
+		//-----LẤY NÔNG SẢN THEO NHÀ CUNG CẤP - CÓ TRẠNG THÁI KIỂM ĐỊNH CHƯA ĐẠT CHUẨN HOẶC CHƯA KIỂM
 		//---------------------------
 		//---------------------------
 		//---------------------------
@@ -57,7 +57,28 @@
 			$conn;
 			$p = new ketnoi();
 			if($p -> moketnoi($conn)){
-				$string = "SELECT * FROM nongsan WHERE MaNCC =".$mancc;
+				$string = "SELECT * FROM nongsan WHERE MaNCC =".$mancc." && TrangThaiKiemDinh IN (1,2,3)" ;
+				$table = mysqli_query($conn,$string);
+				$p -> dongketnoi($conn);
+				//
+				return $table;
+			}else{
+				return false;
+			}
+		}
+		//---------------------------
+		//---------------------------
+		//---------------------------
+		//---------------------------
+		//-----LẤY NÔNG SẢN THEO NHÀ CUNG CẤP - CÓ TRẠNG THÁI KIỂM ĐỊNH ĐẠT CHUẨN
+		//---------------------------
+		//---------------------------
+		//---------------------------
+		public function select_nongsan_by_ncc_dc($mancc){
+			$conn;
+			$p = new ketnoi();
+			if($p -> moketnoi($conn)){
+				$string = "SELECT * FROM nongsan JOIN qrcode ON nongsan.MaNongSan = qrcode.MaNongSan WHERE MaNCC =".$mancc." && TrangThaiKiemDinh IN (0)" ;
 				$table = mysqli_query($conn,$string);
 				$p -> dongketnoi($conn);
 				//
@@ -105,7 +126,38 @@
 					$string = "UPDATE nongsan SET TenNongSan ='".$tenns."', SoLuong =".$soluong.", Gia = ".$gia.",DVT = '".$dvt."',MoTaNS = '".$mota."' WHERE MaNongSan = ".$manongsan;
 				}
 				
-				echo $string;
+				//echo $string;
+				$kq = mysqli_query($conn,$string);
+				$p -> dongketnoi($conn);
+				return $kq;
+			}else{
+				return false;
+			}
+		}
+		//---------------------------
+		//---------------------------
+		//---------------------------
+		//---------------------------
+		//-----GỬI YÊU CẦU ĐĂNG BÁN CHO ADMIN XỬ LÝ 
+		//Trạng thái nông sản GỒM
+		//-	0: Chờ duyệt tin
+		//-	1: Đã duyệt
+		//-	2: Đang khóa
+		//-	3. Chưa đăng tin (mặc định)
+		//--> ĐĂNG BÁN NÔNG SẢN CẬP NHẬT CỘT TTNS sang trạng thái 0
+		//---------------------------
+		//---------------------------
+		//---------------------------
+		public function dangban_nongsan($manongsan,$tt){
+			$conn;
+			$p = new ketnoi();
+			if($p -> moketnoi($conn)){
+				if($tt == 0){
+					$string = "UPDATE nongsan SET TrangThaiNongSan = 0 WHERE MaNongSan = ".$manongsan;
+				}elseif ($tt == 3) {
+					$string = "UPDATE nongsan SET TrangThaiNongSan = 3 WHERE MaNongSan = ".$manongsan;
+				}
+				//echo $string;
 				$kq = mysqli_query($conn,$string);
 				$p -> dongketnoi($conn);
 				return $kq;

@@ -60,6 +60,7 @@
                           <th>Tên nhà cung cấp</th>
                           <th>Tên nhân viên kiểm định</th>
                           <th>Xem chi tiết</th>
+                          <th>Xóa</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -92,7 +93,7 @@
                            <td>
                             <button class="btn btn-primary editbtn">Xem chi tiết</button>
                           </td>
-                          <td><a href="index.php">XÓA</a></td>
+                          <td><button type="button" class="btn btn-danger deletebtn">Xóa</button></td>
                          </tr>
                          <?php }
                             } ?>

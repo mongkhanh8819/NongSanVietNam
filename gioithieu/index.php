@@ -3,11 +3,83 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="assets/public/images/Fruit-Olive-Green-icon.png">
+  <link rel="icon" href="../assets/public/images/Fruit-Olive-Green-icon.png">
   <title>NÔNG SẢN VIỆT</title>
 
-  <?php include("styles.php"); ?>
-  <?php include("scripts.php"); ?>
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="../assets/public/style2.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../assets/vendor/font-awesome/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../assets/vendor/dist/css/adminlte.min.css">
+  
+  <link rel="stylesheet" type="text/css" href="../assets/public/css/dangky.css">
+
+  <style type="text/css">
+  ul li a{
+    font-size: 15px;
+  }
+  body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .topnav {
+      overflow: hidden;
+      background-color: white;
+  }
+
+  .topnav a {
+      float: left;
+      display: block;
+      color: black;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: bold;
+  }
+
+  .topnav a:hover {
+      background-color: #69a747;
+      color: black;
+  }
+
+  .topnav a.active {
+      background-color: white;
+      /*background-color: green;*/
+      color: black;
+      /*color: white;*/
+
+  }
+
+  .topnav .icon {
+      display: none;
+  }
+
+  @media screen and (max-width: 600px) {
+      .topnav a:not(:first-child) {display: none;}
+      .topnav a.icon {
+      float: right;
+      display: block;
+      }
+  }
+
+  @media screen and (max-width: 600px) {
+    .topnav.responsive {position: relative;}
+    .topnav.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .topnav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+}
+</style>
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -163,15 +235,13 @@
   </div> -->
   <!-- ĐÂY LÀ MENU -->
   <div class="topnav" id="myTopnav" style="margin-left: 0%;">
-        <a href="index.php" class="active">TRANG CHỦ</a>
-        <a href="?gioithieu">GIỚI THIỆU</a>
-        <a href="?tintuc">TIN TỨC</a>
-        <a href="?luongthuc">LƯƠNG THỰC</a>
-        <a href="?raucu">RAU CỦ SẠCH</a>
-        <a href="?hoaqua">HOA QUẢ</a>
-        <a href="?huongdan">HƯỚNG DẪN MUA HÀNG</a>
-        <a href="?truyxuat">TRUY XUẤT NGUỒN GỐC</a>
-        <a href="?lienhe">LIÊN HỆ</a>
+        <a href="../" class="active">TRANG CHỦ</a>
+        <a href="gioithieu/">GIỚI THIỆU</a>
+        <a href="#">TIN TỨC</a>
+        <a href="#3">LƯƠNG THỰC</a>
+        <a href="#4">RAU CỦ SẠCH</a>
+        <a href="#5">HOA QUẢ</a>
+        <a href="#6">ĐẶC SẢN</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
         </a>  
@@ -183,3 +253,150 @@
 </div>
 </div>
 </div>
+<!-- Slider -->
+
+<div id="carouselExampleIndicators" style="margin-top: 150px;" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner"> 
+      <div class="carousel-item active">
+        <img style="height:450px; " class="d-block w-100" src="assets/public/images/banner_nongsan.png" alt="First slide">
+      </div>
+      <div class="carousel-item">
+        <img style="height:450px; " class="d-block w-100" src="assets/public/images/banner_nongsan2" alt="Third slide">
+      </div> 
+      <!-- <div class="carousel-item">
+        <img style="height:500px; " class="d-block w-100" src="https://growmax.weba.vn/shop/images/growmax/slider/banner1.jpg" alt="Second slide">
+      </div> -->
+     
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+  <div class="background-circle">
+  
+  </div>
+
+
+  <!-- Slider -->
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted" >
+<!-- style="margin-top:500px" -->
+    <!-- Section: Links  -->
+    <section class="" style="background-color:#69a747;color: #fff">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3" >
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4" style="padding-top:30px">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4">
+                <img src="assets/public/images/logo.png" alt="">
+            </h6>
+            <p>
+                Hệ sinh thái nông nghiệp ứng dụng công nghệ. Mang nông sản xanh, sạch với giá hợp lý đến mọi người
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4" style="padding-top:30px">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+                Chính sách đổi trả
+            </h6>
+            <h6 class="text-uppercase fw-bold mb-4">
+                Tuyển dụng
+            </h6>
+            <h6 class="text-uppercase fw-bold mb-4">
+                Thông báo
+            </h6>
+           
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4" style="padding-top:30px">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+                Điều khoản sử dụng
+            </h6>
+
+            <h6 class="text-uppercase fw-bold mb-4">
+                Tin tức
+            </h6>
+
+            <h6 class="text-uppercase fw-bold mb-4">
+                <div>
+                    <a href="" class="me-4 text-reset" style="margin:0 8px">
+                      <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset" style="margin:0 8px">
+            
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset" style="margin:0 8px">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="" class="me-4   text-reset" style="margin:0 8px">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                  
+                  </div>
+            </h6>
+           
+          </div>
+          <!-- Grid column -->
+        </div>
+
+        <div class="text-center p-4" >
+            <h3>IUH - 2022</h3>
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+  
+  </footer>
+  <!-- Footer -->
+
+ <!-- Footer -->
+
+
+</div>
+<!-- ./wrapper -->
+</body>
+</html>
+<!-- jQuery -->
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../assets/vendor/dist/js/adminlte.min.js"></script>
+  <script src="../assets/public/ajax/ajax_loainongsan.js"></script>
+  <script src="../assets/public/ajax/ajax_getmanongsan.js"></script>
+  <script src="../assets/public/ajax/ajax_tinh_thanh.js"></script>
+  
+  <!-- AdminLTE for demo purposes -->
+  <!-- <script src="assets/vendor/dist/js/demo.js"></script> -->
+  <!--  -->
+  <script>
+    if ( window.history.replaceState ) {
+      window.history.replaceState( null, null, window.location.href );
+    }
+  </script>
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+  </script>

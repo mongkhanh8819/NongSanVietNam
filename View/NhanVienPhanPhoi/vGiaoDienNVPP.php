@@ -20,13 +20,13 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="./duyetbainongsan.html" class="nav-link">
+              <a href="?updatett" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Cập nhật thông tin cá nhân</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="./duyetbainongsan.html" class="nav-link">
+              <a href="" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Đổi mật khẩu</p>
               </a>
@@ -46,7 +46,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="index.php?qlns" class="nav-link">
+              <a href="?kiemdinh" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Quản lý và kiểm định nông sản</p>
               </a>
@@ -133,22 +133,20 @@
   <!-- </aside> -->
 
   <!-- Content Wrapper. Contains page content -->
-    <?php if (isset($_REQUEST['qlns'])) {
-      include("vQuanLyNongSan.php");
-    } elseif (isset($_REQUEST['qldh'])) {
-      include("vQuanLyDonHang.php");
-    } elseif (isset($_REQUEST['addns'])){
-      include("vAddNongSan.php");
-    } elseif (isset($_REQUEST['gdkd'])){
-      include("vGuiYcKiemDinh.php");
-    } elseif (isset($_REQUEST['guiyeucau'])){
-      include("vAddPhieukiemdinh.php");
-    }elseif (isset($_REQUEST['dangban'])){
-      //include("vGuiYcKiemDinh.php");
+    <?php if (isset($_REQUEST['updatett'])) {
+      include("vUpdateTTnvpp.php");
+    } elseif (isset($_REQUEST['kiemdinh'])) {
+      include("vKiemDinh.php");
+    } elseif (isset($_REQUEST['dexuatns'])){
+      include("vDeXuatNS.php");
+    } elseif (isset($_REQUEST['lienhe'])){
+      include("vLienhe_NVPP.php");
+    } elseif (isset($_REQUEST['thongke'])){
+      include("vThongke_nvpp.php");
     } else{
       include("vGioithieu_nvpp.php");
     }
     ?>
   <!-- /.container-fluid -->
-    </div>
+    <!-- </div> -->
     <!-- /.content -->

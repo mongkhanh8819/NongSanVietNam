@@ -3,7 +3,13 @@
 include_once("Model/connect.php");
 
 class mTaikhoan{
-	//hàm đăng nhập
+//hàm đăng nhập
+	// private $conn;
+ //   function __construct()
+ //   {
+ //       $dbcon = new ketnoi();
+ //       $conn = $dbcon->moketnoi($conn);
+ //   }
 	public function login($username, $password){
 		$conn;
 		$p = new ketnoi();
@@ -15,7 +21,15 @@ class mTaikhoan{
 		}else{
 			return false;
 		}
+		
 	}
+	// public function login($username,$password)
+ //    {
+ //    	var_dump($this->conn);
+ //        $sql = mysqli_query($this->conn, "SELECT * FROM taikhoan WHERE username = '".$username."' and password = '".$password."'") or die(mysqli_error($this->conn));
+ //        //echo $sele;
+ //        return $sql;
+ //    }
 	//hàm thêm tài khoản
 	public function add_taikhoan($username,$password,$vaitro){
 		$conn;

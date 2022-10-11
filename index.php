@@ -35,12 +35,18 @@
 	//include header
 	include("View/layouts/header.php");
 	//include slider
-	include("View/layouts/slider.php");
+	if (isset($_REQUEST['gioithieu'])) {
+		include("View/layouts/slider.php");	
+	}else{
+		include("View/layouts/slider.php");
+	}
+
 	//main contain - dang nhap
 	if (isset($_REQUEST['dangnhap'])){
 		include("View/DangNhap/vDangnhap.php");
 	}elseif(isset($_REQUEST['dangky'])) {
-		include("View/DangKy/vDangky.php");
+		//header('Location: register.php');
+		echo "<script>window.location.href = 'register.php';</script>";
 	}
 	//
 	//echo $_SESSION['login_id'];
@@ -51,25 +57,56 @@
 		switch ($_SESSION['MaVaiTro']) {
 			case '1':
 				echo "ĐIỀU HƯỚNG RA TRANG ADMINCP";
+				//include_once("View/NhanVienPhanPhoi/vGiaoDienNVPP.php");
 				break;
 			case '2':
-				include_once("View/NhanVienPhanPhoi/vGiaoDienNVPP.php");
+				if (isset($_REQUEST['gioithieu'])) {
+					include("View/gioithieu.php");
+				}elseif (isset($_REQUEST['tintucs'])) {
+					include("View/tintuc.php");
+				}else{
+					include_once("View/NhanVienPhanPhoi/vGiaoDienNVPP.php");
+				}
 				break;
 			case '3':
-				include_once("Controller/NongSan/cNongSan.php");
-				include_once("View/NhaCungCapNongSan/vGiaoDienNCC.php");
+				if (isset($_REQUEST['gioithieu'])) {
+					include("View/gioithieu.php");
+				}elseif (isset($_REQUEST['tintuc'])) {
+					include("View/tintuc.php");
+				}else{
+					include_once("Controller/NongSan/cNongSan.php");
+					include_once("View/NhaCungCapNongSan/vGiaoDienNCC.php");
+				}
 				break;
 			case '4':
-				include_once("View/KhachHangDoanhNghiep/vGiaoDienDN.php");
+				if (isset($_REQUEST['gioithieu'])) {
+					include("View/gioithieu.php");
+				}elseif (isset($_REQUEST['tintuc'])) {
+					include("View/tintuc.php");
+				}else{
+					include_once("View/KhachHangDoanhNghiep/vGiaoDienDN.php");
+				}
 				break;
 			case '5':
-				include_once("View/KhachHangThanhVien/vGiaoDienTV.php");
+				if (isset($_REQUEST['gioithieu'])) {
+					include("View/gioithieu.php");
+				}elseif (isset($_REQUEST['tintuc'])) {
+					include("View/tintuc.php");
+				}else{
+					include_once("View/KhachHangThanhVien/vGiaoDienTV.php");
+				}
 				break;
 			default:
 				break;
 		}
 	} else{
-		include_once("View/NongSan/vThongTinNongSan.php");
+		if (isset($_REQUEST['gioithieu'])) {
+			include("View/gioithieu.php");
+		}elseif (isset($_REQUEST['tintuc'])) {
+			include("View/tintuc.php");
+		}else{
+			include_once("View/vKHVL.php");
+		}
 	}
 	
 

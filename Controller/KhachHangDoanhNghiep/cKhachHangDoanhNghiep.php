@@ -26,6 +26,16 @@
 		//------------------------------
 		//------------------------------
 		//------------------------------
+		//--------HÀM SELECT khách hàng doanh nghiệp by id
+		//------------------------------
+		public function get_khdn_by_id($makhdn){
+			$p = new mKhachHangDoanhNghiep();
+			$madn = $p -> select_khdn_by_id($makhdn);
+			return $madn;
+		}
+		//------------------------------
+		//------------------------------
+		//------------------------------
 		//--------HÀM THÊM DỮ LIỆU DOANH NGHIỆP
 		//------------------------------
 		public function them_khdn($tendn,$sdt,$diachi,$email,$ngaythanhlap,$gioithieu,$tenndd,$username,$maxa){
@@ -62,6 +72,8 @@
 				return 0; //chèn không thành công
 			}
 		}
+		//
+
 	}
 
  ?>

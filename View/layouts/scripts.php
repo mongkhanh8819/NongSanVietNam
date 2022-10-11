@@ -6,6 +6,7 @@
   <script src="assets/vendor/dist/js/adminlte.min.js"></script>
   <script src="assets/public/ajax/ajax_loainongsan.js"></script>
   <script src="assets/public/ajax/ajax_getmanongsan.js"></script>
+  <script src="assets/public/ajax/ajax_tinh_thanh.js"></script>
   
   <!-- AdminLTE for demo purposes -->
   <!-- <script src="assets/vendor/dist/js/demo.js"></script> -->
@@ -13,5 +14,15 @@
   <script>
     if ( window.history.replaceState ) {
       window.history.replaceState( null, null, window.location.href );
+    }
+  </script>
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
     }
   </script>
