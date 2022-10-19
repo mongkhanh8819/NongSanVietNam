@@ -20,15 +20,19 @@
 			}elseif ($mavaitro == 3){
 				while($row1 = mysqli_fetch_assoc($tt)){
         		$_SESSION['MaNCC'] = $row1['MaNCC'];
-        		$_SESSION['TenNhaCungCap'] = $row1['TenNhaCungCap'];}
+        		$_SESSION['TenNhaCungCap'] = $row1['TenNhaCungCap'];
+        		$_SESSION['TenNguoiDaiDien'] = $row1['TenNguoiDaiDien'];
+        		$_SESSION['avatar'] = $row1['HinhAnh'];}
 			}elseif ($mavaitro == 4){
 				while($row1 = mysqli_fetch_assoc($tt)){
         		$_SESSION['MaDN'] = $row1['MaDN'];
-        		$_SESSION['TenDoanhNghiep'] = $row1['TenDoanhNghiep'];}
+        		$_SESSION['TenDoanhNghiep'] = $row1['TenDoanhNghiep'];
+        		$_SESSION['avatar'] = $row1['HinhAnh'];}
 			}elseif ($mavaitro == 5){
 				while($row1 = mysqli_fetch_assoc($tt)){
         		$_SESSION['MaKHTV'] = $row1['MaKHTV'];
-        		$_SESSION['Ten_KHTV'] = $row1['Ten_KHTV'];}
+        		$_SESSION['Ten_KHTV'] = $row1['Ten_KHTV'];
+        		$_SESSION['avatar'] = $row1['HinhAnh'];}
 			}else{
 
 			}

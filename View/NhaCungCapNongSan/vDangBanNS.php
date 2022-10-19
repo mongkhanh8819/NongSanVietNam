@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1><b>QUẢN LÝ NÔNG SẢN</b></h1>
+            <h1><b>ĐĂNG BÁN NÔNG SẢN</b></h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-              <li class="breadcrumb-item active">Quản lý nông sản</li>
+              <li class="breadcrumb-item active">Đăng bán nông sản</li>
             </ol>
           </div>
         </div>
@@ -40,8 +40,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Danh sách nông sản của nhà cung cấp</h3>  | <a href="index.php?addns">Thêm nông sản mới</a>
-
+                
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
                     <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -53,9 +52,6 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="card-header">
-                <h3 class="card-title">Danh sách nông sản đạt chuẩn</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
@@ -69,15 +65,15 @@
                       <th style="display:none;"></th>
                       <th style="display:none;"></th>
                       <th>Tổng giá trị</th>
-                      <th>Mô tả nông sản</th>
+                      <th style="display:none;">Mô tả nông sản</th>
                       <th>Hình ảnh</th>
                       <th style="display:none;"></th>
-                      <th>Loại nông sản</th>
-                      <th>Nhà cung cấp</th>
+                      <th style="display:none">Loại nông sản</th>
+                      <th style="display:none">Nhà cung cấp</th>
                       <th>Kiểm định</th>
-                      <th>Trạng thái nông sản</th>
-                      <th>Cập nhật</th>
-                      <th>Xóa</th>
+                      <th style="display:none">Trạng thái nông sản</th>
+                      <th>Đăng bán</th>
+                      <th style="display:none">Hủy đăng bán</th>
                     </tr>
                   </thead>
                   <?php 
@@ -93,7 +89,7 @@
                       <td><?php 
                         if ($row['TrangThaiKiemDinh'] == 0) {
                           ?>
-                          <img src="assets/public/qr_images/<?php echo $row['QR_Image'] ?>" alt="" height="200px" width="200px">
+                          <img src="assets/public/qr_images/<?php echo $row['QR_Image'] ?>" alt="" height="100px" width="100px">
                           <?php 
                         } else {
                           ?>
@@ -106,10 +102,10 @@
                       <td style="display: none;"><?php echo $row['SoLuong'] ?></td>
                       <td style="display: none;"><?php echo $row['DVT'] ?></td>
                       <td><span class="tag tag-success"><?php echo number_format($row['Gia'], 0, ',', '.') ?> VNĐ</span></td>
-                      <td>
-                        <textarea cols="20" rows="7" readonly><?php echo $row['MoTaNS'] ?></textarea>
+                      <td style="display:none">
+                        <textarea cols="20" rows="6" readonly><?php echo $row['MoTaNS'] ?></textarea>
                       </td>
-                      <td><img src="assets/uploads/images/<?php echo $row['HinhAnh'] ?>" height="175px" width="240px"></td>
+                      <td><img src="assets/uploads/images/<?php echo $row['HinhAnh'] ?>" height="140px" width="150px"></td>
                       <td style="display:none;"><?php echo $row['HinhAnh'] ?></td>
                       <?php 
                         $tt_ns = $ns -> get_nongsan_by_id($row['MaNongSan']);
@@ -117,8 +113,8 @@
 
 
                       ?>
-                      <td><?php echo $row1['TenLoaiNongSan']; ?></td>
-                      <td><?php echo $row1['TenNhaCungCap']; } ?></td>
+                      <td style="display:none"><?php echo $row1['TenLoaiNongSan']; ?></td>
+                      <td style="display:none"><?php echo $row1['TenNhaCungCap']; } ?></td>
                       <td><?php 
                           if ($row['TrangThaiKiemDinh'] == 0) {
                             echo "Đạt chuẩn";
@@ -133,7 +129,7 @@
                           }
                           
                        ?></td>
-                      <td><?php 
+                      <td style="display:none"><?php 
                           if ($row['TrangThaiNongSan'] == 0) {
                             echo "Chờ duyệt tin";
                           } elseif ($row['TrangThaiNongSan'] == 1) {
@@ -148,10 +144,21 @@
                           
                        ?></td>
                       <td>
-                        <!-- <i class="fa fa-outdent" aria-hidden="true"> --><button class="btn btn-primary editbtn">Xem chi tiết</button><!-- <a href="index.php?updatens">CẬP NHẬT</a> --></i> <!-- | -->
-                        <!-- data-toggle="modal" data-target="#exampleModal" id="chitiet" -->
+                        <?php if($row['TrangThaiNongSan'] == 0 || $row['TrangThaiNongSan'] == 1 || $row['TrangThaiNongSan'] == 2){ ?>
+                        <button type="button" class="btn btn-danger deletebtn">HỦY ĐĂNG BÁN</button>
+                        
+                      <?php }else{ ?>
+                        <!-- <button class="btn btn-primary editbtn">ĐĂNG BÁN</button> -->
+                        <button type="button" class="btn btn-primary editbtn">ĐĂNG BÁN</button>
+                      <?php } ?>
                       </td>
-                      <td><button type="button" class="btn btn-danger deletebtn">Xóa</button></td>
+                      <td style="display:none;">
+                        <!-- <?php //if($row['TrangThaiNongSan'] == 3){ ?>
+                        <button type="button" class="btn btn-danger deletebtn" disabled>HỦY ĐĂNG BÁN</button>
+                      <?php //}else{ ?>
+                        <button type="button" class="btn btn-danger deletebtn">HỦY ĐĂNG BÁN</button>
+                      <?php //} ?> -->
+                      </td>
                       <td style="display:none"><?php echo $row['Gia']; ?></td>
                       <td style="display:none"><?php echo $row['QR_Image']; ?></td>
                     </tr>
@@ -162,120 +169,12 @@
               </div>
               <!-- /.card-body -->
 
-              <!-- /.card-header -->
-              <div class="card-header">
-                <h3 class="card-title">Danh sách nông sản chưa đạt chuẩn / chưa kiểm định</h3>
-              </div>
-              <div class="card-body table-responsive p-0">
-                <!-- <div>Nông sản đạt chuẩn</div> -->
-                <table class="table table-hover text-nowrap">
-                  <thead>
-                    <tr>
-                      <th>Mã nông sản</th>
-                      <th style="display: none;">QR code</th>
-                      <th>Tên nông sản</th>
-                      <th>Số lượng</th>
-                      <th style="display:none;"></th>
-                      <th style="display:none;"></th>
-                      <th>Tổng giá trị</th>
-                      <th>Mô tả nông sản</th>
-                      <th>Hình ảnh</th>
-                      <th style="display:none;"></th>
-                      <th>Loại nông sản</th>
-                      <th>Nhà cung cấp</th>
-                      <th>Kiểm định</th>
-                      <th>Trạng thái nông sản</th>
-                      <th>Cập nhật</th>
-                      <th>Xóa</th>
-                    </tr>
-                  </thead>
-                  <?php 
-                      $list_ns = $ns -> get_nongsan_by_ncc($_SESSION['MaNCC']);
-                      if ($list_ns) {
-
-                        
-                   ?>
-                  <tbody>
-                    <?php while($row = mysqli_fetch_array($list_ns)){  ?>
-                    <tr>
-                      <td><?php echo $row['MaNongSan'] ?></td>
-                      <td style="display:none"><?php 
-                        if ($row['TrangThaiKiemDinh'] == 0) {
-                          ?>
-                          <img src="assets/public/qr_images/<?php //echo $row['QR_Image'] ?>" alt="" height="200px" width="200px">
-                          <?php 
-                        } else {
-                          ?>
-                          <img src="assets/public/qr_images/<?php //echo $row['QR_Image'] ?>" alt="CHƯA KIỂM ĐỊNH"><?php
-                        }
-                        
-                       ?></td>
-                      <td><?php echo $row['TenNongSan'] ?></td>
-                      <td><?php echo $row['SoLuong']." ".$row['DVT'] ?></td>
-                      <td style="display: none;"><?php echo $row['SoLuong'] ?></td>
-                      <td style="display: none;"><?php echo $row['DVT'] ?></td>
-                      <td><span class="tag tag-success"><?php echo number_format($row['Gia'], 0, ',', '.') ?> VNĐ</span></td>
-                      <td>
-                        <textarea cols="20" rows="7" readonly><?php echo $row['MoTaNS'] ?></textarea>
-                      </td>
-                      <td><img src="assets/uploads/images/<?php echo $row['HinhAnh'] ?>" height="175px" width="240px"></td>
-                      <td style="display:none;"><?php echo $row['HinhAnh'] ?></td>
-                      <?php 
-                        $tt_ns = $ns -> get_nongsan_by_id($row['MaNongSan']);
-                        while($row1 = mysqli_fetch_array($tt_ns)){
-
-
-                      ?>
-                      <td><?php echo $row1['TenLoaiNongSan']; ?></td>
-                      <td><?php echo $row1['TenNhaCungCap']; } ?></td>
-                      <td><?php 
-                          if ($row['TrangThaiKiemDinh'] == 0) {
-                            echo "Đạt chuẩn";
-                          } elseif ($row['TrangThaiKiemDinh'] == 1) {
-                            echo "Không đạt chuẩn";
-                          } elseif ($row['TrangThaiKiemDinh'] == 2){
-                            echo "Chưa kiểm định";
-                          } elseif ($row['TrangThaiKiemDinh'] == 3){
-                            echo "Chờ kiểm định";
-                          } else{
-
-                          }
-                          
-                       ?></td>
-                      <td><?php 
-                          if ($row['TrangThaiNongSan'] == 0) {
-                            echo "Chờ duyệt tin";
-                          } elseif ($row['TrangThaiNongSan'] == 1) {
-                            echo "Đã duyệt";
-                          } elseif ($row['TrangThaiNongSan'] == 2){
-                            echo "Đang khóa";
-                          } elseif ($row['TrangThaiNongSan'] == 3){
-                            echo "Chưa đăng tin";
-                          } else{
-                            
-                          }
-                          
-                       ?></td>
-                      <td>
-                        <!-- <i class="fa fa-outdent" aria-hidden="true"> --><button class="btn btn-primary editbtn">Xem chi tiết</button><!-- <a href="index.php?updatens">CẬP NHẬT</a> --></i> <!-- | -->
-                        <!-- data-toggle="modal" data-target="#exampleModal" id="chitiet" -->
-                      </td>
-                      <td><button type="button" class="btn btn-danger deletebtn">Xóa</button></td>
-                      <td style="display:none"><?php echo $row['Gia']; ?></td>
-                    </tr>
-                    <?php }
-                      } ?>
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
-
-                    <!-- Modal UPDATE NÔNG SẢN -->
+                    <!-- Modal ĐĂNG BÁN NÔNG SẢN -->
                        <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel"><b>Thông tin nông sản</b></h5>
+                              <h5 class="modal-title" id="exampleModalLabel"><b>ĐĂNG BÁN NÔNG SẢN</b></h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
@@ -315,15 +214,15 @@
                                   <input type="text" class="form-control" id="gia" name="gia" value="" >
                                 </div>
                                 <div class="form-group">
-                                  <label for="inputStatus">Mô tả nông sản</label>
-                                  <input type="text" class="form-control" id="mota" name="mota" value="" >
+                                  <label for="inputStatus">Mô tả nông sản</label><br>
+                                  <!-- <input type="text" class="form-control" id="mota" name="mota" value="" > -->
+                                  <textarea name="mota" id="mota" cols="55" rows="5"></textarea>
                                 </div>
                                 <div class="form-group">
                                   <label for="inputDateCreate">Hình ảnh</label>
                                   <!-- <input type="file" class="form-control" id="hinh" name="hinh"> -->
-                                  <input style="display:none;" type="text" class="form-control" id="hinhanh" name="hinhanh">
                                   <div id="hinh"></div><br>
-                                  <input type="file" name="ffile" id="ffile">
+                                  <!-- <input type="file" name="ffile" id="ffile"> -->
                                 </div>
                                 <div class="form-group">
                                   <label for="inputStatus">Loại nông sản</label>
@@ -342,7 +241,7 @@
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                  <button type="submit" name="update" class="btn btn-primary">Cập nhật</button>
+                                  <button type="submit" name="update" class="btn btn-primary">ĐĂNG BÁN NÔNG SẢN</button>
                                   <!-- <input type="submit" name="update"> -->
                                 </div>
                               </form>
@@ -353,6 +252,35 @@
                       </div>
     
                   <!-- Modal -->
+                  <!-- DELETE POP UP FORM (Bootstrap MODAL) -->
+                  <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel"> Hủy đăng bán </h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                              </div>
+
+                              <form action="" method="POST">
+
+                                  <div class="modal-body">
+
+                                        <input type="hidden" class="form-control" name="manongsan" id="ma"  value="" readonly>                                     
+
+                                      <h4> Bạn có thật sự muốn hủy bán nông sản này không ??</h4>
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal"> CLOSE </button>
+                                      <button type="submit" name="huy" class="btn btn-primary"> HỦY ĐĂNG BÁN </button>
+                                  </div>
+                              </form>
+
+                          </div>s
+                      </div>
+                  </div>
             </div>
             <!-- /.card -->
           </div>
@@ -373,43 +301,29 @@
         ///----------------------------
         if (isset($_REQUEST['update'])) {
             $mans = $_REQUEST['manongsan'];
-            $tenns = $_REQUEST['tennongsan'];
-            $sl = $_REQUEST['sl'];
-            $dvt = $_REQUEST['dvt'];
-            $tonggiatri = $_REQUEST['gia'];
-            $mota = $_REQUEST['mota'];
-            ////
-            $file = $_FILES['ffile']['tmp_name'];
-            $type = $_FILES['ffile']['type'];
-            $name = $_FILES['ffile']['name'];
-            $size = $_FILES['ffile']['size'];
 
-            // echo $mans."<br>";
-            // echo $tenns."<br>";
-            // echo $sl."<br>";
-            // echo $dvt."<br>";
-            // echo $tonggiatri."<br>";
-            // echo $mota."<br>".$mans."<br>";;
-            // echo $file."<br>";
-            // echo $type."<br>";
-            // echo $name."<br>";
-            // echo $size."<br>";
-            $kq = $ns-> edit_nongsan($mans,$tenns,$sl,$tonggiatri,$dvt,$mota,$name,$file,$type,$size);
+            $kq = $ns-> dangtin_nongsan($mans,0);
             //thông báo
-            if($kq == 1){
-              echo "<script>alert('Cập nhật nông sản thành công');</script>";
-              echo "<script>window.location.href = 'index.php?qlns';</script>";
-            }elseif($kq == 0){
-              echo "<script>alert('Cập nhật thất bại')</script>";
-            }elseif($kq == -1){
-              echo "<script>alert('Không thể upload')</script>";
-            }elseif($kq == -2){
-              echo "<script>alert('Size > 2MB')</script>";
-            }elseif($kq == -3){
-              echo "<script>alert('Không đúng định dạng file')</script>";
+            if($kq){
+              //echo "<script>alert('Đăng bán thành công!');</script>";
+              echo "<script>window.location.href = 'index.php?dangban';</script>";
             }else{
-              echo "<script>alert('Cập nhật dữ liệu thất bại')</script>";
+              echo "<script>window.location.href = 'index.php?dangban';</script>";
+              //echo "<script>alert('Đăng bán thất bại!')</script>";
             }
+        }elseif (isset($_REQUEST['huy'])) {
+            $mans = $_REQUEST['manongsan'];
+            //echo $mans;
+            //echo "<script>alert(".$mans.");</script>";
+            $kq = $ns-> dangtin_nongsan($mans,3);
+            //thông báo
+            if($kq){
+              //echo "<script>alert('Hủy đăng bán thành công!');</script>";
+              echo "<script>window.location.href = 'index.php?dangban';</script>";
+            }else{
+              //echo "<script>alert('Hủy đăng bán thất bại!');</script>";
+              echo "<script>window.location.href = 'index.php?dangban';</script>";
+            }         
         }
 
        ?>
@@ -453,6 +367,26 @@
                   //$("#xemchitiet").html(data);
                     //alert("dd");
                 //})
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $('.deletebtn').on('click', function () {
+
+                $('#deletemodal').modal('show');
+
+                $tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+
+                $('#ma').val(data[0]);
+                //alert(data[0]);
             });
         });
     </script>

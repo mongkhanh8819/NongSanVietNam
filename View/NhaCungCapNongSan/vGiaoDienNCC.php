@@ -15,14 +15,20 @@
             <p>
               Thông tin cá nhân
               <i class="fas fa-angle-left right"></i>
-              <span class="badge badge-info right">1</span>
+              <span class="badge badge-info right">2</span>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="./duyetbainongsan.html" class="nav-link">
+              <a href="?updatett" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Cập nhật thông tin cá nhân</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="?updatetk" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Thông tin tài khoản</p>
               </a>
             </li>
 
@@ -84,7 +90,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="./thongkeadmin.html" class="nav-link">
+              <a href="?qrcode" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>KẾT QUẢ / QRCODE</p>
               </a>
@@ -163,8 +169,13 @@
     } elseif (isset($_REQUEST['guiyeucau'])){
       include("vAddPhieukiemdinh.php");
     }elseif (isset($_REQUEST['dangban'])){
-      //include("vGuiYcKiemDinh.php");
-    } else{
+      include("vDangBanNS.php");
+    } elseif (isset($_REQUEST['qrcode'])){
+      include("vQrcode.php");
+    } elseif(isset($_REQUEST['updatett'])){
+      include("vUpdateTTnccns.php");
+    }
+      else{
       echo "<div class='col-md-9'><h1>NHÀ CUNG CẤP NÔNG SẢN</h1></div>";
     }
     ?>

@@ -25,6 +25,16 @@
 		}
 		//--------------------------
 		//--------------------------
+		//-------LẤY THÔNG TIN NÔNG SẢN THEO MÃ NHÀ CUNG CẤP
+		//--------------------------
+		//--------------------------
+		public function get_nongsan_by_ncc_dc($mancc){
+			$p = new mNongSan();
+			$table = $p -> select_nongsan_by_ncc_dc($mancc);
+			return $table;
+		}
+		//--------------------------
+		//--------------------------
 		//-------LẤY THÔNG TIN NÔNG SẢN THEO MÃ NÔNG SẢN
 		//--------------------------
 		//--------------------------
@@ -106,6 +116,16 @@
 					return 0; //không thể edit
 				}
 			}
+		}
+		//--------------------------
+		//--------------------------
+		//-------ĐĂNG BÁN NÔNG SẢN
+		//--------------------------
+		//--------------------------
+		public function dangtin_nongsan($manongsan,$tt){
+			$p = new mNongSan();
+			$table = $p -> dangban_nongsan($manongsan,$tt);
+			return $table;
 		}
 		
 	}
