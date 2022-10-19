@@ -1,10 +1,10 @@
 <?php 
 
-	include_once("Controller/KhachHangDoanhNghiep/cDoanhNghiep.php");
+	include_once("controller/TrungTamPhanPhoi/ctrungtamphanphoi.php");
 
-	$p = new cKHDN();
+	$p = new cTTPP();
 
-	$table = $p -> select_KHDN();
+	$table = $p -> select_trungtamphanphoi();
 
 ?>
   <!-- Content Wrapper. Contains page content -->
@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Quản lý Thông Tin Doanh Nghiệp</h1>
+            <h1>Quản lý Thông Tin Trung Tâm Phân Phối</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-              <li class="breadcrumb-item active">Quản lý khách hàng</li>
+              <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
+              <li class="breadcrumb-item active">Quản lý Trung Tâm Phân Phối</li>
             </ol>
           </div>
         </div>
@@ -46,7 +46,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Danh sách thông tin doanh nghiệp</h3>  | <a href="?adddn">Thêm doanh nghiệp mới</a>
+                <h3 class="card-title">Danh sách thông tin trung tâm phân phối</h3>  | <a href="index.php?addttpp">Thêm trung tâm mới</a>
                 
 
                 <div class="card-tools">
@@ -66,16 +66,15 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th style="text-align:center">Mã doanh nghiệp</th>
-                      <th style="text-align:center">Tên doanh nghiệp</th>
-                      <th style="text-align:center">Số điện thoại</th>
-                      <th style="text-align:center">Địa chỉ</th>
-                      <!-- <th>Email</th> -->
-                      <!-- <th>Mã số thuế</th> -->
-                      <!-- <th>Ngày lập </th> -->
-                      <th style="text-align:center">Giới thiệu</th>
-                      <!-- <th>Tên người đại diện</th> -->
-                      <th style="text-align:center">Tác vụ</th>                 
+                      <th>Mã trung tâm</th>
+                      <th>Tên trung tâm</th>
+                      <!-- <th>Địa Chỉ</th> -->
+                      <th>Chức Năng</th>
+                      <!-- <th>Ngày sinh</th> -->
+                      <!-- <td style="font-weight:bold">Hình ảnh</td> -->
+                      <th>Người đại diện</th>
+                      <!-- <th>Giới tính</th> -->
+                      <th>Tác vụ</th>                 
                     </tr>
                   </thead>
                   <tbody>
@@ -85,17 +84,21 @@
 		                    if(mysqli_num_rows($table) > 0){
 			                    while($row = mysqli_fetch_assoc($table)) {
                                     echo "<tr>";
-                                    echo "<td>".$row['MaDN']."</td>";
-                                    echo "<td>".$row['TenDoanhNghiep']."</td>";
-                                    echo "<td>".$row['SDT']."</td>";
-                                    echo "<td>".$row['DiaChi']."</td>";
+                                    echo "<td>".$row['MaTrungTamPP']."</td>";
+                                    echo "<td>".$row['TenTrungTam']."</td>";
+                                    // echo "<td>".$row['DiaChi']."</td>";
+                                    echo "<td>".$row['ChucNang']."</td>";
+                                    echo "<td>".$row['NguoiDaiDien']."</td>";
+                                    // echo "<td><img src='assets/uploads/images/".$row['HinhAnh']."' alt='' height='100px' width='150px'></td>";
                                     // echo "<td>".$row['Email']."</td>";
-                                    // echo "<td>".$row['MST']."</td>";
-                                    // echo "<td>".$row['NgayThanhLap']."</td>";
-                                    //echo "<td>".$row['GioiThieu']."</td>";
-                                    echo "<td><textarea cols='45' rows='4'style='border-radius:10px'readonly>" . $row['GioiThieu'] . "</textarea></td>";
-                                    // echo "<td>".$row['TenNguoiDaiDien']."</td>";
-                                    echo "<td><a href='?updatedn&&MaDN=".$row['MaDN']."'><i class='fa fa-pen' aria-hidden='true'></i></a> | <a href='#'><i class='fa fa-trash' aria-hidden='true'></i></a></td>";
+                                    // if($row['GioiTinh']==0){
+                                        // echo "<td>Nam</td>";
+                                    // }else {
+                                        // echo "<td>Nữ</td>";
+                                    // }
+                                    
+                                    
+                                    echo "<td><a href='?updatettpp&&MaTrungTamPP=".$row['MaTrungTamPP']."'><i class='fa fa-pen' aria-hidden='true'></i></a> | <a href='#'><i class='fa fa-trash' aria-hidden='true'></i></a></td>";
                                     echo "</tr>";
 			                    }
 		                    }

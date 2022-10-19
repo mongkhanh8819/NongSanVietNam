@@ -18,7 +18,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+              <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
               <li class="breadcrumb-item active">Quản lý Nhân Viên Phân Phối</li>
             </ol>
           </div>
@@ -66,15 +66,15 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th>Mã nhân viên phân phối</th>
-                      <th>Tên nhân viên phân phối</th>
-                      <th>Số điện thoại</th>
-                      <th>Địa chỉ</th>
-                      <th>Ngày sinh</th>
-                      <td>Hình ảnh</td>
-                      <th>Email</th>
-                      <th>Giới tính</th>
-                      <th>Tác vụ</th>                 
+                      <th style="text-align:center">Mã nhân viên phân phối</th>
+                      <th style="text-align:center">Tên nhân viên phân phối</th>
+                      <th style="text-align:center">Số điện thoại</th>
+                      <th style="text-align:center">Địa chỉ</th>
+                      <!-- <th>Ngày sinh</th> -->
+                      <td style="font-weight:bold;text-align:center">Hình ảnh</td>
+                      <!-- <th>Email</th> -->
+                      <th style="text-align:center">Giới tính</th>
+                      <th style="text-align:center">Tác vụ</th>                 
                     </tr>
                   </thead>
                   <tbody>
@@ -88,9 +88,9 @@
                                     echo "<td>".$row['TenNVPP']."</td>";
                                     echo "<td>".$row['SDT']."</td>";
                                     echo "<td>".$row['DiaChiNha']."</td>";
-                                    echo "<td>".$row['NgaySinh']."</td>";
-                                    echo "<td>".$row['HinhAnh']."</td>";
-                                    echo "<td>".$row['Email']."</td>";
+                                    // echo "<td>".$row['NgaySinh']."</td>";
+                                    echo "<td><img src='assets/uploads/images/".$row['HinhAnh']."' alt='' height='100px' width='150px'></td>";
+                                    // echo "<td>".$row['Email']."</td>";
                                     if($row['GioiTinh']==0){
                                         echo "<td>Nam</td>";
                                     }else {

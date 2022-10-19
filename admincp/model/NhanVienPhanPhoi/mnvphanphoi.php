@@ -20,13 +20,38 @@
              $conn;
              $p=new ketnoi();
              if($p->moketnoi($conn)){
-                 $string="SELECT * FROM nhanvienphanphoi WHERE MaNVPP='".$MaNVPP."'";
+                $string ="SELECT *FROM tinhthanh JOIN huyenquan on tinhthanh.MaTinh = huyenquan.MaTinh
+                JOIN xaphuong on xaphuong.MaHuyen = huyenquan.MaHuyen JOIN trungtamphanphoi on trungtamphanphoi.MaXa = xaphuong.MaXa JOIN nhanvienphanphoi on nhanvienphanphoi.MaTrungTamPP = trungtamphanphoi.MaTrungTamPP
+                WHERE MaNVPP='".$MaNVPP."'";
                  $table=mysqli_query($conn,$string);
+                //  echo $string;
                  $p->dongketnoi($conn);
+                //  var_dump ($table);
                  return $table;
              }else {
                  return false;
              }
+        }
+        #Thêm nhân viên phân phối
+        public function add_NVPP($MaNVPP, $TenNVPP, $SDT, $DiaChiNha, $NgaySinh, $HinhAnh, $Email,$GioiTinh,$MaXa,$MaTrungTamPP, $username){
+            $conn;
+            $p = new ketnoi();
+            if($p->moketnoi($conn)){
+                if($username !=""){
+                    $string = "INSERT INTO nhanvienphanphoi(MaNVPP, TenNVPP, SDT, DiaChiNha, NgaySinh, HinhAnh, Email, GioiTinh, MaXa, MaTrungTamPP, username) VALUES ";
+                    $string .="('".$MaNVPP."','".$TenNVPP."','".$SDT."','".$DiaChiNha."','".$NgaySinh."','".$HinhAnh."','".$Email."',".$GioiTinh.",".$MaXa.",'".$MaTrungTamPP."','".$username."')";
+                }else{
+                    $string = "INSERT INTO nhanvienphanphoi(MaNVPP, TenNVPP, SDT, DiaChiNha, NgaySinh, HinhAnh, Email, GioiTinh, MaXa, MaTrungTamPP)  VALUES ";
+                    $string .="('".$MaNVPP."','".$TenNVPP."','".$SDT."','".$DiaChiNha."','".$NgaySinh."','".$HinhAnh."','".$Email."',".$GioiTinh.",".$MaXa.",'".$MaTrungTamPP."')";
+                }
+                $table=mysqli_query($conn,$string);
+                echo $string;
+                $p->dongketnoi($conn);
+                var_dump ($table);
+                return $table;
+            }else {
+                return false;
+            }
         }
     }
 ?>

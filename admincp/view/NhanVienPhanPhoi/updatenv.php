@@ -4,6 +4,7 @@
     echo $MaNVPP;
     $p = new cNVPP();
     $table = $p-> select_nhanvien_byid($MaNVPP);
+    // var_dump($table);
 ?> 
  <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
@@ -77,68 +78,81 @@
                             echo "<td><input type='text'class='form-control name='diachi' value='" . $row['DiaChiNha'] . "'></td>";
                             echo "<td>Ngày sinh</td>";
                             echo "<td><input type='date'class='form-control name='ngaysinh' value='" . $row['NgaySinh'] . "'></td>";
-                            echo "<td>Hình Ảnh</td>";
-                            echo "<td><input type='file'class='form-control name='HinhAnh' value='" . $row['HinhAnh'] . "'></td>";
+                            echo "<br>";
+                            echo "<td><img src='assets/uploads/images/".$row['HinhAnh']."' alt='' height='200px' width='300px'></td>";
+                            echo "<br>";
                             echo "<td>Email</td>";
                             echo "<td><input type='text'class='form-control name='email' value='" . $row['Email'] . "'></td>";
                             echo "<td>Giới tính</td>";
                             echo "<td><input type='text'class='form-control name='gioitinh' value='" . $row['GioiTinh'] . "'></td>";
                             echo "<td>Mã xã</td>";
                             ?>
-                              <td>
-                                <select class='form-control' name='tinh' id='Tinh' >
-                                  <option value='".$row[]."'>Chưa chọn Tỉnh/Thành</option>
-                                  
-                                </select>
-                              </td>
-                            <?php
-                            ?>
-                            <select class='form-control' name='huyen' id='Huyen'><option value=''>Chưa chọn Huyện/Quận</option> </select>
-                            <?php
-                            ?>
-                            <td>
-                                <select class='form-control' name='xa' id='Xa'>
-                                  <option value='<?php echo $row['MaXa'] ?>' selected><?php echo $row['MaXa']; ?></option>
-                                  
-                                </select>
-                            </td>
-                          </br>
-                             <div class="input-group mb-3">
+                            
+                              <div class="input-group mb-3">
                                 <select class="form-control" name="tinh" id="tinh" required>
-                                  <option value="">Chưa chọn Tỉnh/Thành</option>
-                                    <?php include_once("View/process_ajax/tinh.php"); ?>  
+                                  <?php 
+
+                                  $tinh = new cDiaChi();
+                                  $option_tinh = $tinh -> select_tinhthanh();
+                                  //
+                                  while($row1 = mysqli_fetch_array($option_tinh,MYSQLI_ASSOC)) {
+                                    if ($row['MaTinh'] == $row1['MaTinh']) {
+                                      echo "<option value=".$row1['MaTinh']." selected>".$row1['TenTinh']."</option>";
+                                    } else {
+                                      echo "<option value=".$row1['MaTinh'].">".$row1['TenTinh']."</option>";
+                                    }
+                                    
+                                  }
+
+                                  ?>    
                                 </select> 
-                              <div class="input-group-append">
-                                <div class="input-group-text">
-                                  <span class="fas fa-industry"></span>
-                                </div>
+              
                               </div>
-                            </div>
-                            <div class="input-group mb-3">
+                              <div class="input-group mb-3">
                                 <select class="form-control" name="huyen" id="huyen" required>
-                                  <option value="">Chưa chọn Huyện/Quận</option>  
+                                  <?php 
+
+                                    $tinh = new cDiaChi();
+                                    $option_tinh = $tinh -> select_huyenquan($row['MaTinh']);
+                                    //
+                                    while($row1 = mysqli_fetch_array($option_tinh,MYSQLI_ASSOC)) {
+                                      if ($row['MaHuyen'] == $row1['MaHuyen']) {
+                                        echo "<option value=".$row1['MaHuyen']." selected>".$row1['TenHuyen']."</option>";
+                                      } else {
+                                        echo "<option value=".$row1['MaHuyen'].">".$row1['TenHuyen']."</option>";
+                                      }
+                                      
+                                    }
+
+                                  ?>  
                                 </select> 
-                              <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-industry"></span>
-                                </div>
                               </div>
-                            </div>
-                            <div class="input-group mb-3">
+                              <div class="input-group mb-3">
                                 <select class="form-control" name="xa" id="xa" required>
-                                  <option value="">Chưa chọn Xã/Phường</option>
-                                </select> 
-                              <div class="input-group-append">
-                                <div class="input-group-text">
-                                  <span class="fas fa-industry"></span>
-                                </div>
+                                  <?php 
+
+                                    $tinh = new cDiaChi();
+                                    $option_tinh = $tinh -> select_xaphuong($row['MaHuyen']);
+                                    //
+                                    while($row1 = mysqli_fetch_array($option_tinh,MYSQLI_ASSOC)) {
+                                      if ($row['MaXa'] == $row1['MaXa']) {
+                                        echo "<option value=".$row1['MaXa']." selected>".$row1['TenXa']."</option>";
+                                      } else {
+                                        echo "<option value=".$row1['MaXa'].">".$row1['TenXa']."</option>";
+                                      }
+                                      
+                                    }
+
+                                  ?>  
+                                
+                                </select > 
+                        
                               </div>
-                            </div>
                             <?php
                             echo "<td>Mã trung tâm phân phối";
                             echo "<td><input type='text'class='form-control name='textmattpp' value='" . $row['MaTrungTamPP'] . "'></td>";
                             echo "<td>Username";
-                            echo "<td><input type='text'class='form-control name='textusername' value='" . $row['Username'] . "'></td>";
+                            echo "<td><input type='text'class='form-control name='textusername' value='" . $row['username'] . "'></td>";
                             
                           }
                         }

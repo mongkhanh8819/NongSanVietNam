@@ -63,6 +63,18 @@
   }#CẬP NHẬT TÀI KHOẢN
   elseif (isset($_REQUEST["updatetk"])) {
     include("view/TaiKhoan/updatetaikhoan.php");
+  }#DELETE TÀI KHOẢN
+  elseif (isset($_REQUEST["deletetk"])) {
+    include("view/TaiKhoan/deletetaikhoan.php");
+  }#XEM TRUNG TÂM PHÂN PHỐI
+  elseif (isset($_REQUEST["qlttpp"])) {
+    include("view/TrungTamPhanPhoi/quanlitrungtamphanphoi.php");
+  }#THÊM TRUNG TÂM PHÂN PHỐI
+  elseif (isset($_REQUEST["addttpp"])) {
+    include("view/TrungTamPhanPhoi/addtrungtamphanphoi.php");
+  }#CẬP NHẬT TRUNG TÂM PHÂN PHỐI
+  elseif (isset($_REQUEST["updatettpp"])) {
+    include("view/TrungTamPhanPhoi/updatetrungtamphanphoi.php");  
   }
   else {
     include_once("view/content.php");

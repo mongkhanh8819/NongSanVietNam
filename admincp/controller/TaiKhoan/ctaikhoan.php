@@ -8,9 +8,9 @@
             return $table;
         }
         #THÊM TÀI KHOẢN
-        public function add_taikhoan($MaVaiTro, $username, $password){
+        public function add_taikhoan($MaVaiTro, $username){
             $p=new mtaikhoan;
-            $insert=$p->addtaikhoan($MaVaiTro,$username,$password);
+            $insert=$p->addtaikhoan($MaVaiTro,$username);
             var_dump($insert);
             if($insert){
                 return 1;
@@ -19,10 +19,34 @@
             }
         }
         #XEM TÀI KHOẢN THEO USERNAME
-        public function select_taikhoan_byusername($username){
+        public function select_taikhoan_byusername($username,$MaVaiTro){
             $p=new mtaikhoan;
-            $table=$p->select_taikhoan_username($username);
+            $table=$p->select_taikhoan_username($username,$MaVaiTro);
             return $table;
+        }
+        #XEM TÀI KHOẢN THEO USERNAME DOANH NGHIỆP
+        public function select_taikhoan_byusernamedoanhnghiep(){
+            $p=new mtaikhoan;
+            $table=$p->select_taikhoan_usernamedoanhnghiep();
+            return $table;
+        }
+        #UPDATE TÀI KHOẢN
+        public function update_taikhoan($username,$password){
+            $p=new mtaikhoan;
+            $update=$p->updatetaikhoan($username,$password);
+            // var_dump ($update);
+            if($update){
+                return 1; //update thành công
+            }else {
+                return 0; //update thất bại
+            }
+        }
+        #DELETE TAI KHOAN
+        public function delete_taikhoan($username){
+            $p=new mtaikhoan();
+            $delete=$p->deletetaikhoan($username);
+            var_dump ($delete);
+            return $delete;
         }
        
 

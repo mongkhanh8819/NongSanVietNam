@@ -16,7 +16,7 @@
 		}
 		public function select_xaphuong($mahuyen){
 			$p = new mDiaChi();
-			$table = $p -> select_xaphuong($matinh);
+			$table = $p -> select_xaphuong($mahuyen);
 			return $table;
 		}
 	}

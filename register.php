@@ -250,6 +250,7 @@
           $matinh = $_REQUEST['tinh'];
           $vaitro = $_REQUEST['vaitro'];
           $username = $_REQUEST['username'];
+
           $password = $_REQUEST['password'];
 
           $dk = new cTaikhoan();

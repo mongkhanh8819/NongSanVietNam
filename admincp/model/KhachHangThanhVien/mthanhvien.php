@@ -16,11 +16,14 @@
             }
 
         }
+        #Xem khách hàng thành viên theo id
         public function select_thanhvien_id($MaKHTV){
             $conn;
             $p=new ketnoi();
             if($p->moketnoi($conn)){
-                $string ="SELECT *FROM khachhangthanhvien WHERE MaKHTV='".$MaKHTV."'";
+                $string ="SELECT *FROM tinhthanh JOIN huyenquan on tinhthanh.MaTinh = huyenquan.MaTinh
+                    JOIN xaphuong on xaphuong.MaHuyen = huyenquan.MaHuyen JOIN khachhangthanhvien on khachhangthanhvien.MaXa = xaphuong.MaXa
+                    WHERE MaKHTV='".$MaKHTV."'";
                 $table =mysqli_query($conn,$string);
                 $p->dongketnoi($conn);
                 return $table;
@@ -28,5 +31,63 @@
                 return false;
             }
         }
+        #thêm khách hàng thành viên
+        public function add_KHTV($MaKHTV, $Ten_KHTV, $SDT, $DiaChi, $NgaySinh, $HinhAnh, $Email, $GioiTinh, $username, $MaXa){
+            $conn;
+            $p = new ketnoi();
+            if($p->moketnoi($conn)){
+                if($username !=""){
+                    $string = "INSERT INTO khachhangthanhvien(MaKHTV, Ten_KHTV, SDT, DiaChi, NgaySinh, HinhAnh, Email, GioiTinh, username, MaXa) VALUES ";
+                    $string .="(".$MaKHTV.",'".$Ten_KHTV."','".$SDT."','".$DiaChi."','".$NgaySinh."','".$HinhAnh."','".$Email."',".$GioiTinh.",'".$username."',".$MaXa.")";
+                }else{
+                    $string = "INSERT INTO khachhangthanhvien(MaKHTV, Ten_KHTV, SDT, DiaChi, NgaySinh, HinhAnh, Email, GioiTinh , MaXa) VALUES ";
+                    $string .="(".$MaKHTV.",'".$Ten_KHTV."','".$SDT."','".$DiaChi."','".$NgaySinh."','".$HinhAnh."','".$Email."',".$GioiTinh.",".$MaXa.")";
+                }
+                $table=mysqli_query($conn,$string);
+                echo $string;
+                $p->dongketnoi($conn);
+                var_dump ($table);
+                return $table;
+            }else {
+                return false;
+            }
+        }
+        public function update_KHTV($MaKHTV, $Ten_KHTV, $SDT, $DiaChi, $NgaySinh, $Email, $GioiTinh, $username, $MaXa){
+			$conn;
+			$p= new ketnoi();
+			if($p->moketnoi($conn)){
+				if($username !=""){
+					$string ="update khachhangthanhvien";
+					$string .= " set MaKHTV='".$MaKHTV."', Ten_KHTV='".$Ten_KHTV."', SDT='".$SDT."', DiaChi='".$DiaChi."', NgaySinh='".$NgaySinh."',  Email='".$Email."', GioiTinh='".$GioiTinh."', username='".$username."', MaXa='".$MaXa."'";
+					$string .= " Where MaKHTV='".$MaKHTV."'";
+				}else {
+					$string ="update khachhangthanhvien";
+					$string .= " set MaKHTV='".$MaKHTV."', Ten_KHTV='".$Ten_KHTV."', SDT='".$SDT."', DiaChi='".$DiaChi."', NgaySinh='".$NgaySinh."',  Email='".$Email."', GioiTinh='".$GioiTinh."', MaXa='".$MaXa."'";
+					$string .= " Where MaKHTV='".$MaKHTV."'";
+				}
+				
+				// echo $string;
+				$table =mysqli_query($conn,$string);
+				$p->dongketnoi($conn);
+				return $table;
+
+			}else {
+				return false;
+			}
+		}
+        public function checkuser($username){
+			$conn;
+			$p= new ketnoi();
+			if($p->moketnoi($conn)){
+				$string="SELECT * FROM khachhangthanhvien WHERE username IN (SELECT username FROM taikhoan) && username = '".$username."'";
+				echo $string;
+				$table= mysqli_query($conn,$string);
+				$p->dongketnoi($conn);
+				var_dump($table);
+				return $table;
+			}else {
+				return false;
+			}
+		}
     }
 ?>

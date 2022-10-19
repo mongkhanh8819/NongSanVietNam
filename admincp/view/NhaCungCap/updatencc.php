@@ -1,8 +1,10 @@
 <?php
     include("controller/NhaCungCap/cNcc.php");
+    include("controller/TaiKhoan/ctaikhoan.php");
      $MaNCC = $_REQUEST['MaNCC'];
     echo $MaNCC;
     $p = new cNcc();
+    $a = new ctaikhoan();
     $table = $p-> select_NCC_byid($MaNCC);
 ?> 
  <!-- Content Wrapper. Contains page content -->
@@ -16,7 +18,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+              <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
               <li class="breadcrumb-item active">Quản lý nhà cung cấp</li>
             </ol>
           </div>
@@ -60,7 +62,7 @@
               </div>-->
               <!-- /.card-header -->
               <h3 style="text-align:center">Cập nhật thông tin nhà cung cấp</h3>
-              <form action="#">
+              <form action="#"  method="post" enctype="multipart/form-data">
                 <div class="row">
                   <div class="col">
                     <?php
@@ -68,80 +70,94 @@
                         if(mysqli_num_rows($table)>0){
                           while ($row=mysqli_fetch_assoc($table)) {
                             echo "<td>Mã nhà cung cấp</td>";
-                            echo "<td><input type='text'class='form-control' name='txtNCC' value='" . $row['MaNCC'] . "'></td>";
+                            echo "<td><input type='text'class='form-control' name='txtmancc' value='" . $row['MaNCC'] . "'></td>";
                             echo "<td>Tên nhà cung cấp</td>";
-                            echo "<td><input type='text'class='form-control' name='txttenNCC' value='" . $row['TenNhaCungCap'] . "'></td>";
+                            echo "<td><input type='text'class='form-control' name='txttenncc' value='" . $row['TenNhaCungCap'] . "'></td>";
                             echo "<td>Tên người đại diện</td>";
-                            echo "<td><input type='text' class='form-control' name='txttenNDD' value='" . $row['TenNguoiDaiDien'] . "'></td>";
-                            echo "<td>Hình Ảnh</td>";
-                            echo "<td><input type='text'class='form-control name='txthinhanh' value='" . $row['HinhAnh'] . "'></td>";
+                            echo "<td><input type='text' class='form-control' name='txttenndd' value='" . $row['TenNguoiDaiDien'] . "'></td>";
+                            echo "<br>";
+                            
+                            echo "<td><img src='assets/uploads/images/".$row['HinhAnh']."' alt='' height='200px' width='300px'></td>";
+                            
+      
+                            echo "<br>";
                             echo "<td>Địa chỉ nhà cung cấp</td>";
-                            echo "<td><input type='text'class='form-control name='txtdiachincc' value='" . $row['DiaChi_NCC'] . "'></td>";
+                            echo "<td><input type='text'class='form-control' name='txtdiachincc' value='" . $row['DiaChi_NCC'] . "'></td>";
                             echo "<td>Địa chỉ người đại diện</td>";
-                            echo "<td><input type='text'class='form-control name='txtdiachindd' value='" . $row['DiaChi_NDD'] . "'></td>";
+                            echo "<td><input type='text'class='form-control' name='txtdiachindd' value='" . $row['DiaChi_NDD'] . "'></td>";
                             echo "<td>Số điện thoại nhà cung cấp</td>";
-                            echo "<td><input type='text'class='form-control name='sdtncc' value='" . $row['SDT_NCC'] . "'></td>";
+                            echo "<td><input type='text'class='form-control' name='txtsdtncc' value='" . $row['SDT_NCC'] . "'></td>";
                             echo "<td>Số điện thoại người đại diện</td>";
-                            echo "<td><input type='text'class='form-control name='sdtndd' value='" . $row['SDT_NDD'] . "'></td>";
+                            echo "<td><input type='text'class='form-control' name='txtsdtndd' value='" . $row['SDT_NDD'] . "'></td>";
                             echo "<td>Email nhà cung cấp</td>";
-                            echo "<td><input type='text' class='form-control name='txtEmailncc' value='" . $row['EmailNCC'] . "'></td>";
+                            echo "<td><input type='text' class='form-control' name='txtemailncc' value='" . $row['EmailNCC'] . "'></td>";
                             echo "<td>Email người đại diện</td>";
-                            echo "<td><input type='text' class='form-control name='txtEmailndd' value='" . $row['EmailNDD'] . "'></td>";
+                            echo "<td><input type='text' class='form-control' name='txtemailndd' value='" . $row['EmailNDD'] . "'></td>";
                             echo "<td>Username</td>";
-                            echo "<td><input type='text'class='form-control' name='txtUsername' value='" . $row['username'] . "'></td>";
+                            echo "<td><input type='text'class='form-control' name='Username' value='" . $row['username'] . "'></td>";
                             echo "<td>Mã xã</td>";
                             ?>
-                              <td>
-                                <select class='form-control' name='tinh' id='Tinh' >
-                                  <option value='".$row[]."'>Chưa chọn Tỉnh/Thành</option>
-                                  
-                                </select>
-                              </td>
-                            <?php
-                            ?>
-                            <select class='form-control' name='huyen' id='Huyen'><option value=''>Chưa chọn Huyện/Quận</option> </select>
-                            <?php
-                            ?>
-                            <td>
-                                <select class='form-control' name='xa' id='Xa'>
-                                  <option value='<?php echo $row['MaXa'] ?>' selected><?php echo $row['MaXa']; ?></option>
-                                  
-                                </select>
-                            </td>
-                          </br>
-                             <div class="input-group mb-3">
-                                <select class="form-control" name="tinh" id="tinh" required>
-                                  <option value="">Chưa chọn Tỉnh/Thành</option>
-                                    <?php include_once("View/process_ajax/tinh.php"); ?>  
-                                </select> 
-                              <div class="input-group-append">
-                                <div class="input-group-text">
-                                  <span class="fas fa-industry"></span>
-                                </div>
+                              <div class="input-group mb-3">
+                              <select class="form-control" name="tinh" id="tinh" required>
+                                <?php 
+
+                                  $tinh = new cDiaChi();
+                                  $option_tinh = $tinh -> select_tinhthanh();
+                                  //
+                                  while($row1 = mysqli_fetch_array($option_tinh,MYSQLI_ASSOC)) {
+                                    if ($row['MaTinh'] == $row1['MaTinh']) {
+                                      echo "<option value=".$row1['MaTinh']." selected>".$row1['TenTinh']."</option>";
+                                    } else {
+                                      echo "<option value=".$row1['MaTinh'].">".$row1['TenTinh']."</option>";
+                                    }
+                                    
+                                  }
+
+                                ?>    
+                              </select> 
+              
                               </div>
+                            <div class="input-group mb-3">
+                              <select class="form-control" name="huyen" id="huyen" required>
+                                <?php 
+
+                                  $tinh = new cDiaChi();
+                                  $option_tinh = $tinh -> select_huyenquan($row['MaTinh']);
+                                  //
+                                  while($row1 = mysqli_fetch_array($option_tinh,MYSQLI_ASSOC)) {
+                                    if ($row['MaHuyen'] == $row1['MaHuyen']) {
+                                      echo "<option value=".$row1['MaHuyen']." selected>".$row1['TenHuyen']."</option>";
+                                    } else {
+                                      echo "<option value=".$row1['MaHuyen'].">".$row1['TenHuyen']."</option>";
+                                    }
+                                    
+                                  }
+
+                                ?>  
+                              </select> 
                             </div>
                             <div class="input-group mb-3">
-                                <select class="form-control" name="huyen" id="huyen" required>
-                                  <option value="">Chưa chọn Huyện/Quận</option>  
-                                </select> 
-                              <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-industry"></span>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="input-group mb-3">
-                                <select class="form-control" name="xa" id="xa" required>
-                                  <option value="">Chưa chọn Xã/Phường</option>
-                                </select> 
-                              <div class="input-group-append">
-                                <div class="input-group-text">
-                                  <span class="fas fa-industry"></span>
-                                </div>
-                              </div>
+                              <select class="form-control" name="xa" id="xa" required>
+                                <?php 
+
+                                    $tinh = new cDiaChi();
+                                    $option_tinh = $tinh -> select_xaphuong($row['MaHuyen']);
+                                    //
+                                    while($row1 = mysqli_fetch_array($option_tinh,MYSQLI_ASSOC)) {
+                                      if ($row['MaXa'] == $row1['MaXa']) {
+                                        echo "<option value=".$row1['MaXa']." selected>".$row1['TenXa']."</option>";
+                                      } else {
+                                        echo "<option value=".$row1['MaXa'].">".$row1['TenXa']."</option>";
+                                      }
+                                      
+                                    }
+
+                                  ?>  
+                                
+                              </select> 
+                        
                             </div>
                             <?php
-                            
                           }
                         }
                       }
@@ -151,32 +167,12 @@
                   </div>
                   
                 </div>
-                <button type="submit" class="btn btn-primary" style="margin-left:45%">Submit</button>
-                <button type="reset" class="btn btn-primary" >Reset</button>
+                <button type="submit" class="btn btn-primary" name="submit" style="margin-left:45%">Submit</button>
+                <button type="submit" class="btn btn-primary" name="Reset" >Reset</button>
+                      
                 <!-- <input type="submit" value="Thêm Doanh Nghiệp" style="text-align:center"> -->
               </form>
-              <!-- <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
-                  <thead>
-                    <tr>
-                      <th>Mã doanh nghiệp</th>
-                      <th>Tên doanh nghiệp</th>
-                      <th>Số điện thoại</th>
-                      <th>Địa chỉ</th>
-                      <th>Email</th>
-                      <th>Mã số thuế</th>
-                      <th>Ngày lập </th>
-                      <th>Giới thiệu</th>
-                      <th>Tên người đại diện</th>
-                      <th>Tác vụ</th>                 
-                    </tr>
-                  </thead>
-                  <tbody>
-                  
-                  </tbody>
-                </table>
-              </div>-->
-              <!-- /.card-body -->
+             
             </div>
             <!-- /.card -->
           </div>
@@ -188,3 +184,48 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <?php
+    if(isset($_REQUEST["submit"])){
+      $MaNCC=$_REQUEST["txtmancc"];
+      $TenNCC=$_REQUEST["txttenncc"];
+      $TenNDD=$_REQUEST["txttenndd"];
+      $DiaChi_NCC=$_REQUEST["txtdiachincc"];
+      $DiaChi_NDD=$_REQUEST["txtdiachindd"];
+      $SDT_NCC=$_REQUEST["txtsdtncc"];
+      $SDT_NDD=$_REQUEST["txtsdtndd"];
+      $Email_NCC=$_REQUEST["txtemailncc"];
+      $Email_NDD=$_REQUEST["txtemailndd"];
+      $username=$_REQUEST["Username"];
+      $MaXa=$_REQUEST["xa"];
+
+      $p = new cNCC();
+      $tk = new ctaikhoan();
+      if($username !=""){
+        $update= $tk->update_taikhoan($username,$password);
+        if($update==1){
+          $update=$p->update_nhacungcap($MaNCC, $TenNCC, $TenNDD, $DiaChi_NCC, $DiaChi_NDD, $SDT_NCC,$SDT_NDD,$Email_NCC,$Email_NDD, $username, $MaXa);
+          if($update==1){
+            echo "<script>alert('Cập nhật thành công');</script>";
+            // echo "<script>window.location.href='?qlkhtv'</script>";
+          }else {
+            echo "<script>alert('Cập nhật không thành công');</script>";
+            // echo "<script>window.location.href='?qlkhtv'</script>";
+          }
+        }
+      }else {
+        $update=$p->update_nhacungcap($MaNCC, $TenNCC, $TenNDD, $DiaChi_NCC, $DiaChi_NDD, $SDT_NCC,$SDT_NDD,$Email_NCC,$Email_NDD, $username, $MaXa);
+        if($update==1){
+          echo "<script>alert('Cập nhật thành công');</script>";
+          echo "<script>window.location.href='?qlkhtv'</script>";
+        }else {
+          echo "<script>alert('Cập nhật không thành công');</script>";
+          echo "<script>window.location.href='?qlkhtv'</script>";
+        }
+        
+      }
+  }elseif (isset($_REQUEST["reset"])){
+    echo "<script>alert('Cập nhật không thành công')</script>";
+      //echo header("refresh:0; url='index.php?qlbv'");
+    echo "<script>window.location.href='?qlkhtv'</script>";
+  }
+  ?>

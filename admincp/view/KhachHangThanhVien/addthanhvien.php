@@ -1,3 +1,8 @@
+ <?php
+  include_once("controller/KhachHangThanhVien/cthanhvien.php");
+  include_once("controller/TaiKhoan/ctaikhoan.php");
+  $a=new ctaikhoan();
+ ?>
  <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -53,30 +58,17 @@
               </div>-->
               <!-- /.card-header -->
               <h3 style="text-align:center">Thêm Thành Viên</h3>
-              <form action="#">
+              <form action="#" method="post" enctype="multipart/form-data">
                 <div class="row">
-                  <div class="col">
-                    <td>Mã Thành Viên</td>
-                    <input type="text" class="form-control" id="matv" placeholder="Enter Mã thành viên" name="matv"></br>
-                    <td>Tên Thành Viên</td>
-                    <input type="text" class="form-control" id="tentv" placeholder="Enter Tên thành viên" name="tentv"></br>
-                    <td>Số điện thoại</td>
-                    <input type="text" class="form-control" id="sdt" placeholder="Enter Số điện thoại" name="sdt"></br>
-                    <td>Địa chỉ</td>
-                    <input type="text" class="form-control" id="diachi" placeholder="Enter Địa chỉ" name="diachi"></br>
-                    <td>Ngày sinh</td>
-                    <input type="date" class="form-control" id="ngaysinh" placeholder="Enter Ngày sinh" name="ngaysinh"></br>
-                    <td>Hình ảnh</td>
-                    <input type="file" class="form-control" id="hinhanh" placeholder="Enter Hình ảnh" name="hinhanh"></br>
-                    <td>Email</td>
-                    <input type="text" class="form-control" id="email" placeholder="Enter Email" name="email"></br>
-                    <td>Giới tính</td>
-                    <input type="text" class="form-control" id="gioitinh" placeholder="Enter Giới tính" name="gioitinh"></br>
-                    
-                    
-                    <td>Username</td>
-                    <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username"></br>
-                    <td>Mã xã</td>
+                 
+                    <div class="col-md-6">
+                      <td>Mã Thành Viên</td>
+                      <input type="text" class="form-control" id="matv" placeholder="Enter Mã thành viên" name="matv"></br>
+                      <td>Tên Thành Viên</td>
+                      <input type="text" class="form-control" id="tentv" placeholder="Enter Tên thành viên" name="tentv"></br>
+                      <td>Địa chỉ</td>
+                      <input type="text" class="form-control" id="diachi" placeholder="Enter Địa chỉ" name="diachi"></br>
+                      <td>Mã xã</td>
                     <!-- <input type="text" class="form-control" id="madn" placeholder="Enter Mã xã" name="madn"> -->
                     <div class="input-group mb-3">
                       <select class="form-control" name="tinh" id="tinh" required>
@@ -89,6 +81,7 @@
                         </div>
                       </div>
                     </div>
+                    <br>
                     <div class="input-group mb-3">
                       <select class="form-control" name="huyen" id="huyen" required>
                         <option value="">Chưa chọn Huyện/Quận</option>  
@@ -99,6 +92,7 @@
                         </div>
                       </div>
                     </div>
+                    <br>
                     <div class="input-group mb-3">
                       <select class="form-control" name="xa" id="xa" required>
                         <option value="">Chưa chọn Xã/Phường</option>  
@@ -109,39 +103,44 @@
                         </div>
                       </div>
                     </div>
+                    </div>
+                    <div class="col-md-6">
+                      <td>Số điện thoại</td>
+                      <input type="text" class="form-control" id="sdt" placeholder="Enter Số điện thoại" name="sdt"></br>
+                      <td>Ngày sinh</td>
+                      <input type="date" class="form-control" id="ngaysinh" placeholder="Enter Ngày sinh" name="ngaysinh"></br>
+                      <td>Hình ảnh</td>
+                      <input type="file" class="form-control" id="ffile" placeholder="Enter Hình ảnh" name="hinhanh"></br>
+                      <td>Email</td>
+                      <input type="text" class="form-control" id="email" placeholder="Enter Email" name="email"></br>
+                      <td>Giới tính</td>
+                      <td>
+                      <select name="gioitinh" id="gioitinh" class="form-control">
+                        <option value="0">Nam</option>
+                        <option value="1">Nữ</option>
+                      </select>
+                      </td> 
+                      <Br>
+                      <td>Username</td>
+                      <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username"></br>
+                    </div>
+                    
+                    <!-- <td>Password</td> -->
+                    <!-- <input type="text" class="form-control" id="password" placeholder="Enter Password" name="password"></br> -->
+                   
+                    
 
-                  </div>
+                  
                  
 
-                    <!--  -->
+      
                  
                 </div>
-                <button type="submit" class="btn btn-primary" style="margin-left:45%">Submit</button>
-                <button type="reset" class="btn btn-primary" >Reset</button>
+                <button type="submit" class="btn btn-primary" name="submit" style="margin-left:45%">Thêm Thành Viên</button>
+                <!-- <button type="reset" class="btn btn-primary" >Reset</button> -->
                 <!-- <input type="submit" value="Thêm Doanh Nghiệp" style="text-align:center"> -->
               </form>
-              <!-- <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
-                  <thead>
-                    <tr>
-                      <th>Mã doanh nghiệp</th>
-                      <th>Tên doanh nghiệp</th>
-                      <th>Số điện thoại</th>
-                      <th>Địa chỉ</th>
-                      <th>Email</th>
-                      <th>Mã số thuế</th>
-                      <th>Ngày lập </th>
-                      <th>Giới thiệu</th>
-                      <th>Tên người đại diện</th>
-                      <th>Tác vụ</th>                 
-                    </tr>
-                  </thead>
-                  <tbody>
-                  
-                  </tbody>
-                </table>
-              </div>-->
-              <!-- /.card-body -->
+             
             </div>
             <!-- /.card -->
           </div>
@@ -153,3 +152,61 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+<?php
+  if(isset($_REQUEST["submit"])){
+    $MaKHTV=$_REQUEST["matv"];
+    $Ten_KHTV=$_REQUEST["tentv"];
+    $SDT=$_REQUEST["sdt"];
+    $DiaChi=$_REQUEST["diachi"];
+    $NgaySinh=$_REQUEST["ngaysinh"];
+    $file=$_FILES["hinhanh"]["tmp_name"];
+    $type=$_FILES["hinhanh"]["type"];
+    $tenanh=$_FILES["hinhanh"]["name"];
+    $size=$_FILES["hinhanh"]["size"];
+    $Email=$_REQUEST["email"];
+    $GioiTinh=$_REQUEST["gioitinh"];
+    $username=$_REQUEST["username"];
+    $MaVaiTro=5;
+    // $password=$_REQUEST["password"];
+    $MaXa=$_REQUEST["xa"];
+  
+
+
+    $tk= new cTaikhoan();
+    $KHTV= new cKHTV();
+    if($username !=""){
+      $insert=$tk->add_taikhoan($MaVaiTro, $username);
+      if($insert=1){
+        $insert=$KHTV->add_thanhvien($MaKHTV, $Ten_KHTV, $SDT, $DiaChi, $NgaySinh,$file,$tenanh, $type,$size, $Email, $GioiTinh, $username, $MaXa);
+        if($insert==1){
+          echo "<script>alert('Thêm thành công');</script>";
+          echo "<script>window.location.href='?qlkhtv'</script>";
+        }elseif($insert==0){
+          echo "<script>alert('Thêm không thành công');</script>";
+          echo "<script>window.location.href='?qlkhtv'</script>";
+        }elseif ($insert==-1) {
+          echo "<script>alert('Không thể Upload ảnh');</script>";
+        }elseif ($insert==-2) {
+          echo "<script>alert('Size ảnh không đủ');</script>";
+        }elseif ($insert==-3) {
+          echo "<script>alert('file ảnh không đúng định dạng');</script>";
+        }
+      }
+    }else {
+      $insert=$KHTV->add_thanhvien($MaKHTV, $Ten_KHTV, $SDT, $DiaChi, $NgaySinh,$file,$tenanh, $type,$size, $Email, $GioiTinh, $username, $MaXa);
+      if($insert==1){
+        echo "<script>alert('Thêm thành công');</script>";
+        // echo "<script>window.location.href='?qlkhtv'</script>";
+      }elseif($insert==0){
+        echo "<script>alert('Thêm không thành công');</script>";
+        // echo "<script>window.location.href='?qlkhtv'</script>";
+      }elseif ($insert==-1) {
+        echo "<script>alert('Không thể Upload ảnh');</script>";
+      }elseif ($insert==-2) {
+        echo "<script>alert('Size ảnh không đủ');</script>";
+      }elseif ($insert==-3) {
+        echo "<script>alert('file ảnh không đúng định dạng');</script>";
+      }
+    }
+  }
+?>  

@@ -66,8 +66,8 @@
                     </select>
                     <td>Username</td>
                     <input type="text" class="form-control" id="username" placeholder="Enter username" name="username"></br>
-                    <td>Password</td>
-                    <input type="text" class="form-control" id="password" placeholder="Enter password" name="password"></br>
+                    <!-- <td>Password</td> -->
+                    <!-- <input type="text" class="form-control" id="password" placeholder="Enter password" name="password"></br> -->
                  
                   </div>
 
@@ -98,11 +98,11 @@
     include ("controller/TaiKhoan/ctaikhoan.php");
     if(isset($_REQUEST["btnsubmit"])){
         $Mavaitro=$_REQUEST['mavaitro'];
-        echo $Mavaitro;
+        // echo $Mavaitro;
         $username=$_REQUEST['username'];
-        $password=md5($_REQUEST['password']);
+        // $password=$_REQUEST['password'];
         $p=new ctaikhoan();
-        $table=$p->add_taikhoan($Mavaitro,$username,md5($_REQUEST['password']));
+        $table=$p->add_taikhoan($Mavaitro,$username);
         if ($table==1) {
             echo "<script>alert('Thêm tài khoản thành công')</script>";
         }else {

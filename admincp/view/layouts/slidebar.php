@@ -110,6 +110,13 @@
               </a>
 
             </li>
+            <li clas="nav-item">
+              <a href="?qlttpp" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Quản lý trung tâm phân phối</p>
+              </a>
+
+            </li>
 
           </ul>
         </li>

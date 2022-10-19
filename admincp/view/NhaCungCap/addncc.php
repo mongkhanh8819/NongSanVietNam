@@ -1,3 +1,8 @@
+ <?php
+  include_once("controller/NhaCungCap/cNCC.php");
+  include_once("controller/TaiKhoan/ctaikhoan.php");
+  $a= new ctaikhoan();
+ ?>
  <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -53,7 +58,7 @@
               </div>-->
               <!-- /.card-header -->
               <h3 style="text-align:center">Thêm Nhà Cung Cấp</h3>
-              <form action="#">
+              <form action="#" method="post" enctype="multipart/form-data">
                 <div class="row">
                   <div class="col">
                     <td>Mã nhà cung cấp</td>
@@ -66,6 +71,8 @@
                     <input type="file" class="form-control" id="hinhanh" placeholder="Chọn hình ảnh" name="hinhanh"></br>
                     <td>Địa chỉ nhà cung cấp</td>
                     <input type="text" class="form-control" id="diachincc" placeholder="Enter Địa chỉ nhà cung cấp" name="diachincc"></br>
+                  </div>  
+                  <div class="col">
                     <td>Địa chỉ người đại diện</td>
                     <input type="text" class="form-control" id="diachindd" placeholder="Enter Địa chỉ người đại diện" name="diachindd"></br>
                     <td>Số điện thoại nhà cung cấp</td>
@@ -76,8 +83,10 @@
                     <input type="mail" class="form-control", id="emailncc", placeholder="Enter email nhà cung cấp nông sản" name="emailncc"></br>
                     <td>Email người đại diện</td>
                     <input type="mail" class="form-control", id="emailndd", placeholder="Enter email người đại diện" name="emailndd"></br>
-                    <td>Username</td>
-                    <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username"></br>
+                  </div>
+
+                  <div class="col">
+                    
                     <td>Mã xã</td>
                     <!-- <input type="text" class="form-control" id="madn" placeholder="Enter Mã xã" name="madn"> -->
                     <div class="input-group mb-3">
@@ -111,39 +120,24 @@
                         </div>
                       </div>
                     </div>
-
+                    <td>Username</td>
+                    <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username"></br>
+                    <td>Password</td>
+                    <input type="text" class="form-control" id="password" placeholder="Enter Password" name="password"></br>
                   </div>
+                    
+
+                  
                  
 
                     <!--  -->
                  
                 </div>
-                <button type="submit" class="btn btn-primary" style="margin-left:45%">Submit</button>
-                <button type="reset" class="btn btn-primary" >Reset</button>
+                <button type="submit" class="btn btn-primary" name="submit" style="margin-left:45%">Submit</button>
+              
                 <!-- <input type="submit" value="Thêm Doanh Nghiệp" style="text-align:center"> -->
               </form>
-              <!-- <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
-                  <thead>
-                    <tr>
-                      <th>Mã doanh nghiệp</th>
-                      <th>Tên doanh nghiệp</th>
-                      <th>Số điện thoại</th>
-                      <th>Địa chỉ</th>
-                      <th>Email</th>
-                      <th>Mã số thuế</th>
-                      <th>Ngày lập </th>
-                      <th>Giới thiệu</th>
-                      <th>Tên người đại diện</th>
-                      <th>Tác vụ</th>                 
-                    </tr>
-                  </thead>
-                  <tbody>
-                  
-                  </tbody>
-                </table>
-              </div>-->
-              <!-- /.card-body -->
+             
             </div>
             <!-- /.card -->
           </div>
@@ -155,3 +149,64 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <?php
+  if(isset($_REQUEST["submit"])){
+    $MaNCC=$_REQUEST["mancc"];
+    $TenNCC=$_REQUEST["tenncc"];
+    $TenNDD=$_REQUEST["tenndd"]; 
+    $file=$_FILES["hinhanh"]["tmp_name"];
+    $tenanh=$_FILES["hinhanh"]["name"];
+    $type=$_FILES["hinhanh"]["type"];
+    $size=$_FILES["hinhanh"]["size"];
+    $DiaChi_NCC=$_REQUEST["diachincc"];
+    $DiaChi_NDD=$_REQUEST["diachindd"];
+    $SDT_NCC=$_REQUEST["sdtncc"];
+    $SDT_NDD=$_REQUEST["sdtndd"];
+    $Email_NCC=$_REQUEST["emailncc"];
+    $Email_NDD=$_REQUEST["emailndd"];
+    $username=$_REQUEST["username"];
+    $password=$_REQUEST["password"];
+    $MaXa=$_REQUEST["xa"];
+    $MaVaiTro=3;
+    
+  
+
+
+    $tk= new cTaikhoan();
+    $NCC= new cNCC();
+    if($username !=""){
+      $insert=$tk->add_taikhoan($MaVaiTro, $username, $password);
+      if($insert=1){
+        $insert=$NCC->add_nhacungcap($MaNCC, $TenNCC, $TenNDD,$file,$tenanh, $type,$size, $DiaChi_NCC,$DiaChi_NDD,$SDT_NCC,$SDT_NDD,$Email_NCC,$Email_NDD, $username, $MaXa);
+        if($insert==1){
+          echo "<script>alert('Thêm thành công');</script>";
+          // echo "<script>window.location.href='?qlkhtv'</script>";
+        }elseif($insert==0){
+          echo "<script>alert('Thêm không thành công');</script>";
+          echo "<script>window.location.href='?qlkhtv'</script>";
+        }elseif ($insert==-1) {
+          echo "<script>alert('Không thể Upload ảnh');</script>";
+        }elseif ($insert==-2) {
+          echo "<script>alert('Size ảnh không đủ');</script>";
+        }elseif ($insert==-3) {
+          echo "<script>alert('file ảnh không đúng định dạng');</script>";
+        }
+      }
+    }else {
+      $insert=$NCC->add_nhacungcap($MaNCC, $TenNCC, $TenNDD,$file,$tenanh, $type,$size, $DiaChi_NCC,$DiaChi_NDD,$SDT_NCC,$SDT_NDD,$Email_NCC,$Email_NDD, $username, $MaXa);
+      if($insert==1){
+        echo "<script>alert('Thêm thành công');</script>";
+        echo "<script>window.location.href='?qlkhtv'</script>";
+      }elseif($insert==0){
+        echo "<script>alert('Thêm không thành công');</script>";
+        echo "<script>window.location.href='?qlkhtv'</script>";
+      }elseif ($insert==-1) {
+        echo "<script>alert('Không thể Upload ảnh');</script>";
+      }elseif ($insert==-2) {
+        echo "<script>alert('Size ảnh không đủ');</script>";
+      }elseif ($insert==-3) {
+        echo "<script>alert('file ảnh không đúng định dạng');</script>";
+      }
+    }
+  }
+?>  

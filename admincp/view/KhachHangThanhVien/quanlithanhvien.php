@@ -18,8 +18,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-              <li class="breadcrumb-item active">Quản lý khách hàng thành viê<nav></nav></li>
+              <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
+              <li class="breadcrumb-item active">Quản lý khách hàng thành viên<nav></nav></li>
             </ol>
           </div>
         </div>
@@ -68,10 +68,10 @@
                     <tr>
                       <th>Mã KHTV</th>
                       <th>Tên KHTV</th>
-                      <th>Số điện thoại</th>
+                      <!-- <th>Số điện thoại</th> -->
                       <th>Địa chỉ</th>
                       <th>Ngày sinh</th>
-                      <td>Hình ảnh</td>
+                      <td style="">Hình ảnh</td>
                       <th>Email</th>
                       <th>Giới tính</th>
                       <th>Tác vụ</th>                 
@@ -86,10 +86,10 @@
                                     echo "<tr>";
                                     echo "<td>".$row['MaKHTV']."</td>";
                                     echo "<td>".$row['Ten_KHTV']."</td>";
-                                    echo "<td>".$row['SDT']."</td>";
+                                    // echo "<td>".$row['SDT']."</td>";
                                     echo "<td>".$row['DiaChi']."</td>";
                                     echo "<td>".$row['NgaySinh']."</td>";
-                                    echo "<td>".$row['HinhAnh']."</td>";
+                                    echo "<td><img src='assets/uploads/images/".$row['HinhAnh']."' alt='' height='100px' width='150px'></td>";
                                     echo "<td>".$row['Email']."</td>";
                                     if($row['GioiTinh']==0){
                                         echo "<td>Nam</td>";

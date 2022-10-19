@@ -82,7 +82,7 @@
                                     echo "<td>".$row['username']."</td>";
                                     echo "<td>".$row['password']."</td>";
                                     echo "<td>".$row['MaVaiTro']."</td>";
-                                    echo "<td><a href='?updatetk&&username=".$row['username']."'><i class='fa fa-pen' aria-hidden='true'></i></a> | <a href='#'><i class='fa fa-trash' aria-hidden='true'></i></a></td>";
+                                    echo "<td><a href='?updatetk&&username=".$row['username']."&&MaVaiTro=".$row['MaVaiTro']."'><i class='fa fa-pen' aria-hidden='true'></i></a> | <a href='?deletetk&&username=".$row['username']."'><i class='fa fa-trash' aria-hidden='true'></i></a></td>";
                                     echo "</tr>";
 			                    }
 		                    }
