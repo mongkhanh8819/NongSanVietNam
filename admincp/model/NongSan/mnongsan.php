@@ -231,7 +231,7 @@
 				}elseif ($tt == 2) {
 					$string = "UPDATE nongsan SET TrangThaiNongSan = 2 WHERE MaNongSan = ".$manongsan;
 				}
-				//echo $string;
+				echo $string;
 				$kq = mysqli_query($conn,$string);
 				$p -> dongketnoi($conn);
 				return $kq;

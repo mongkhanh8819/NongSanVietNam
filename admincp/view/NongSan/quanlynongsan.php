@@ -66,6 +66,7 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
+                      <th>Mã nông sản</th>
                       <th>Tên nông sản</th>
                       <th>Hình ảnh</th>
                       <th>Trạng thái kiểm định</th>
@@ -84,12 +85,23 @@
 		                    if(mysqli_num_rows($table) > 0){
 			                    while($row = mysqli_fetch_assoc($table)) {
                                     echo "<tr>";
+                                    echo "<td>".$row['MaNongSan']."</td>";
                                     echo "<td>".$row['TenNongSan']."</td>";
                                     echo "<td><img src='../assets/uploads/images/".$row['HinhAnh']."' width='100px' height='100px'></img></td>";
                                     echo "<td>".$row['TrangThaiKiemDinh']."</td>";
                                     echo "<td>".$row['TrangThaiNongSan']."</td>";
                                     echo "<td>".$row['MaNCC']."</td>";
-                                    echo "<td><button type='submit' name='duyet' class='btn btn-primary duyetbtn'>Duyệt bài đăng</button> <button type='submit' name='update' class='btn btn-primary editbtn'>Chi tiết</button> <button type='submit' name='delete' class='btn btn-danger deletebtn deletebtn'>Xóa</button> </td>";
+                                    echo "<td>";
+                                    ?>
+                                    <?php if($row['TrangThaiNongSan'] == 1){ ?>
+                                      <button type="button" class="btn btn-danger khoabtn">KHÓA BÀI ĐĂNG</button>
+                        
+                                      <?php }elseif($row['TrangThaiNongSan'] == 0 || $row['TrangThaiNongSan'] == 2 ){ ?>
+                                        <!-- <button class="btn btn-primary editbtn">ĐĂNG BÁN</button> -->
+                                        <button type="button" class="btn btn-primary duyetbtn">Duyệt bài đăng</button>
+                                      <?php } ?>
+                                    <?php
+                                    echo "<button type='submit' name='update' class='btn btn-primary editbtn'>Chi tiết</button> <button type='submit' name='delete' class='btn btn-danger deletebtn deletebtn'>Xóa</button> </td>";
                                     echo "</tr>";
 			                    }
 		                    }
@@ -194,8 +206,66 @@
     
                   <!-- Modal -->
         <!--  -->
+        <!-- Modal -->
+                  <!-- DELETE POP UP FORM (Bootstrap MODAL) -->
+                  <div class="modal fade" id="duyet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel"> Duyệt bài đăng </h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                              </div>
 
+                              <form action="" method="POST">
 
+                                  <div class="modal-body">
+
+                                        <input type="text" class="form-control" name="tennongsan" id="ten"  value="" readonly>                                     
+
+                                      <input type="hidden" class="form-control" name="manongsan" id="ma"  value="" readonly>
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal"> CLOSE </button>
+                                      <button type="submit" name="duyet" class="btn btn-primary"> DUYỆT </button>
+                                  </div>
+                              </form>
+
+                          </div>s
+                      </div>
+                  </div>
+              <!-- Modal -->
+                  <!-- DELETE POP UP FORM (Bootstrap MODAL) -->
+                  <div class="modal fade" id="khoa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel"> Khóa bài đăng </h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                              </div>
+
+                              <form action="" method="POST">
+
+                                  <div class="modal-body">
+
+                                        <input type="text" class="form-control" name="tennongsan" id="tenns"  value="" readonly>                                     
+
+                                      <input type="hidden" class="form-control" name="manongsan" id="mans"  value="" readonly>
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal"> CLOSE </button>
+                                      <button type="submit" name="khoa" class="btn btn-primary"> Khóa </button>
+                                  </div>
+                              </form>
+
+                          </div>s
+                      </div>
+                  </div>
 
 
       </div><!-- /.container-fluid -->
@@ -205,7 +275,42 @@
   <!-- /.content-wrapper -->
   <?php 
 
-      
+    ///----------------------------
+        ///----------------------------
+        ///----------------------------
+        ///----------------------------
+        ///--------XỬ LÝ CẬP NHẬT NÔNG SẢN
+        ///----------------------------
+        ///----------------------------
+        ///----------------------------
+        ///----------------------------
+        if (isset($_REQUEST['duyet'])) {
+            $mans = $_REQUEST['manongsan'];
+
+            $kq = $p-> edit_trangthai_nongsan($mans,1);
+            //thông báo
+            if($kq){
+              //echo "<script>alert('Duyệt thành công!');</script>";
+              echo "<script>window.location.href = 'index.php?qlns';</script>";
+            }else{
+              //echo "<script>alert('Duyệt thất bại!')</script>";
+              echo "<script>window.location.href = 'index.php?qlns';</script>";
+              
+            }
+        }elseif (isset($_REQUEST['khoa'])) {
+            $mans = $_REQUEST['manongsan'];
+            //echo $mans;
+            //echo "<script>alert(".$mans.");</script>";
+            $kq = $p-> edit_trangthai_nongsan($mans,2);
+            //thông báo
+            if($kq){
+              //echo "<script>alert('Hủy đăng bán thành công!');</script>";
+              echo "<script>window.location.href = 'index.php?qlns';</script>";
+            }else{
+              //echo "<script>alert('Hủy đăng bán thất bại!');</script>";
+              echo "<script>window.location.href = 'index.php?qlns';</script>";
+            }         
+        }  
 
 
    ?>
@@ -249,6 +354,48 @@
                   //$("#xemchitiet").html(data);
                     //alert("dd");
                 //})
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $('.duyetbtn').on('click', function () {
+
+                $('#duyet').modal('show');
+
+                $tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+
+                $('#ma').val(data[0]);
+                $('#ten').val(data[1]);
+                //alert(data[0]);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $('.khoabtn').on('click', function () {
+
+                $('#khoa').modal('show');
+
+                $tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+
+                $('#mans').val(data[0]);
+                $('#tenns').val(data[1]);
+                //alert(data[0]);
             });
         });
     </script>
