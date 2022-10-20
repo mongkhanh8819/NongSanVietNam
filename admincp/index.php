@@ -76,6 +76,10 @@
   elseif (isset($_REQUEST["updatettpp"])) {
     include("view/TrungTamPhanPhoi/updatetrungtamphanphoi.php");  
   }
+  #QUẢN LÝ NÔNG SẢN
+  elseif (isset($_REQUEST['qlns'])) {
+    include("view/NongSan/quanlynongsan.php");
+  }
   else {
     include_once("view/content.php");
   }

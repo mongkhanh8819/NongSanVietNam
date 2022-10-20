@@ -72,9 +72,9 @@
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
             <p>
-              Quản lý
+              Quản lý người dùng
               <i class="fas fa-angle-left right"></i>
-              <span class="badge badge-info right">2</span>
+              <span class="badge badge-info right">6</span>
             </p>
           </a>
           <ul class="nav nav-treeview">
@@ -122,8 +122,33 @@
         </li>
 
 
-        <!-- Quản lí -->
+        <!-- Quản lí nông sản -->
 
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+              Nông sản/Kiểm định
+              <i class="fas fa-angle-left right"></i>
+              <span class="badge badge-info right">2</span>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="?qlns" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Quản lý nông sản</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="?qlkhtv" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>QR Code</p>
+              </a>
+            </li>
+
+          </ul>
+        </li>
 
         <!-- Phân Quyền + Thống kê báo cáo -->
         <li class="nav-item">
