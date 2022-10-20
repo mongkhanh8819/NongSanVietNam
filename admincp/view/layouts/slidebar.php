@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="../../index3.html" class="brand-link">
       <img src="assets/public/images/Fruit-Olive-Green-icon.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="logo-lg" id="index"> Quản trị hệ thống</span>
+      <span class="logo-lg" id="index">Quản trị hệ thống</span>
     </a>
 
     <!-- Sidebar -->

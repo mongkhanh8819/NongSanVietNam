@@ -7,6 +7,27 @@
 		//---------------------------
 		//---------------------------
 		//---------------------------
+		//-----LẤY SỐ LƯỢNG NÔNG SẢN 
+		//---------------------------
+		//---------------------------
+		//---------------------------
+		public function count_nongsan(){
+			$conn;
+			$p = new ketnoi();
+			if($p -> moketnoi($conn)){
+				$string = "SELECT count(*) FROM nongsan";
+				$table = mysqli_query($conn,$string);
+				$p -> dongketnoi($conn);
+				//
+				return $table;
+			}else{
+				return false;
+			}
+		}
+		//---------------------------
+		//---------------------------
+		//---------------------------
+		//---------------------------
 		//-----LẤY TẤT CẢ NÔNG SẢN 
 		//---------------------------
 		//---------------------------
@@ -28,7 +49,7 @@
 		//---------------------------
 		//---------------------------
 		//---------------------------
-		//-----LẤY TẤT CẢ NÔNG SẢN 
+		//-----LẤY TẤT CẢ NÔNG SẢN ADMIN
 		//---------------------------
 		//---------------------------
 		//---------------------------
@@ -36,7 +57,7 @@
 			$conn;
 			$p = new ketnoi();
 			if($p -> moketnoi($conn)){
-				$string = "SELECT * FROM nongsan";
+				$string = "SELECT * FROM loainongsan JOIN nongsan ON loainongsan.MaLoaiNongSan = nongsan.MaLoaiNongSan";
 				$table = mysqli_query($conn,$string);
 				$p -> dongketnoi($conn);
 				//
@@ -177,6 +198,38 @@
 					$string = "UPDATE nongsan SET TrangThaiNongSan = 0 WHERE MaNongSan = ".$manongsan;
 				}elseif ($tt == 3) {
 					$string = "UPDATE nongsan SET TrangThaiNongSan = 3 WHERE MaNongSan = ".$manongsan;
+				}
+				//echo $string;
+				$kq = mysqli_query($conn,$string);
+				$p -> dongketnoi($conn);
+				return $kq;
+			}else{
+				return false;
+			}
+		}
+		//---------------------------
+		//---------------------------
+		//---------------------------
+		//---------------------------
+		//-----DUYỆT BÀI ĐĂNG BÁN NÔNG SẢN 
+		//Trạng thái nông sản GỒM
+		//-	0: Chờ duyệt tin
+		//-	1: Đã duyệt
+		//-	2: Đang khóa
+		//-	3. Chưa đăng tin (mặc định)
+		//--> DUYỆT BÀI ĐĂNG SẼ CẬP NHẬT TRẠNG THÁI THÀNH 1
+		//--> KHÓA BÀI ĐĂNG SẼ CẬP NHẬT TRẠNG THÁI THÀNH 2
+		//---------------------------
+		//---------------------------
+		//---------------------------
+		public function capnhat_trangthai_nongsan($manongsan,$tt){
+			$conn;
+			$p = new ketnoi();
+			if($p -> moketnoi($conn)){
+				if($tt == 1){
+					$string = "UPDATE nongsan SET TrangThaiNongSan = 1 WHERE MaNongSan = ".$manongsan;
+				}elseif ($tt == 2) {
+					$string = "UPDATE nongsan SET TrangThaiNongSan = 2 WHERE MaNongSan = ".$manongsan;
 				}
 				//echo $string;
 				$kq = mysqli_query($conn,$string);

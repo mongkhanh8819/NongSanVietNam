@@ -5,6 +5,16 @@
 	class cNongSan{
 		//--------------------------
 		//--------------------------
+		//-------LẤY SỐ LƯỢNG NÔNG SẢN
+		//--------------------------
+		//--------------------------
+		public function count_nongsan(){
+			$p = new mNongSan();
+			$table = $p -> count_nongsan();
+			return $table;
+		}
+		//--------------------------
+		//--------------------------
 		//-------LẤY DANH SÁCH NÔNG SẢN
 		//--------------------------
 		//--------------------------
@@ -135,6 +145,16 @@
 		public function dangtin_nongsan($manongsan,$tt){
 			$p = new mNongSan();
 			$table = $p -> dangban_nongsan($manongsan,$tt);
+			return $table;
+		}
+		//--------------------------
+		//--------------------------
+		//-------CẬP NHẬT TRẠNG THÁI NÔNG SẢN
+		//--------------------------
+		//--------------------------
+		public function edit_trangthai_nongsan($manongsan,$tt){
+			$p = new mNongSan();
+			$table = $p -> capnhat_trangthai_nongsan($manongsan,$tt);
 			return $table;
 		}
 		
