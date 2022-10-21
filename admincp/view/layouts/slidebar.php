@@ -15,7 +15,7 @@
         </div>
         <div class="info">
           <a href="#" class="d-block dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['TenAdmin']; ?></a>
-          <ul class="dropdown-menu">
+          <!-- <ul class="dropdown-menu">
             <li class="user-header">
               <img src="assets/public/images/alert_cart.jpg" class="img-circle" alt="User Image">
               <p>Khánh<small>CC</small></p>
@@ -28,7 +28,7 @@
                 <a href="admin/user/logout.html" class="btn btn-default btn-flat">Thoát</a>
               </div>
             </li>
-          </ul>
+          </ul> -->
         </div>
       </div>
       <!-- <li class="dropdown user user-menu" style="height: 52px; padding: 0px">

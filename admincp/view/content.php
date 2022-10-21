@@ -80,9 +80,9 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3>53</h3>
 
-                <p>Bounce Rate</p>
+                <p>Đơn đặt hàng nông sản</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -129,9 +129,9 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h3>63</h3>
 
-                <p>Unique Visitors</p>
+                <p>Trung tâm phân phối</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
@@ -146,7 +146,7 @@
             <div class="small-box bg-success">
               <div class="inner" id="chart-container">
                 <canvas id="graph"></canvas>
-                <p>Thông tin kiểm định</p>
+                <p>Tỉ lệ kiểm định nông sản</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
@@ -157,10 +157,38 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-warning">
               <div class="inner" id="barchart-container">
                 <canvas id="barchart" width="600px" height="600px"></canvas>
                 <p>Số lượng người dùng</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+            </div>
+          </div>
+          <!-- ./col -->
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner" id="barchart-container">
+                <canvas id="qr_chart" width="600px" height="600px"></canvas>
+                <p>Thống kê đơn đặt hàng</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+            </div>
+          </div>
+          <!-- ./col -->
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner" id="barchart-container">
+                <canvas id="kiemdinhchart" width="600px" height="600px"></canvas>
+                <p>Thống kê số phiếu kiểm định trong tháng</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -217,8 +245,8 @@
                     });
                 });
         }
-        </script>
-        <script>
+  </script>
+  <script>
         $(document).ready(function () {
             showbarchart();
         });
@@ -276,4 +304,79 @@
 
                 });
         }
-    </script>
+  </script>
+  <script type="text/javascript">
+    var ctx = document.getElementById('qr_chart').getContext('2d');
+    var chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ["January","February","March","April","May","June","July","August","September","October","November","December"],
+        datasets: [{
+          label: "Số đơn hàng",
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: [0,10,5,2,20,30,45,50,10,40,34,31],
+        }]
+      },
+      options: {}
+    });
+  </script>
+  <script>
+        $(document).ready(function () {
+            showkiemdinhchart();
+        });
+
+        function showkiemdinhchart(){
+        
+            $.post("API/thongke/api_sophieu_kiemdinh_theothang.php",
+                function (data){
+                    console.log(data);
+                    var Thang = [];
+                    var SoPhieuKD = []; 
+
+                    for (var i in data) {
+                        Thang.push(data[i].Thang);
+                        SoPhieuKD.push(data[i].SoPhieuKD);
+                    }
+
+                    var options = {
+                        legend: {
+                            display: false
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true
+                            }],
+                        yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    };
+
+                    var myChart = {
+                        labels: Thang,
+                        datasets: [
+                            {
+                                label: 'Số phiếu kiểm định',
+                                backgroundColor: 'white',
+                                borderColor: 'white',
+                                hoverBackgroundColor: '#0ec2b6',
+                                hoverBorderColor: '#42f5ef',
+                                data: SoPhieuKD
+                            }
+                        ]
+                    };
+
+                    var bar = $("#kiemdinhchart"); 
+                    var barGraph = new Chart(bar, {
+                        type: 'line',
+                        data: myChart,
+                        options: options
+                    });
+
+
+                });
+        }
+  </script>
