@@ -2,6 +2,23 @@
     include_once("model/connect.php");
 
     class mNVPP{
+        //--------------THỐNG KÊ
+        //
+        #THỐNG KÊ SỐ LƯỢNG KHÁCH HÀNG DOANH NGHIỆP
+        public function count_nhanvien(){
+            $conn;
+            $p=new ketnoi();
+            if($p->moketnoi($conn)){
+                $string="SELECT count(*) FROM nhanvienphanphoi";
+                $table=mysqli_query($conn,$string);
+                $p->dongketnoi($conn);
+                return $table;
+            }else {
+                return false;
+            }
+        }
+        //
+        //------------------------------------------
         #Hiển thị thông tin nhà cung cấp
         public function select_nhanvien(){
             $conn;

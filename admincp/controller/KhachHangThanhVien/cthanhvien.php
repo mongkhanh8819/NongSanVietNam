@@ -2,6 +2,16 @@
     include_once("model/KhachHangThanhVien/mthanhvien.php");
 
     class cKHTV{
+    	//--------------THỐNG KÊ
+        //
+        #THỐNG KÊ SỐ LƯỢNG KHÁCH HÀNG DOANH NGHIỆP
+        public function count_thanhvien(){
+            $p = new mthanhvien();
+            $table = $p->count_thanhvien();
+            return $table;
+        }
+        //
+        //------------------------------------------
         #Hien thi thong tin thanh vien
         public function select_KHTV(){
             $p = new mthanhvien();

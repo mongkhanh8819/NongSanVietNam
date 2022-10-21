@@ -1,7 +1,18 @@
   <?php 
 
     include_once("controller/NongSan/cnongsan.php");
+    include_once("controller/KhachHangThanhVien/cthanhvien.php");
+    include_once("controller/NhanVienPhanPhoi/cnvphanphoi.php");
+    include_once("controller/NhaCungCap/cNCC.php");
+    include_once("controller/KhachHangDoanhNghiep/cdoanhnghiep.php");
+
     $p = new cNongSan();
+    $tv = new cKHTV();
+    $dn = new cKHDN();
+    $ncc = new cNCC();
+    $nvpp = new cNVPP();
+
+    
    ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -10,12 +21,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Quản lý khách hàng</h1>
+            <h1>DASHBOARD</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-              <li class="breadcrumb-item active">Quản lý khách hàng</li>
+              <li class="breadcrumb-item active">Dashboard</li>
             </ol>
           </div>
         </div>
@@ -61,7 +72,7 @@
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -76,7 +87,7 @@
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -84,14 +95,33 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
-
-                <p>User Registrations</p>
+                <h3><?php 
+                      $dem = 0;
+                      $count_dn = $dn -> count_dn();
+                      //var_dump(mysqli_fetch_array($count_dn));
+                      while($row1 = mysqli_fetch_array($count_dn)){
+                        $dem = $row1['count(*)'];
+                      }        
+                      $count_tv = $tv -> count_thanhvien();
+                      while($row2 = mysqli_fetch_array($count_tv)){
+                        $dem += $row2['count(*)'];
+                      }
+                      $count_ncc = $ncc -> count_NCC();
+                      while($row3 = mysqli_fetch_array($count_ncc)){
+                        $dem += $row3['count(*)'];
+                      }
+                      $count_nvpp = $nvpp -> count_nhanvien();
+                      while($row4 = mysqli_fetch_array($count_nvpp)){
+                        $dem += $row4['count(*)'];
+                      }
+                      echo $dem; 
+                    ?></h3>
+                <p>Số lượng thành viên</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -106,7 +136,35 @@
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner" id="chart-container">
+                <canvas id="graph"></canvas>
+                <p>Thông tin kiểm định</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+            </div>
+          </div>
+          <!-- ./col -->
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner" id="barchart-container">
+                <canvas id="barchart" width="600px" height="600px"></canvas>
+                <p>Số lượng người dùng</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
             </div>
           </div>
           <!-- ./col -->
@@ -122,4 +180,100 @@
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
+  <script>
+        $(document).ready(function () {
+            showGraph();
+        });
+
+
+        function showGraph(){
+                $.post("API/thongke/api_phanloainongsan.php",
+                function (data){
+                    var labels = [];
+                    var result = [];
+                    for (var i in data) {
+                        labels.push(data[i].status);
+                        result.push(data[i].size_status);
+                    }
+                    var pie = $("#graph");
+                    var myChart = new Chart(pie, {
+                        type: 'pie',
+                        data: {
+                            labels: labels,
+                            datasets: [
+                                {
+                                    data: result,
+                                    borderColor: ["rgba(217, 83, 79,1)","rgba(240, 173, 78, 1)","rgba(92, 184, 92, 1)"],
+                                    backgroundColor: ["white","blue","yellow"],
+                                }
+                            ]
+                        },
+                        options: {
+                            title: {
+                                display: true,
+                                text: "Chuyên ngành"
+                            }
+                        }
+                    });
+                });
+        }
+        </script>
+        <script>
+        $(document).ready(function () {
+            showbarchart();
+        });
+
+        function showbarchart(){
+        
+            $.post("API/thongke/api_phanloainguoidung.php",
+                function (data){
+                    console.log(data);
+                    var formStatusVar = [];
+                    var total = []; 
+
+                    for (var i in data) {
+                        formStatusVar.push(data[i].status);
+                        total.push(data[i].size_status);
+                    }
+
+                    var options = {
+                        legend: {
+                            display: false
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true
+                            }],
+                        yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    };
+
+                    var myChart = {
+                        labels: formStatusVar,
+                        datasets: [
+                            {
+                                label: 'Tổng số',
+                                backgroundColor: '#17cbd1',
+                                borderColor: '#46d5f1',
+                                hoverBackgroundColor: '#0ec2b6',
+                                hoverBorderColor: '#42f5ef',
+                                data: total
+                            }
+                        ]
+                    };
+
+                    var bar = $("#barchart"); 
+                    var barGraph = new Chart(bar, {
+                        type: 'bar',
+                        data: myChart,
+                        options: options
+                    });
+
+
+                });
+        }
+    </script>

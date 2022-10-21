@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="assets/dist1/css/adminlte.min.css">
   <!-- scripts -->
   <!-- jQuery -->
+  <script src="assets/plugins/jquery/chart.min.js"></script>
   <script src="assets/plugins/jquery/jquery.min.js"></script>
   <script src="assets/public/ajax/ajax_tinh_thanh.js"></script>
   <!-- Bootstrap 4 -->

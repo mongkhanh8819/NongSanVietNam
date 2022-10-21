@@ -2,6 +2,16 @@
     include_once("model/NhanVienPhanPhoi/mnvphanphoi.php");
 
     class cNVPP{
+    	//--------------THỐNG KÊ
+		//
+		#THỐNG KÊ SỐ LƯỢNG nhân viên phân phối
+		public function count_nhanvien(){
+            $p = new mNVPP();
+            $table = $p->count_nhanvien();
+            return $table;
+        }
+		//
+		//------------------------------------------
         #Hien thi thong tin thanh vien
         public function select_NVPP(){
             $p = new mNVPP();

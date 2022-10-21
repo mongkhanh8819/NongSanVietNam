@@ -2,6 +2,16 @@
     include_once("model/NhaCungCap/mNCC.php");
 
     class cNCC{
+    	//--------------THỐNG KÊ
+		//
+		#THỐNG KÊ SỐ LƯỢNG nhân viên phân phối
+		public function count_NCC(){
+            $p=new mNCC();
+            $table=$p->count_NCC();
+            return $table;
+        }
+		//
+		//------------------------------------------
         #xem nha cung cap
         public function select_NCC(){
             $p=new mNCC();

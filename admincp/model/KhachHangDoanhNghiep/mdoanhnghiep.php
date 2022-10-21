@@ -3,6 +3,24 @@
 	include_once("model/connect.php");
 
 	class mKhachHangDoanhNghiep{
+		//--------------THỐNG KÊ
+		//
+		#THỐNG KÊ SỐ LƯỢNG KHÁCH HÀNG DOANH NGHIỆP
+		public function count_dn(){
+			$conn;
+			$p = new ketnoi();
+			if($p -> moketnoi($conn)){
+				$string = "SELECT count(*) FROM khachhangdoanhnghiep";
+				$table = mysqli_query($conn,$string);
+				$p -> dongketnoi($conn);
+				//
+				return $table;
+			}else{
+				return false;
+			}
+		}
+		//
+		//------------------------------------------
 		#xem doanh nghiệp
 		public function select_KHDN(){
 			$conn;

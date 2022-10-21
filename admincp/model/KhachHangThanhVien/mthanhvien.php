@@ -2,6 +2,24 @@
     include_once("model/connect.php");
 
     class mthanhvien{
+        //--------------THỐNG KÊ
+        //
+        #THỐNG KÊ SỐ LƯỢNG KHÁCH HÀNG DOANH NGHIỆP
+        public function count_thanhvien(){
+            $conn;
+            $p=new ketnoi();
+            if($p->moketnoi($conn)){
+                $string = "SELECT count(*) FROM khachhangthanhvien";
+                $table =mysqli_query($conn, $string);
+                $p->dongketnoi($conn);
+                return $table;
+            }else {
+                return false;
+            }
+
+        }
+        //
+        //------------------------------------------
         #Hien thi thong tin thanh vien
         public function select_thanhvien(){
             $conn;

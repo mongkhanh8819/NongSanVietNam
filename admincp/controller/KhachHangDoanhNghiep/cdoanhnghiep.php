@@ -3,6 +3,16 @@
 	include_once("Model/KhachHangDoanhNghiep/mdoanhnghiep.php");
 
 	class cKHDN{
+        //--------------THỐNG KÊ
+        //
+        #THỐNG KÊ SỐ LƯỢNG KHÁCH HÀNG DOANH NGHIỆP
+        public function count_dn(){
+            $p = new mKhachHangDoanhNghiep();
+            $table = $p -> count_dn();
+            return $table;
+        }
+        //
+        //------------------------------------------
         #xem doanh nghiệp
 		public function select_KHDN(){
 			$p = new mKhachHangDoanhNghiep();
