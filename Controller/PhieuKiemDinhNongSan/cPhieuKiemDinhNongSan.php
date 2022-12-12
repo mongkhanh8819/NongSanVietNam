@@ -25,6 +25,17 @@
 			$list = $p -> select_phieukiemdinh_by_nvpp($manvpp);
 			return $list;
 		}
+		//----------------------------
+		//----------------------------
+		//-------------SELECT
+		//-------------PHIẾU KIỂM ĐỊNH
+		//-------------THEO MÃ PHIẾU
+		//----------------------------
+		public function get_phieukiemdinh_by_maphieu($maphieu){
+			$p = new mPhieuKiemDinhNongSan();
+			$list = $p -> select_phieukiemdinh_by_maphieu($maphieu);
+			return $list;
+		}
 		//--------------------------
 		//--------------------------
 		//-------THÊM THÔNG TIN NÔNG SẢN 

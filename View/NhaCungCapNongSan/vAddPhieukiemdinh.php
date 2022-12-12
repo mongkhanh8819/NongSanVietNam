@@ -79,7 +79,7 @@
                   </div>
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary" style="margin-left:45%">Gửi yêu cầu</button>
-                <button type="reset" class="btn btn-primary" >Reset</button>
+                <button type="reset" class="btn btn-primary">Reset</button>
                 <!-- <input type="submit" value="Thêm Doanh Nghiệp" style="text-align:center"> -->
                 <?php }
                   } ?>

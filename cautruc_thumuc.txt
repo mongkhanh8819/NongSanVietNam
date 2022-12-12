@@ -1,7 +1,0 @@
-NongSanVN
-+--admincp
-+--assets
-+--Controller
-+--Model
-+--View
---index.php

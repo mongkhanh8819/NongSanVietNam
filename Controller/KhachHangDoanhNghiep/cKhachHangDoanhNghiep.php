@@ -73,6 +73,49 @@
 			}
 		}
 		//
+		//--------------------------
+		//--------------------------
+		//-------CẬP NHẬT THÔNG TIN KHÁCH HÀNG DOANH NGHIỆP
+		//--------------------------
+		//--------------------------
+		public function edit_khdn_by_id($madn,$tendoanhnghiep,$sdt,$diachidn,$emaildn,$mst,$ngaytl,$gioithieu,$tennguoidaidien,$hinhanh,$diachindd,$sdtndd,$emailndd,$maxa,$file,$type,$size){
+			if ($hinhanh != "") {
+      			$duoi_file = strtolower(end(explode('.',$hinhanh)));
+      			$name = $madn."_khdn_".rand(201,300)."_edited.".basename($duoi_file);
+				if($type == "image/jpeg" || $type == "image/png"){
+					if($size <= 2*1024*1024){
+						if(move_uploaded_file($file,"assets/uploads/avatar/".$name)){
+							$p = new mKhachHangDoanhNghiep();
+							$edit = $p -> update_khdn_by_id($madn,$tendoanhnghiep,$sdt,$diachidn,$emaildn,$mst,$ngaytl,$gioithieu,$tennguoidaidien,$name,$diachindd,$sdtndd,$emailndd,$maxa);
+							//var_dump($edit);
+							if($edit){
+								$_SESSION['avatar'] = $name;
+								return 1;
+							}
+							else{
+								return 0; //không thể edit
+							}
+						}else{
+							return -1; //không thể upload
+						}
+					}else{
+						return -2; //Size kích thước lơn
+					}
+				}else{
+					return -3; //Không đúng loại file
+				}	
+			}else{
+				$p = new mKhachHangDoanhNghiep();
+				$edit = $p -> update_khdn_by_id($madn,$tendoanhnghiep,$sdt,$diachidn,$emaildn,$mst,$ngaytl,$gioithieu,$tennguoidaidien,$hinhanh,$diachindd,$sdtndd,$emailndd,$maxa);
+				//var_dump($edit);
+				if($edit){
+					return 1;
+				}
+				else{
+					return 0; //không thể edit
+				}
+			}
+		}
 
 	}
 

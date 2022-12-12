@@ -31,7 +31,7 @@
 		    padding:0;
 		}
 	</style>	
-<form action="#" method="post" enctype="multipart/form-data">
+<form action="" method="post" enctype="multipart/form-data">
 
   <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
@@ -45,7 +45,7 @@
             //echo "<img class='rounded-circle mt-5' width='150px' src='assets/uploads/avatar/".$_SESSION['avatar']."'></img>"; 
             //echo $_SESSION['avatar'];
             if ($_SESSION['avatar'] != "") {
-             echo "<label class='filebutton'><img class='rounded-circle mt-6' width='270px' src='assets/uploads/avatar/".$_SESSION['avatar']."'></img><span><input type='file' id='myfile' name='myfile'></span></label>"; 
+             echo "<label class='filebutton'><img class='rounded-circle mt-6' width='260px' src='assets/uploads/avatar/".$_SESSION['avatar']."'></img><span><input type='file' id='myfile' name='myfile'></span></label>"; 
             } else {
               echo "<label class='filebutton1'><input type='file' id='myfile' name='myfile'></label>";
             }
@@ -66,7 +66,7 @@
       <div class="col-md-8 border-right">
         <div class="p-3 py-5">
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <h4 class="text-right"><b>Cập nhật thông tin nhà cung cấp</b></h4>
+            <h4 class="text-right"><b>CẬP NHẬT THÔNG TIN DOANH NGHIỆP</b></h4>
           </div>
           <!-- THÔNG TIN NGƯỜI ĐẠI DIỆN -->
           <!--  -->
@@ -75,7 +75,7 @@
           <!--  -->
           <!--  -->
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <h5 class="text-right">Thông tin <b>NGƯỜI ĐẠI DIỆN</b></h5>
+            <h5 class="text-right">Thông tin <b>DOANH NGHIỆP</b></h5>
           </div>
           <div class="row mt-6">
           	<?php 
@@ -86,31 +86,34 @@
           			while ($row = mysqli_fetch_array($tt)) {
           				?>
           <div class="row col-mt-12"><label class="labels">Mã doanh nghiệp</label>
-              <input type="text" class="user-infor form-control" name="tenndd" value="<?php echo $row['MaDN'] ?>">
+              <input type="text" class="user-infor form-control" name="madn" value="<?php echo $row['MaDN'] ?>" readonly>
           </div>
           <div class="row mt-6">
             <div class="col-md-6"><label class="labels">Tên doanh nghiệp</label>
-              <input type="tel" class="user-infor form-control" name="sdtndd" value="<?php echo $row['TenDoanhNghiep'] ?>">
+              <input type="tel" class="user-infor form-control" name="tendn" value="<?php echo $row['TenDoanhNghiep'] ?>">
             </div>
             <div class="col-md-6"><label class="labels">Email doanh nghiệp</label>
-              <input type="email" class="user-infor form-control" placeholder="Nhập Email doanh nghiệp" name="emailndd" value="<?php echo $row['Email'] ?>">
+              <input type="email" class="user-infor form-control" placeholder="Nhập Email doanh nghiệp" name="emaildn" value="<?php echo $row['Email'] ?>">
             </div>
             <div class="col-md-6"><label class="labels">Mã số thuế</label>
-              <input type="text" class="user-infor form-control" name="sdtndd" value="<?php echo $row['MST'] ?>">
+              <input type="text" class="user-infor form-control" name="mst" value="<?php echo $row['MST'] ?>">
             </div>
             <div class="col-md-6"><label class="labels">Ngày thành lập</label>
-              <input type="date" class="user-infor form-control" placeholder="Nhập Email doanh nghiệp" name="emailndd" value="<?php echo $row['NgayThanhLap'] ?>">
+              <input type="date" class="user-infor form-control" placeholder="Nhập Email doanh nghiệp" name="ngaytl" value="<?php echo $row['NgayThanhLap'] ?>">
             </div>
             <!-- <div class="col-md-12"><label class="labels">Ngày sinh</label>
               <input type="date" class="user-infor form-control" name="date" value="<?php //echo $row['NgaySinh'] ?>">
             </div> -->
             <div class="col-md-12"><label class="labels">Địa chỉ doanh nghiệp</label>
-              <input type="text" class="user-infor form-control" placeholder="Nhập địa chỉ doanh nghiệp" name="diachindd" value="<?php echo $row['DiaChi'] ?>">
+              <input type="text" class="user-infor form-control" placeholder="Nhập địa chỉ doanh nghiệp" name="diachidn" value="<?php echo $row['DiaChi'] ?>">
             </div>
             <div class="col-md-12"><label class="labels">Số điện thoại doanh nghiệp</label>
-              <input type="text" class="user-infor form-control" placeholder="Nhập địa chỉ doanh nghiệp" name="diachindd" value="<?php echo $row['SDT'] ?>">
+              <input type="text" class="user-infor form-control" placeholder="Nhập địa chỉ doanh nghiệp" name="sdtdn" value="<?php echo $row['SDT'] ?>">
             </div>
-            
+            <div class="col-md-12"><label class="labels">Giới thiệu</label>
+              <!-- <input type="text" class="user-infor form-control" placeholder="Nhập địa chỉ doanh nghiệp" name="gioithieudn" value="<?php //echo $row['GioiThieu'] ?>"> -->
+              <textarea name="gioithieudn" cols="30" rows="10" class="form-control"><?php echo $row['GioiThieu']; ?></textarea>
+            </div>         
           </div>
           <!-- THÔNG TIN NGƯỜI ĐẠI DIỆN -->
           <!--  -->
@@ -119,24 +122,24 @@
           <!--  -->
           <!--  -->
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <h5 class="text-right">Thông tin <b>NHÀ CUNG CẤP NÔNG SẢN</b></h5>
+            <h5 class="text-right">Thông tin <b>NGƯỜI ĐẠI DIỆN</b></h5>
           </div>
 
           <div class="row mt-6">
-            <div class="col-md-6"><label class="labels">Tên nhà cung cấp</label>
-              <input type="text" class="user-infor form-control" name="tenncc" value="<?php echo $row['TenNhaCungCap'] ?>">
+            <div class="col-md-6"><label class="labels">Tên người đại diện</label>
+              <input type="text" class="user-infor form-control" name="tennguoidaidien" value="<?php echo $row['TenNguoiDaiDien'] ?>" placeholder="Nhập tên người đại diện">
             </div>
-            <div class="col-md-6"><label class="labels">Email nhà cung cấp</label>
-              <input type="text" class="user-infor form-control" name="emailncc"  value="<?php echo $row['EmailNCC'] ?>">
+            <div class="col-md-6"><label class="labels">Email người đại diện</label>
+              <input type="text" class="user-infor form-control" name="emailndd"  value="<?php echo $row['Email_NDD'] ?>" placeholder="Nhập Email người đại diện">
             </div>
             <!-- <div class="col-md-12"><label class="labels">Ngày sinh</label>
               <input type="date" class="user-infor form-control" name="date" value="<?php //echo $row['NgaySinh'] ?>">
             </div> -->
-            <div class="col-md-6"><label class="labels">Số điện thoại nhà cung cấp</label>
-              <input type="tel" class="user-infor form-control" name="sdtncc" value="<?php echo $row['SDT_NCC'] ?>">
+            <div class="col-md-6"><label class="labels">Số điện thoại người đại diện</label>
+              <input type="tel" class="user-infor form-control" name="sdtndd" value="<?php echo $row['SDT_NDD'] ?>" placeholder="Nhập số điện thoại người đại diện">
             </div>
-            <div class="col-md-12"><label class="labels">Địa chỉ nhà cung cấp</label>
-              <input type="text" class="user-infor form-control" name="diachi" value="<?php echo $row['DiaChi_NCC'] ?>">
+            <div class="col-md-12"><label class="labels">Địa chỉ người đại diện</label>
+              <input type="text" class="user-infor form-control" name="diachindd" value="<?php echo $row['DiaChi_NDD'] ?>" placeholder="Nhập địa chỉ người đại diện">
             </div>
             <!-- AJAX TỈNH HUYỆN XÃ -->
         <div class="input-group col-md-6">
@@ -204,9 +207,8 @@
           		}
 
           	 ?>
-
           <div class="mt-5 text-center">
-            <input type="submit"  name="btnsubmit" class="btn btn-success" value="Lưu thông tin" id="add">
+            <input type="submit"  name="submit" class="btn btn-success" value="Lưu thông tin">
           </div>
         </div>
       </div>
@@ -216,7 +218,6 @@
 </form>
 
 <?php 
-
         ///----------------------------
         ///----------------------------
         ///----------------------------
@@ -225,16 +226,22 @@
         ///----------------------------
         ///----------------------------
         ///----------------------------
+//var_dump($_REQUEST['click']);
+ //echo "<script>alert('".$_REQUEST['click']."');</script>";
         ///----------------------------
-        if (isset($_REQUEST['btnsubmit'])) {
-            $mancc = $_SESSION['MaNCC'];
-            $tenncc = $_REQUEST['tenncc'];
-            $tenndd = $_REQUEST['tenndd'];
-            $diachincc = $_REQUEST['diachi'];
+
+        if (isset($_REQUEST['submit'])) {
+            $madn = $_SESSION['MaDN'];
+            $tendoanhnghiep = $_REQUEST['tendn'];
+            $sdt = $_REQUEST['sdtdn'];
+            $diachidn = $_REQUEST['diachidn'];
+            $emaildn = $_REQUEST['emaildn'];
+            $mst = $_REQUEST['mst'];
+            $ngaytl = $_REQUEST['ngaytl'];
+            $gioithieu = $_REQUEST['gioithieudn'];
+            $tennguoidaidien = $_REQUEST['tennguoidaidien'];
             $diachindd = $_REQUEST['diachindd'];
-            $sdtncc = $_REQUEST['sdtncc'];
             $sdtndd = $_REQUEST['sdtndd'];
-            $emailncc = $_REQUEST['emailncc'];
             $emailndd = $_REQUEST['emailndd'];
             $maxa = $_REQUEST['xa'];
             ////
@@ -242,7 +249,6 @@
             $type = $_FILES['myfile']['type'];
             $hinhanh = $_FILES['myfile']['name'];
             $size = $_FILES['myfile']['size'];
-
             // echo $maccc."<br>";
             // echo $tenncc."<br>";
             // echo $tenndd."<br>";
@@ -254,7 +260,7 @@
             // echo $type."<br>";
             // echo $hinhanh."<br>";
             // echo $size."<br>";
-            $kq = $p-> edit_ncc_by_id($mancc,$tenncc,$tenndd,$diachincc,$diachindd,$sdtncc,$sdtndd,$emailncc,$emailndd,$maxa,$hinhanh,$file,$type,$size);
+            $kq = $p-> edit_khdn_by_id($madn,$tendoanhnghiep,$sdt,$diachidn,$emaildn,$mst,$ngaytl,$gioithieu,$tennguoidaidien,$hinhanh,$diachindd,$sdtndd,$emailndd,$maxa,$file,$type,$size);
             //thông báo
             if($kq == 1){
               echo "<script>alert('Cập nhật thông tin thành công');</script>";

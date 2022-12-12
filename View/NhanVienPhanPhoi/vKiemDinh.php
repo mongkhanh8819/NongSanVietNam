@@ -25,6 +25,7 @@
                           <th>Tên nhà cung cấp</th>
                           <th>Tên nhân viên kiểm định</th>
                           <th style="display: none;">Địa chỉ</th>
+                          <th style="display: none;">Số điện thoại</th>
                           <th>Action</th>
                         </tr>
                         </thead>
@@ -58,6 +59,7 @@
                            <td style="display:none"><?php echo $rowkd['DiaChi'] ?></td>
                            <td style="display:none"><?php echo $rowkd['DanhGiaTuNCC'] ?></td>
                            <td style="display:none"><?php echo $rowkd['MaNongSan'] ?></td>
+                           <td style="display: none;"><?php echo $rowkd['SDT_NCC'] ?></td>
                            <?php if($rowkd['TrangThaiKiemDinh'] == 0){
                             ?>
                             <td>
@@ -110,26 +112,30 @@
                                     <label for="thoigian">Thời gian lập phiếu</label>
                                     <input type="text" class="form-control" id="thoigian" name="thoigian" disabled value="" readonly>
                                   </div>
-                                  <div class="form-group col-md-4">
+                                  <div class="form-group col-md-5">
                                     <label for="tennongsan">Tên nông sản</label>
                                     <input type="text" class="form-control" id="tennongsan" name="tennongsan" value="" readonly>
                                   </div>
                                   <div style="display:none">
                                     <input type="text" class="form-control" id="manongsan" name="manongsan" value="">
                                   </div>
-                                  <div class="form-group col-md-4">
+                                  <div class="form-group col-md-5">
                                     <label for="nhacungcap">Nhà cung cấp</label>
                                     <input type="text" class="form-control" id="nhacungcap" name="nhacungcap" value="" readonly>
                                   </div>
-                                  <div class="form-group col-md-4">
+                                  <!-- <div class="form-group col-md-4">
                                     <label for="trangthai">Trạng thái kiểm định</label>
                                     <input type="text" class="form-control" id="trangthai" name="trangthai" value="" readonly>
-                                  </div>
+                                  </div> -->
                                   
                                 </div>
                                 <div class="form-group">
                                   <label for="diachi">Địa chỉ</label>
                                   <input type="text" class="form-control" id="diachi" name="diachi" value="" readonly >
+                                </div>
+                                <div class="form-group">
+                                  <label for="diachi">Số điện thoại</label>
+                                  <input type="text" class="form-control" id="sdt" name="sdt" value="" readonly >
                                 </div>
                                 <div class="form-group">
                                   <label for="danhgiancc">Đánh giá từ nhà cung cấp</label>
@@ -182,6 +188,10 @@
 
         if(isset($_REQUEST['update'])){
             $manongsan = $_REQUEST['manongsan'];
+            $tennongsan = $_REQUEST['tennongsan'];
+            $nhacungcap = $_REQUEST['nhacungcap'];
+            $diachi = $_REQUEST['diachi'];
+            $sdt = $_REQUEST['sdt'];
             $makiemdinh = $_REQUEST['maphieu'];
             $danhgianvpp = $_REQUEST['danhgianvpp'];
             $vesinh = $_REQUEST['vesinh'];
@@ -201,15 +211,14 @@
                   $set_qr_code_path = 'assets/public/qr_images/';
                   
                   //Set a file name of each generated QR code
-                  $filename = $qr_code_file_path.time().'.png';
-                  echo $filename;
+                  $filename = $qr_code_file_path.$manongsan."_".time().'.png';
                   //$file = 
                   /* All the user generated data must be sanitize before the processing */
                   $errorCorrectionLevel = "Q";
                  //$codeContents = rand(1000000, 9999999);
                   $matrixPointSize = "4";
                   //NỘI DUNG
-                  $frm_link = $thongso;
+                  $frm_link = $tennongsan." / ".$nhacungcap." / ".$diachi." / ".$sdt." / ".$thongso." http://khanhis.online/index.php?mans=".$manongsan;
                   
                   // After getting all the data, now pass all the value to generate QR code.
                   //QRcode::png($frm_link, $pngAbsoluteFilePath); 
@@ -218,7 +227,7 @@
                   //INSERT BẢNG QRCODE LƯU THÔNG TIN KIỂM ĐỊNH
                   $insert_qr = $qr -> create_qrcode($frm_link,basename($filename),$manongsan);
                   // 
-                echo "<script>alert('Cập nhật thành công!')</script>";
+                echo "<script>alert('Kiểm định thành công!')</script>";
                 echo "<script>window.location.href = 'index.php?kiemdinh';</script>";
               } elseif ($duyet == 0) {
                 echo "<script>alert('Cập nhật thất bại!')</script>";
@@ -264,6 +273,7 @@
                 $('#diachi').val(data[6]);
                 $('#danhgiancc').val(data[7]);
                 $('#manongsan').val(data[8]);
+                $('#sdt').val(data[9]);
 
                 //document.write($('#hinh').val(data[9]));
                 //var id = $('#hinhanh').val(data[8]);

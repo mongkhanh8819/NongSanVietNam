@@ -5,7 +5,7 @@
 		session_start();
   	}
 	session_destroy();
-	header("Location:../NongSanVN/");
+	header("Location:index.php");
 	//echo header("refresh: 0; url=../NongSanVN/");
 
  ?>

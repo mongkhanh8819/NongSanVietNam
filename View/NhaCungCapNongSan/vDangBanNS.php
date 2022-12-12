@@ -89,7 +89,7 @@
                       <td><?php 
                         if ($row['TrangThaiKiemDinh'] == 0) {
                           ?>
-                          <img src="assets/public/qr_images/<?php echo $row['QR_Image'] ?>" alt="" height="100px" width="100px">
+                          <img src="assets/public/qr_images/<?php echo $row['QR_Image'] ?>" alt="" height="145px" width="145px">
                           <?php 
                         } else {
                           ?>
@@ -278,7 +278,7 @@
                                   </div>
                               </form>
 
-                          </div>s
+                          </div>
                       </div>
                   </div>
             </div>

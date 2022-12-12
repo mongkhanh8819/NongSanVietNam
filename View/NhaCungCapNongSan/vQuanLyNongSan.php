@@ -262,6 +262,7 @@
                       </td>
                       <td><button type="button" class="btn btn-danger deletebtn">Xóa</button></td>
                       <td style="display:none"><?php echo $row['Gia']; ?></td>
+                      <td style="display:none">chuakiemdinh.jpg</td>
                     </tr>
                     <?php }
                       } ?>

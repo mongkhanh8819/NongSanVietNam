@@ -18,7 +18,7 @@
   <div class="row">
     <div class="col">
     <a href="#">
-      <div class="card posts" >
+      <div class="card-posts" >
         <img class="card-img-top card-image_post" src="https://growmax.weba.vn/shop/images/growmax/posts/back.jpg" alt="Card image cap">
         <div class="card-body">
           <h4 class="card-title heading-post">Nông Sản Bắc Mỹ Rầm Rộ Tìm Đường Vào Việt Nam</h4>

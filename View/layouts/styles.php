@@ -9,6 +9,12 @@
   <link rel="stylesheet" type="text/css" href="assets/public/css/dangky.css">
 
   <style type="text/css">
+  .list-item{
+        background-color: #EFEFEF;
+        /*margin-top: 20px;*/
+        padding: 50px 0 0;
+        /*height: 1000px;*/
+  } 
   ul li a{
     font-size: 15px;
   }

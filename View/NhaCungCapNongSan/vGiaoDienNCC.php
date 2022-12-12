@@ -84,7 +84,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="./thongkeadmin.html" class="nav-link">
+              <a href="index.php?xuatkd" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Phiếu yêu cầu kiểm định</p>
               </a>
@@ -166,6 +166,8 @@
       include("vAddNongSan.php");
     } elseif (isset($_REQUEST['gdkd'])){
       include("vGuiYcKiemDinh.php");
+    } elseif (isset($_REQUEST['xuatkd'])){
+      include("vXuatGiayKiemDinh.php");
     } elseif (isset($_REQUEST['guiyeucau'])){
       include("vAddPhieukiemdinh.php");
     }elseif (isset($_REQUEST['dangban'])){
@@ -174,9 +176,9 @@
       include("vQrcode.php");
     } elseif(isset($_REQUEST['updatett'])){
       include("vUpdateTTnccns.php");
-    }
-      else{
-      echo "<div class='col-md-9'><h1>NHÀ CUNG CẤP NÔNG SẢN</h1></div>";
+    } else{
+      //echo "<div class='col-md-9'><h1>NHÀ CUNG CẤP NÔNG SẢN</h1></div>";
+      echo "<div class='col-md-9'><br><img src='assets/public/images/nongsan.jpg' width='1250px'></img></div>";
     }
     ?>
   <!-- /.container-fluid -->

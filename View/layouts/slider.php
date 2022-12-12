@@ -5,7 +5,7 @@
         <img style="height:450px; " class="d-block w-100" src="assets/public/images/banner_nongsan.png" alt="First slide">
       </div>
       <div class="carousel-item">
-        <img style="height:450px; " class="d-block w-100" src="assets/public/images/banner_nongsan2" alt="Third slide">
+        <img style="height:450px; " class="d-block w-100" src="assets/public/images/banner_nongsan2.png" alt="Third slide">
       </div> 
       <!-- <div class="carousel-item">
         <img style="height:500px; " class="d-block w-100" src="https://growmax.weba.vn/shop/images/growmax/slider/banner1.jpg" alt="Second slide">
@@ -26,3 +26,10 @@
   
   </div> -->
   <!-- Slider -->
+
+
+  <!-- <div class=""> -->
+
+  
+<!-- </div> -->
+

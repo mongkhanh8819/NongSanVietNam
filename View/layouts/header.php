@@ -1,3 +1,42 @@
+<?php
+
+    //if (!isset($_SESSION['MaVaiTro'])) {
+    include_once("Controller/NongSan/cNongSan.php");
+    include_once("Controller/pagination.php");
+ 
+    // Connect DB
+      $p = new cNongSan();
+     
+    // Phân trang
+    $config = array(
+        'current_page'  => isset($_GET['page']) ? $_GET['page'] : 1,
+        'total_record'  => $p->count_all_ns(), // tổng số thành viên
+        'limit'         => 3,
+        'link_full'     => 'index.php?page={page}',
+        'link_first'    => 'index.php',
+        'range'         => 9
+    );
+     
+    $paging = new Pagination();
+    $paging->init($config);
+     
+    // Lấy limit, start
+    $limit = $paging->get_config('limit');
+    $start = $paging->get_config('start');
+     
+    // Lấy danh sách thành viên
+    $member = $p -> get_all_ns($limit, $start);
+     
+    //Kiểm tra nếu là ajax request thì trả kết quả
+    if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+        die (json_encode(array(
+            'member' => $member,
+            'paging' => $paging->html()
+        )));
+    }
+  //}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,9 +119,13 @@
         <!--  -->
         <ul class="dropdown-menu" style="text-align: center;">
         <li class="user-header">
-            <img src="assets/uploads/avatar/<?php if (isset($_SESSION['MaVaiTro'])) {
-              echo $_SESSION['avatar'];
-            } else {} ?>" width="150px" height="170px" class="img-circle" alt="User Image">
+            <img src="assets/uploads/avatar/<?php if (isset($_SESSION['MaVaiTro']) || isset($_SESSION['login_id'])) {
+              if ($_SESSION['avatar'] == "" || $_SESSION['avatar'] == NULL){
+                echo "default.png";
+              }else{
+                echo $_SESSION['avatar'];
+              }
+            } else{} ?>" width="150px" height="170px" class="img-circle" alt="User Image">
             <p><?php 
             if (isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 2) {
               echo $_SESSION['TenNVPP'];
@@ -97,18 +140,40 @@
             } elseif(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 4) {
               echo $_SESSION['TenDoanhNghiep'];
               echo "<br><small>DOANH NGHIỆP</small></p>";
-            } elseif(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 5) {
+            } elseif(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 5 ) {
               echo $_SESSION['Ten_KHTV'];
               echo "<br><small>KHÁCH HÀNG</small></p>";
-            } else {}
+            } elseif(isset($_SESSION['login_id'])) {
+              echo $_SESSION['name'];
+              echo "<br><small>KHÁCH HÀNG</small></p>";
+            } else{}
              ?>
         </li>
         <li class="user-footer">
-            <div class="pull-left" style="float:left">
-                <a href="?updatett" class="btn btn-default btn-flat">Chi tiết</a>
+            <div class="pull-left" style="float:center">
+                <a href="?updatett" class="btn btn-default btn-flat" style="width: 200px;">Chi tiết</a>
             </div>
-            <div class="pull-right" style="float:right;">
-                <a href="?dangxuat" class="btn btn-default btn-flat">Thoát</a>
+            <?php 
+
+            if(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 4) {
+              ?><div class="pull-right" style="float:center;">
+                <a href="?qldh" class="btn btn-default btn-flat" style="width: 200px;">Quản lý đơn hàng</a>
+            </div><?php  
+            } elseif(isset($_SESSION['MaVaiTro']) && $_SESSION['MaVaiTro'] == 5 ) {
+              ?><div class="pull-right" style="float:center;">
+                <a href="?qldh" class="btn btn-default btn-flat" style="width: 200px;">Quản lý đơn hàng</a>
+            </div><?php
+            } elseif(isset($_SESSION['login_id'])) {
+              ?><div class="pull-right" style="float:center;">
+                <a href="?qldh" class="btn btn-default btn-flat" style="width: 200px;">Quản lý đơn hàng</a>
+            </div><?php
+            } else {
+
+            }
+
+             ?>
+            <div class="pull-right" style="float:center;">
+                <a href="?dangxuat" class="btn btn-default btn-flat" style="width: 200px;">Thoát</a>
             </div>
         </li>
         </ul>
@@ -181,5 +246,11 @@
 
 
 </div>
+
+
+
 </div>
+
+
+
 </div>

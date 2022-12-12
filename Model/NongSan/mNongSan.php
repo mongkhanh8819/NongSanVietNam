@@ -24,6 +24,22 @@
 				return false;
 			}
 		}
+		//phân trang
+		function select_nongsan_phantrang($start,$limit){
+			$conn;
+			$p = new ketnoi();
+			if($p -> moketnoi($conn)){
+				$string = "SELECT * FROM nongsan JOIN qrcode ON nongsan.MaNongSan = qrcode.MaNongSan ORDER BY nongsan.MaNongSan ASC LIMIT $start, $limit";
+				$table = mysqli_query($conn,$string);
+				//var_dump($table);
+				$p -> dongketnoi($conn);
+				return $table;
+			}else{
+				return false;
+			}
+		}
+		//
+		//
 		//---------------------------
 		//---------------------------
 		//---------------------------
@@ -37,6 +53,54 @@
 			$p = new ketnoi();
 			if($p -> moketnoi($conn)){
 				$string = "SELECT * FROM tinhthanh JOIN huyenquan ON tinhthanh.MaTinh = huyenquan.MaTinh JOIN xaphuong ON huyenquan.MaHuyen = xaphuong.MaHuyen JOIN nhacungcapnongsan on xaphuong.MaXa = nhacungcapnongsan.MaXa  JOIN nongsan ON nhacungcapnongsan.MaNCC = nongsan.MaNCC JOIN loainongsan ON nongsan.MaLoaiNongSan = loainongsan.MaLoaiNongSan JOIN nhomnongsan ON loainongsan.MaNhomNongSan = nhomnongsan.MaNhomNongSan WHERE MaNongSan =".$manongsan;
+				$table = mysqli_query($conn,$string);
+				$p -> dongketnoi($conn);
+				//
+				return $table;
+			}else{
+				return false;
+			}
+		}
+		//
+		//
+		//---------------------------
+		//---------------------------
+		//---------------------------
+		//---------------------------
+		//-----LẤY THÔNG TIN CHI TIẾT NÔNG SẢN THEO MÃ NÔNG SẢN ĐẠT CHUẨN
+		//---------------------------
+		//---------------------------
+		//---------------------------
+		public function select_nongsan_by_id_dc($manongsan){
+			$conn;
+			$p = new ketnoi();
+			if($p -> moketnoi($conn)){
+				$string = "SELECT * FROM tinhthanh JOIN huyenquan ON tinhthanh.MaTinh = huyenquan.MaTinh JOIN xaphuong ON huyenquan.MaHuyen = xaphuong.MaHuyen JOIN nhacungcapnongsan on xaphuong.MaXa = nhacungcapnongsan.MaXa JOIN nongsan ON nhacungcapnongsan.MaNCC = nongsan.MaNCC JOIN phieukiemdinhnongsan ON nongsan.MaNongSan = phieukiemdinhnongsan.MaNongSan JOIN qrcode ON nongsan.MaNongSan = qrcode.MaNongSan JOIN loainongsan ON nongsan.MaLoaiNongSan = loainongsan.MaLoaiNongSan JOIN nhomnongsan ON loainongsan.MaNhomNongSan = nhomnongsan.MaNhomNongSan WHERE nongsan.MaNongSan =".$manongsan;
+				//echo $string;
+				$table = mysqli_query($conn,$string);
+				$p -> dongketnoi($conn);
+				//
+				return $table;
+			}else{
+				return false;
+			}
+		}
+		//
+		//
+		//---------------------------
+		//---------------------------
+		//---------------------------
+		//---------------------------
+		//-----LẤY THÔNG TIN CHI TIẾT NÔNG SẢN KHÁCH HÀNG ĐẶT MUA
+		//---------------------------
+		//---------------------------
+		//---------------------------
+		public function select_dathang_nongsan($manongsan){
+			$conn;
+			$p = new ketnoi();
+			if($p -> moketnoi($conn)){
+				$string = "SELECT * FROM tinhthanh JOIN huyenquan ON tinhthanh.MaTinh = huyenquan.MaTinh JOIN xaphuong ON huyenquan.MaHuyen = xaphuong.MaHuyen JOIN nhacungcapnongsan on xaphuong.MaXa = nhacungcapnongsan.MaXa JOIN nongsan ON nhacungcapnongsan.MaNCC = nongsan.MaNCC JOIN phieukiemdinhnongsan ON nongsan.MaNongSan = phieukiemdinhnongsan.MaNongSan JOIN qrcode ON nongsan.MaNongSan = qrcode.MaNongSan JOIN loainongsan ON nongsan.MaLoaiNongSan = loainongsan.MaLoaiNongSan JOIN nhomnongsan ON loainongsan.MaNhomNongSan = nhomnongsan.MaNhomNongSan WHERE nongsan.TrangThaiNongSan = 1 AND nongsan.MaNongSan =".$manongsan;
+				//echo $string;
 				$table = mysqli_query($conn,$string);
 				$p -> dongketnoi($conn);
 				//
@@ -165,6 +229,52 @@
 				return false;
 			}
 		}
+		// 
+		// 
+		// TEST PHÂN TRANG
+		// Hàm đếm tổng số thành viên
+		public function count_all_ns()
+		{
+		    $conn;
+		    $p = new ketnoi();
+			if($p -> moketnoi($conn)){
+				$string = "SELECT count(*) AS total FROM nongsan WHERE TrangThaiNongSan = 1";
+				//echo $string;
+				$kq = mysqli_query($conn,$string);
+				if($kq){
+					$row = mysqli_fetch_array($kq, MYSQLI_ASSOC);
+					$p -> dongketnoi($conn);
+					return $row['total'];
+				}else{
+					return 0;
+				}
+			}else{
+				return false;
+			}
+		}
+		 
+		// Lấy danh sách thành viên
+		public function get_all_ns($limit, $start)
+		{
+		    $conn;
+		    $p = new ketnoi();
+			if($p -> moketnoi($conn)){
+				$string = 'SELECT nongsan.MaNongSan,nongsan.TenNongSan,nongsan.SoLuong,nongsan.Gia,nongsan.DVT,nongsan.MoTaNS,nongsan.HinhAnh,nhacungcapnongsan.MaNCC,nhacungcapnongsan.TenNhaCungCap,nongsan.TrangThaiNongSan,nongsan.TrangThaiKiemDinh FROM nongsan JOIN nhacungcapnongsan ON nongsan.MaNCC = nhacungcapnongsan.MaNCC WHERE nongsan.TrangThaiNongSan = 1 LIMIT '.(int)$start . ','.(int)$limit;
+				//echo $string;
+				$result = array();
+				$kq = mysqli_query($conn,$string);
+				if($kq){
+					while ($row = mysqli_fetch_array($kq, MYSQLI_ASSOC)){
+           	 			$result[] = $row;
+        			}
+				}
+			}
+			//var_dump($result);
+			return $result;
+		}
+		// 
+		// 
+		// 
 	}
 
 

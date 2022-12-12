@@ -1,6 +1,6 @@
 <?php 
 
-	include_once('Model/TaiKhoan/mTaikhoan.php');
+	include_once('Model/TaiKhoan/mTaiKhoan.php');
 	class cTaiKhoan
 	{
 		//hàm lấy thông tin chi tiết tài khoản
@@ -27,12 +27,17 @@
 				while($row1 = mysqli_fetch_assoc($tt)){
         		$_SESSION['MaDN'] = $row1['MaDN'];
         		$_SESSION['TenDoanhNghiep'] = $row1['TenDoanhNghiep'];
-        		$_SESSION['avatar'] = $row1['HinhAnh'];}
+        		$_SESSION['avatar'] = $row1['HinhAnh'];
+        		$_SESSION['diachi'] = $row1['DiaChi'].", ".$row1['TenXa'].", ".$row1['TenHuyen'].", ".$row1['TenTinh'];
+        	}
 			}elseif ($mavaitro == 5){
 				while($row1 = mysqli_fetch_assoc($tt)){
         		$_SESSION['MaKHTV'] = $row1['MaKHTV'];
         		$_SESSION['Ten_KHTV'] = $row1['Ten_KHTV'];
-        		$_SESSION['avatar'] = $row1['HinhAnh'];}
+        		$_SESSION['avatar'] = $row1['HinhAnh'];
+        		$_SESSION['diachi'] = $row1['DiaChi'].", ".$row1['TenXa'].", ".$row1['TenHuyen'].", ".$row1['TenTinh'];
+        	}
+        		//thêm session diachi
 			}else{
 
 			}

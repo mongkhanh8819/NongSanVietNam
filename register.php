@@ -11,6 +11,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="assets/public/images/Fruit-Olive-Green-icon.png">
   <title>ĐĂNG KÝ TÀI KHOẢN</title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -24,14 +25,17 @@
   <!-- jQuery -->
   <!-- <script src="assets/plugins/jquery/jquery.min.js"></script> -->
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" type="text/javascript"></script> -->
+  <!-- <link rel="stylesheet" href="assets/public/css/bootstrap/bootstrap.min.css"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  
+  <!-- <script src="assets/public/js/bootstrap/jquery.min.js"></script> -->
+  <!-- <script src="assets/public/js/bootstrap/bootstrap.min.js"></script> -->
   <!--  -->
   <script src="assets/public/ajax/ajax_tinh_thanh.js" type="text/javascript"></script>
   <script src="assets/public/ajax/ajax_loainguoidung.js" type="text/javascript"></script>
   <script src="assets/public/ajax/ajax_user_nhacungcap.js" type="text/javascript"></script>
   <!-- Bootstrap 4 -->
   <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/public/js/bootstrap/bieuthucchinhquy.js" type="text/javascript"></script>
   <!-- AdminLTE App -->
   <script src="assets/vendor/dist/js/adminlte.min.js"></script>
 </head>
@@ -40,7 +44,7 @@
 </div>
 <div class="register-box">
   <div class="register-logo" style="">
-    <a href="../../index2.html"><b>NÔNG SẢN </b>VIỆT</a>
+    <a href="index.php"><b>NÔNG SẢN </b>VIỆT</a>
   </div>
 
   <div class="card">
@@ -79,23 +83,25 @@
         </div>
         <!-- NHẬP HỌ TÊN -->
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="hoten" placeholder="Họ và tên" required>
+          <input type="text" class="form-control" name="hoten" id="hoten" placeholder="Họ và tên" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
             </div>
           </div>
         </div>
+        <span class="text-danger" id="tbHoten"></span>
         <!--  -->
         <!-- NHẬP SỐ ĐIỆN THOẠI -->
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="sdt" placeholder="Số điện thoại" required>
+          <input type="text" class="form-control" name="sdt" id="sdt" placeholder="Số điện thoại" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
             </div>
           </div>
         </div>
+        <span class="text-danger" id="tbSDT"></span>
         <!--  -->
         <!-- CHỌN GIỚI TÍNH -->
         <div class="input-group mb-3" id="div_gioitinh">
@@ -110,20 +116,27 @@
             </div>
           </div>
         </div>
+        <span class="text-danger" id="tbGT"></span>
         <!--  -->
         <!-- NHẬP EMAIL -->
         <div class="input-group mb-3">
-          <input type="email" class="form-control" name="email" placeholder="Email" required>
+          <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
             </div>
           </div>
         </div>
+        <span class="text-danger" id="tbEmail"></span>
         <!--  -->
         <!-- NHẬP NGÀY SINH HOẶC NGÀY THÀNH LẬP -->
         <div class="input-group mb-3">
-          <input type="date" class="form-control" name="date" id="date" placeholder="Ngày sinh" required>
+          <input type="date" class="form-control" name="date" id="date" required>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas  fa-birthday-cake"></span>
+            </div>
+          </div>
         </div>
         <!-- NHẬP ĐỊA CHỈ -->
         <div class="input-group mb-3">
@@ -134,6 +147,7 @@
             </div>
           </div>
         </div>
+        <span class="text-danger" id="tbDiaChi"></span>
         <!-- AJAX TỈNH HUYỆN XÃ -->
         <div class="input-group mb-3">
           <select class="form-control" name="tinh" id="tinh" required>
@@ -222,7 +236,7 @@
         </a>
       </div>
 
-      <a href="login.html" class="text-center">Tôi đã có tài khoản</a>
+      <a href="index.php?dangnhap" class="text-center">Tôi đã có tài khoản</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->

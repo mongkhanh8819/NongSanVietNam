@@ -13,6 +13,29 @@
 			$table = $p -> select_nongsan();
 			return $table;
 		}
+		//
+		///phân trang
+		///
+		///
+		///
+		function count_nongsan(){
+			$p = new mNongSan();
+			$tableProduct = $p -> select_nongsan();
+			return mysqli_num_rows($tableProduct);
+		}
+		function get_nongsan_phantrang($page,$count){
+			$p = new mNongSan();
+			//$total_page = ceil($count/$limit);
+			$tableProduct = $p -> select_nongsan_phantrang(($page-1)*$count,$count);
+			//var_dump($tableProduct);
+			return $tableProduct;
+		}
+		function get_total_page($count,$limit){
+			return  ceil($count/$limit);
+		}
+		//////////
+		////
+		//
 		//--------------------------
 		//--------------------------
 		//-------LẤY THÔNG TIN NÔNG SẢN THEO MÃ NHÀ CUNG CẤP
@@ -41,6 +64,26 @@
 		public function get_nongsan_by_id($manongsan){
 			$p = new mNongSan();
 			$table = $p -> select_nongsan_by_id($manongsan);
+			return $table;
+		}
+		//--------------------------
+		//--------------------------
+		//-------LẤY THÔNG TIN NÔNG SẢN THEO MÃ NÔNG SẢN ĐẠT CHUẨN
+		//--------------------------
+		//--------------------------
+		public function get_nongsan_by_id_dc($manongsan){
+			$p = new mNongSan();
+			$table = $p -> select_nongsan_by_id_dc($manongsan);
+			return $table;
+		}
+		//--------------------------
+		//--------------------------
+		//-------LẤY THÔNG TIN NÔNG SẢN ĐẶT MUA
+		//--------------------------
+		//--------------------------
+		public function select_dathang_nongsan($manongsan){
+			$p = new mNongSan();
+			$table = $p -> select_dathang_nongsan($manongsan);
 			return $table;
 		}
 		//--------------------------
@@ -127,7 +170,27 @@
 			$table = $p -> dangban_nongsan($manongsan,$tt);
 			return $table;
 		}
-		
+		//-----------------------
+		//-----------------------
+		// 
+		// 
+		// TEST PHÂN TRANG
+		// Hàm đếm tổng số thành viên
+		public function count_all_ns(){
+			$p = new mNongSan();
+			$total = $p -> count_all_ns();
+			return $total;
+		}
+		 
+		// Lấy danh sách thành viên
+		public function get_all_ns($limit, $start){
+			$p = new mNongSan();
+			$result = $p -> get_all_ns($limit, $start);
+			return $result;
+		}
+		// 
+		// 
+		// 
 	}
 
  ?>

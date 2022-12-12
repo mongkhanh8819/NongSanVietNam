@@ -81,9 +81,9 @@
 			$p = new ketnoi();
 			if($p -> moketnoi($conn)){
 				if ($hinhanh != "") {
-				$string = "UPDATE khachhangdoanhnghiep SET TenDoanhNghiep=[value-2],SDT=[value-3],DiaChi=[value-4],Email=[value-5],MST=[value-6],NgayThanhLap=[value-7],GioiThieu=[value-8],TenNguoiDaiDien=[value-9],HinhAnh=[value-10],DiaChi_NDD=[value-11],SDT_NDD=[value-12],Email_NDD=[value-13],MaXa=[value-15] WHERE MaDN ='".$madn."'";	
+				$string = "UPDATE khachhangdoanhnghiep SET TenDoanhNghiep='".$tendoanhnghiep."', SDT='".$sdt."',DiaChi='".$diachidn."',Email='".$emaildn."',MST='".$mst."',NgayThanhLap='".$ngaytl."',GioiThieu='".$gioithieu."',TenNguoiDaiDien='".$tennguoidaidien."', HinhAnh ='".$hinhanh."',DiaChi_NDD='".$diachindd."', SDT_NDD = '".$sdtndd."', Email_NDD='".$emailndd."',MaXa=".$maxa." WHERE MaDN ='".$madn."'";
 				}else{
-				$string = "UPDATE khachhangdoanhnghiep SET TenDoanhNghiep=[value-2],SDT=[value-3],DiaChi=[value-4],Email=[value-5],MST=[value-6],NgayThanhLap=[value-7],GioiThieu=[value-8],TenNguoiDaiDien=[value-9],DiaChi_NDD=[value-11],SDT_NDD=[value-12],Email_NDD=[value-13],MaXa=[value-15] WHERE MaDN ='".$madn."'";
+				$string = "UPDATE khachhangdoanhnghiep SET TenDoanhNghiep='".$tendoanhnghiep."', SDT='".$sdt."',DiaChi='".$diachidn."',Email='".$emaildn."',MST='".$mst."',NgayThanhLap='".$ngaytl."',GioiThieu='".$gioithieu."',TenNguoiDaiDien='".$tennguoidaidien."',DiaChi_NDD='".$diachindd."', SDT_NDD = '".$sdtndd."', Email_NDD='".$emailndd."',MaXa=".$maxa." WHERE MaDN ='".$madn."'";
 				}
 				
 				//echo $string;

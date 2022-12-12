@@ -49,29 +49,81 @@ if(isset($_GET['code'])):
         $profile_pic = mysqli_real_escape_string($db_connection, $google_account_info->picture);
 
         // checking user already exists or not
-        $get_user = mysqli_query($db_connection, "SELECT `google_id` FROM `khachhangthanhvien` WHERE `google_id`='$id'");
+        //JOIN xaphuong ON khachhangthanhvien.MaXa = xaphuong.MaXa JOIN huyenquan ON xaphuong.MaHuyen = huyenquan.MaHuyen JOIN tinhthanh ON huyenquan.MaTinh = tinhthanh.MaTinh
+        $get_user = mysqli_query($db_connection, "SELECT * FROM `khachhangthanhvien` WHERE `google_id`='$id'");
         if(mysqli_num_rows($get_user) > 0){
-
-            $_SESSION['login_id'] = $id; 
-            $_SESSION['name'] = $full_name;
-            //$_SESSION['LoginSuccess'] = true;
-            //echo "<script>alert('OK');</script>";
-            header('Location: ../../index.php');
-            exit;
+            while ($row = mysqli_fetch_array($get_user)) {
+                if ($row['MaXa'] == NULL) {
+                    $_SESSION['login_id'] = $id; 
+                    $_SESSION['name'] = $row['Ten_KHTV'];
+                    $_SESSION['MaKHTV'] = $row['MaKHTV'];
+                    //$_SESSION['Ten_KHTV'] = $row1['Ten_KHTV'];
+                    $_SESSION['avatar'] = $row['HinhAnh'];
+                    
+                    if($row['MaXa'] == NULL){
+                        $_SESSION['xa'] = 1;
+                    }
+                    
+                    $_SESSION['diachi'] = 1;
+                    //$_SESSION['LoginSuccess'] = true;
+                    //echo "<script>alert('OK');</script>";
+                    header('Location: ../../index.php');
+                    exit;    
+                }elseif ($row['MaXa'] != NULL) {
+                    $_SESSION['login_id'] = $id; 
+                    $_SESSION['name'] = $row['Ten_KHTV'];
+                    $_SESSION['MaKHTV'] = $row['MaKHTV'];
+                    //$_SESSION['Ten_KHTV'] = $row1['Ten_KHTV'];
+                    $_SESSION['avatar'] = $row['HinhAnh'];
+                    
+                    if($row['MaXa'] == NULL){
+                        $_SESSION['xa'] = 1;
+                    }
+                    
+                    $_SESSION['diachi'] = $row['DiaChi'].", ".$row['TenXa'].", ".$row['TenHuyen'].", ".$row['TenTinh'];
+                    //$_SESSION['LoginSuccess'] = true;
+                    //echo "<script>alert('OK');</script>";
+                    header('Location: ../../index.php');
+                    exit;
+                }
+                   
+            }
+            
 
         }
         else{
 
             // if user not exists we will insert the user
             $insert = mysqli_query($db_connection, "INSERT INTO `khachhangthanhvien`(`google_id`,`Ten_KHTV`,`Email`) VALUES('$id','$full_name','$email')");
-
+            
             if($insert){
-                $_SESSION['login_id'] = $id; 
-                header('Location: ../../index.php');
-                exit;
+                $get_user = mysqli_query($db_connection, "SELECT * FROM `khachhangthanhvien` WHERE `google_id`='$id'");
+                while ($row = mysqli_fetch_array($get_user)) {
+                    $_SESSION['login_id'] = $id; 
+                    $_SESSION['name'] = $row['Ten_KHTV'];
+                    $_SESSION['MaKHTV'] = $row['MaKHTV'];
+                    //$_SESSION['Ten_KHTV'] = $row1['Ten_KHTV'];
+                    $_SESSION['avatar'] = $row['HinhAnh'];
+                    
+                    if($row['MaXa'] == NULL){
+                        $_SESSION['xa'] = 1;
+                    }
+                    
+                    //YÊU CẦU NGƯỜI DÙNG CẬP NHẬT ĐỊA CHỈ
+                    //$_SESSION['diachi'] = $row['DiaChi'].", ".$row['TenXa'].", ".$row['TenHuyen'].", ".$row['TenTinh'];
+                    //$_SESSION['LoginSuccess'] = true;
+                    //echo "<script>alert('OK');</script>";
+                    header('Location: ../../index.php');
+                    exit;   
+                }
+                // $_SESSION['login_id'] = $id;
+                // $_SESSION['name'] = $full_name;  
+                // header('Location: ../../index.php');
+                // exit;
             }
             else{
                 echo "Sign up failed!(Something went wrong).";
+                //echo $profile_pic;
             }
 
         }

@@ -2,7 +2,7 @@
 
 include_once("Model/connect.php");
 
-class mTaikhoan{
+class mTaiKhoan{
 //hàm đăng nhập
 	// private $conn;
  //   function __construct()
@@ -58,9 +58,9 @@ class mTaikhoan{
 			}elseif ($vaitro == 3){
 				$sql = "SELECT * FROM taikhoan JOIN nhacungcapnongsan ON taikhoan.username = nhacungcapnongsan.username WHERE taikhoan.username = '".$username."'";
 			}elseif ($vaitro == 4){
-				$sql = "SELECT * FROM taikhoan JOIN khachhangdoanhnghiep ON taikhoan.username = khachhangdoanhnghiep.username WHERE taikhoan.username = '".$username."'";
+				$sql = "SELECT * FROM taikhoan JOIN khachhangdoanhnghiep ON taikhoan.username = khachhangdoanhnghiep.username JOIN xaphuong ON khachhangdoanhnghiep.MaXa = xaphuong.MaXa JOIN huyenquan ON xaphuong.MaHuyen = huyenquan.MaHuyen JOIN tinhthanh ON huyenquan.MaTinh = tinhthanh.MaTinh WHERE taikhoan.username = '".$username."'";
 			}elseif ($vaitro == 5){
-				$sql = "SELECT * FROM taikhoan JOIN khachhangthanhvien ON taikhoan.username = khachhangthanhvien.username WHERE taikhoan.username = '".$username."'";
+				$sql = "SELECT * FROM taikhoan JOIN khachhangthanhvien ON taikhoan.username = khachhangthanhvien.username JOIN xaphuong ON khachhangthanhvien.MaXa = xaphuong.MaXa JOIN huyenquan ON xaphuong.MaHuyen = huyenquan.MaHuyen JOIN tinhthanh ON huyenquan.MaTinh = tinhthanh.MaTinh WHERE taikhoan.username = '".$username."'";
 			}
 
 			$result = mysqli_query($conn,$sql);

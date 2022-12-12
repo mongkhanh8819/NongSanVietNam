@@ -12,7 +12,7 @@
 	//DIFINE CONNECT
 	require_once("config/config.php");
 	//
-		
+	
   	include_once("Controller/NongSan/cNhomNongSan.php");
 	include_once("Controller/TaiKhoan/cTaikhoan.php");
 	$account = new cTaikhoan();
@@ -33,6 +33,12 @@
 	//----------
 	//----------
 	//include header
+
+
+	// 
+	// 
+
+
 	include("View/layouts/header.php");
 	//include slider
 	if (isset($_REQUEST['gioithieu'])) {
@@ -50,8 +56,33 @@
 	}
 	//
 	//echo $_SESSION['login_id'];
-	if(isset($_SESSION['login_id'])) {
-		include_once("View/KhachHangThanhVien/vGiaoDienTV.php");
+	elseif(isset($_SESSION['login_id'])) {
+				if (isset($_REQUEST['gioithieu'])) {
+					// include("View/gioithieu.php");
+				} elseif (isset($_REQUEST['tintuc'])) {
+					// include("View/tintuc.php");
+				} elseif (isset($_REQUEST['huongdan'])) {
+					// include("View/huongdan.php");
+				} elseif (isset($_REQUEST['truyxuat'])) {
+					include("View/truyxuatnguongoc.php");
+				} elseif (isset($_REQUEST['lienhe'])) {
+					// include("View/lienhe.php");
+				} elseif (isset($_REQUEST['hoaqua'])) {
+					include("View/vKHVL.php");
+				} elseif (isset($_REQUEST['luongthuc'])) {
+					include("View/vKHVL.php");
+				} elseif (isset($_REQUEST['raucu'])) {
+					include("View/vKHVL.php");
+				} elseif(isset($_REQUEST['updatett'])){
+			      	include("View/KhachHangThanhVien/vUpdateTV.php");
+			    } elseif (isset($_REQUEST['donhang'])){
+					include("View/dathang_nongsan.php");
+				} elseif (isset($_REQUEST['mans'])) {
+					include("View/chitiettruyxuat.php");
+				} else{
+					include("View/vKHVL.php");
+					//include_once("View/KhachHangThanhVien/vGiaoDienTV.php");
+				}
 	}
 	elseif (isset($_SESSION['LoginSuccess']) && $_SESSION['LoginSuccess'] == true) {
 		switch ($_SESSION['MaVaiTro']) {
@@ -61,39 +92,93 @@
 				break;
 			case '2':
 				if (isset($_REQUEST['gioithieu'])) {
-					include("View/gioithieu.php");
-				}elseif (isset($_REQUEST['tintucs'])) {
-					include("View/tintuc.php");
-				}else{
+					// include("View/gioithieu.php");
+				} elseif (isset($_REQUEST['tintucs'])) {
+					// include("View/tintuc.php");
+				} elseif (isset($_REQUEST['huongdan'])) {
+					// include("View/huongdan.php");
+				} elseif (isset($_REQUEST['truyxuat'])) {
+					include("View/truyxuatnguongoc.php");
+				} elseif (isset($_REQUEST['lienhe'])) {
+					include("View/lienhe.php");
+				} else{
 					include_once("View/NhanVienPhanPhoi/vGiaoDienNVPP.php");
 				}
 				break;
 			case '3':
 				if (isset($_REQUEST['gioithieu'])) {
-					include("View/gioithieu.php");
-				}elseif (isset($_REQUEST['tintuc'])) {
-					include("View/tintuc.php");
-				}else{
+					// include("View/gioithieu.php");
+				} elseif (isset($_REQUEST['tintuc'])) {
+					// include("View/tintuc.php");
+				} elseif (isset($_REQUEST['huongdan'])) {
+					// include("View/huongdan.php");
+				} elseif (isset($_REQUEST['truyxuat'])) {
+					include("View/truyxuatnguongoc.php");
+				} elseif (isset($_REQUEST['lienhe'])) {
+					include("View/lienhe.php");
+				} else{
 					include_once("Controller/NongSan/cNongSan.php");
 					include_once("View/NhaCungCapNongSan/vGiaoDienNCC.php");
 				}
 				break;
 			case '4':
 				if (isset($_REQUEST['gioithieu'])) {
-					include("View/gioithieu.php");
-				}elseif (isset($_REQUEST['tintuc'])) {
-					include("View/tintuc.php");
+					// include("View/gioithieu.php");
+				} elseif (isset($_REQUEST['tintuc'])) {
+					// include("View/tintuc.php");
+				} elseif (isset($_REQUEST['huongdan'])) {
+					// include("View/huongdan.php");
+				} elseif (isset($_REQUEST['truyxuat'])) {
+					include("View/truyxuatnguongoc.php");
+				} elseif (isset($_REQUEST['lienhe'])) {
+					include("View/lienhe.php");
+				} elseif (isset($_REQUEST['hoaqua'])) {
+					include("View/vKHVL.php");
+				} elseif (isset($_REQUEST['luongthuc'])) {
+					include("View/vKHVL.php");
+				} elseif (isset($_REQUEST['raucu'])) {
+					include("View/vKHVL.php");
+				} elseif(isset($_REQUEST['updatett'])){
+			      	include("View/KhachHangDoanhNghiep/vUpdateTTkhdn.php");
+			    } elseif(isset($_REQUEST['qldh'])){
+			      	include("View/KhachHangDoanhNghiep/vQuanLyDonHang.php");
+			    } elseif (isset($_REQUEST['donhang'])){
+					include("View/dathang_nongsan.php");
+				} elseif (isset($_REQUEST['mans'])) {
+					include("View/chitiettruyxuat.php");
 				}else{
-					include_once("View/KhachHangDoanhNghiep/vGiaoDienDN.php");
+					//include_once("View/KhachHangDoanhNghiep/vGiaoDienDN.php");
+					include("View/vKHVL.php");
 				}
 				break;
 			case '5':
 				if (isset($_REQUEST['gioithieu'])) {
-					include("View/gioithieu.php");
-				}elseif (isset($_REQUEST['tintuc'])) {
-					include("View/tintuc.php");
-				}else{
-					include_once("View/KhachHangThanhVien/vGiaoDienTV.php");
+					// include("View/gioithieu.php");
+				} elseif (isset($_REQUEST['tintuc'])) {
+					// include("View/tintuc.php");
+				} elseif (isset($_REQUEST['huongdan'])) {
+					// include("View/huongdan.php");
+				} elseif (isset($_REQUEST['truyxuat'])) {
+					include("View/truyxuatnguongoc.php");
+				} elseif (isset($_REQUEST['lienhe'])) {
+					include("View/lienhe.php");
+				} elseif (isset($_REQUEST['hoaqua'])) {
+					include("View/vKHVL.php");
+				} elseif (isset($_REQUEST['luongthuc'])) {
+					include("View/vKHVL.php");
+				} elseif (isset($_REQUEST['raucu'])) {
+					include("View/vKHVL.php");
+				} elseif(isset($_REQUEST['updatett'])){
+			      	include("View/KhachHangThanhVien/vUpdateTV.php");
+			    } elseif(isset($_REQUEST['qldh'])){
+			      	include("View/KhachHangThanhVien/vQuanLyDonHang.php");
+			    } elseif (isset($_REQUEST['donhang'])){
+					include("View/dathang_nongsan.php");
+				} elseif (isset($_REQUEST['mans'])) {
+					include("View/chitiettruyxuat.php");
+				} else{
+					include("View/vKHVL.php");
+					//include_once("View/KhachHangThanhVien/vGiaoDienTV.php");
 				}
 				break;
 			default:
@@ -101,10 +186,22 @@
 		}
 	} else{
 		if (isset($_REQUEST['gioithieu'])) {
-			include("View/gioithieu.php");
-		}elseif (isset($_REQUEST['tintuc'])) {
-			include("View/tintuc.php");
-		}else{
+			// include("View/gioithieu.php");
+		} elseif (isset($_REQUEST['tintuc'])) {
+			// include("View/tintuc.php");
+		} elseif (isset($_REQUEST['huongdan'])) {
+			// include("View/huongdan.php");
+		} elseif (isset($_REQUEST['truyxuat'])) {
+			include("View/truyxuatnguongoc.php");
+		}  elseif (isset($_REQUEST['lienhe'])) {
+			include("View/lienhe.php");
+		} elseif(isset($_REQUEST['qldh'])){
+			include("View/KhachHangThanhVien/vQuanLyDonHang.php");
+		} elseif (isset($_REQUEST['donhang'])){
+			include("View/dathang_nongsan.php");
+		} elseif (isset($_REQUEST['mans'])) {
+			include("View/chitiettruyxuat.php");
+		} else{
 			include_once("View/vKHVL.php");
 		}
 	}
