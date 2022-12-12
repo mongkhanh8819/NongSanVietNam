@@ -30,6 +30,9 @@
   }#CẬP NHẬT THÔNG TIN DOANH NGHIỆP
   elseif (isset($_REQUEST["updatedn"])) {
     include ("view/KhachHangDoanhNghiep/updatedoanhnghiep.php");
+  }#xóa doanh nghiệp
+  elseif (isset($_REQUEST["deldn"])) {
+    include ("view/KhachHangDoanhNghiep/deldoanhnghiep.php");
   }#XEM KHÁCH HÀNG THÀNH VIÊN
   elseif (isset($_REQUEST["qlkhtv"])){
     include("view/KhachHangThanhVien/quanlithanhvien.php");
@@ -39,7 +42,11 @@
   }#CẬP NHẬT THÔNG TIN THÀNH VIÊN
   elseif (isset($_REQUEST["updatetv"])) {
     include("view/KhachHangThanhVien/updatethanhvien.php");
-  }#XEM NHÀ CUNG CẤP
+  }#XÓA THÀNH VIÊN
+  elseif (isset($_REQUEST["deltv"])) {
+    include("view/KhachHangThanhVien/delthanhvien.php");
+  }
+  #XEM NHÀ CUNG CẤP
   elseif (isset($_REQUEST["qlncc"])){
     include("view/NhaCungCap/quanlinhacungcap.php");
   }#THÊM NHÀ CUNG CẤP
@@ -48,13 +55,21 @@
   }#CẬP NHẬT NHÀ CUNG CẤP
   elseif (isset($_REQUEST["updatencc"])) {
     include("view/NhaCungCap/updatencc.php");
-  }#THÊM NHÂN VIÊN
+  }#Xóa NHÀ CUNG CẤP
+  elseif (isset($_REQUEST["delncc"])) {
+    include("view/NhaCungCap/delncc.php");
+  }
+  #THÊM NHÂN VIÊN
   elseif (isset($_REQUEST["addnv"])) {
     include("view/NhanVienPhanPhoi/addnhanvien.php");
   }#CẬP NHẬT NHÂN VIÊN
   elseif (isset($_REQUEST["updatenvpp"])){
     include ("view/NhanVienPhanPhoi/updatenv.php");
-  }#XEM TÀI KHOẢN
+  }#XÓA NHÂN VIÊN
+  elseif (isset($_REQUEST["delnvpp"])) {
+    include ("view/NhanVienPhanPhoi/delnhanvienphanphoi.php");
+  }
+  #XEM TÀI KHOẢN
   elseif (isset($_REQUEST["qltk"])) {
     include("view/TaiKhoan/quanlitaikhoan.php");
   }#THÊM TÀI KHOẢN
@@ -75,10 +90,38 @@
   }#CẬP NHẬT TRUNG TÂM PHÂN PHỐI
   elseif (isset($_REQUEST["updatettpp"])) {
     include("view/TrungTamPhanPhoi/updatetrungtamphanphoi.php");  
+  }#Xóa Trung Tâm phân phối
+  elseif (isset($_REQUEST['delttpp'])) {
+    include("view/TrungTamPhanPhoi/deltrungtamphanphoi.php");
   }
   #QUẢN LÝ NÔNG SẢN
   elseif (isset($_REQUEST['qlns'])) {
     include("view/NongSan/quanlynongsan.php");
+  }
+  #QUẢN LÝ NHÓM NÔNG SẢN
+  elseif (isset($_REQUEST['qlnhomns'])) {
+    include("view/NhomNongSan/nhomnongsan.php");
+  }#THÊM NHÓM NÔNG SẢN
+  elseif (isset($_REQUEST['addnns'])) {
+    include("view/NhomNongSan/addnhomnongsan.php");
+  }#CẬP NHẬT NHÓM NÔNG SẢN
+  elseif (isset($_REQUEST['updatenhomnongsan'])) {
+    include("view/NhomNongSan/updatenhomnongsan.php");
+  }#XÓA NHÓM NÔNG SẢN
+  elseif (isset($_REQUEST['delnhomnongsan'])) {
+    include("view/NhomNongSan/delnhomnongsan.php");
+  }#Quản lý loại nông sản
+  elseif (isset($_REQUEST['quanliloainongsan'])) {
+    include("view/LoaiNongSan/quanliloainongsan.php");
+  }#Thêm loại nông sản
+  elseif (isset($_REQUEST['addlns'])) {
+    include("view/LoaiNongSan/addloainongsan.php");
+  }#cập nhật loại nông sản
+  elseif (isset($_REQUEST['updateloainongsan'])) {
+    include("view/LoaiNongSan/updateloainongsan.php");
+  }#xóa loại nông sản
+  elseif (isset($_REQUEST['delloainongsan'])) {
+    include("view/LoaiNongSan/delloainongsan.php");
   }
   else {
     include_once("view/content.php");

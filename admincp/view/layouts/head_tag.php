@@ -24,4 +24,15 @@
   <!-- AdminLTE for demo purposes -->
   <!-- <script src="assets/dist1/js/demo.js"></script> -->
   <!--  -->
+  <script>
+    function confirm_delete(){
+			var x= confirm("Bạn có chắc xóa sản phẩm này không?");
+			if(x){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+  </script>
 </head>

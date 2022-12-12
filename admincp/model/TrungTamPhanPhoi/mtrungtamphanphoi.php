@@ -67,5 +67,20 @@
                 return false;
             }
         }
+        #Xóa trung tâm phân phối
+        function del_TTPP($MaTrungTamPP){
+			$conn;
+			$p = new ketnoi();
+			if($p -> moketnoi($conn)){
+				$string = "Delete FROM trungtamphanphoi where MaTrungTamPP='".$MaTrungTamPP."'";
+				//echo $string;
+				$table = mysqli_query($conn,$string);
+				$p -> dongketnoi($conn);
+				//var_dump($table);
+				return $table;
+			}else{
+				return false;
+			}
+		}
     }
 ?>

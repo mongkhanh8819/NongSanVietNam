@@ -7,9 +7,6 @@
     $p = new cKHDN();
     $table = $p-> select_doanhnghiep_byid_xa($MaDN);
     
-    
-    
-    
 ?> 
  <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
@@ -22,7 +19,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+              <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
               <li class="breadcrumb-item active">Quản lý khách hàng</li>
             </ol>
           </div>
@@ -184,10 +181,23 @@
                           while ($row=mysqli_fetch_assoc($table)) { 
                       
                     ?>
-                  
-                    <div class="col-md-4">
+                  <div class="col-md-3">
+                    <td>
+                      <?php
+                        if($row["HinhAnh"] == NULL){
+                          echo "<td><img src='assets/uploads/images/user.png' alt='' height='200px' width='300px'style='border-radius:50px' ></td>";
+                        }else {
+                          echo "<td><img src='assets/uploads/images/".$row['HinhAnh']."' alt='' height='200px' width='300px'style='border-radius:50px' ></td>";
+                          // echo "<td><img src='assets/uploads/images/".$row['HinhAnh']."' alt='' height='200px' width='300px'></td>";
+                        }
+                      ?>
+                     
+                     
+                    </td>
+                  </div>
+                    <div class="col-md-3">
                       <td>Mã doanh nghiệp</td>
-                      <td><input type='text'class='form-control' name='txtMaDN' value="<?php echo $row['MaDN'] ?>"></td>
+                      <td><input type='text'class='form-control' name='txtMaDN' value="<?php echo $row['MaDN'] ?>" readonly></td>
                       <td>Tên doanh nghiệp</td>
                       <td><input type='text'class='form-control' name='txtTenDN' value="<?php echo $row['TenDoanhNghiep'] ?>"></td>
                       <td>Địa chỉ</td>
@@ -258,7 +268,7 @@
                   
                     
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
         
                    
                     <td>Số Điện Thoại</td>
@@ -273,7 +283,7 @@
                     <textarea type='text' name='txtGioiThieu' class='form-control'cols='80' rows='4' style='border-radius:10px'><?php echo $row['GioiThieu'] ?></textarea>
 
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <td>Tên người đại diện</td>
                     <td><input type='text'class='form-control' name='txtTen_NDD' value="<?php echo $row['TenNguoiDaiDien'] ?>"></td>
                             
@@ -299,9 +309,10 @@
                       }
                     ?>
                   </div>
-                </div>  
-                <button type="submit" class="btn btn-primary" name="submit" style="margin-left:45%">Submit</button>
-                <button type="submit" class="btn btn-primary" name="reset" >Reset</button>
+                </div>
+                <br>  
+                <button type="submit" class="btn btn-primary" name="submit" style="margin-left:45%">Cập nhật</button>
+                <button type="submit" class="btn btn-primary" name="reset" >Hủy</button>
                 <!-- <input type="submit" value="Thêm Doanh Nghiệp" style="text-align:center"> -->
               </form>
               
@@ -341,10 +352,10 @@
           $update=$p->update_DN($MaDN, $TenDoanhNghiep, $SDT, $DiaChi, $Email, $MST, $NgayThanhLap, $GioiThieu, $TenNguoiDaiDien, $DiaChi_NDD, $SDT_NDD, $Email_NDD, $username, $MaXa);
           if($update==1){
             echo "<script>alert('Cập nhật thành công');</script>";
-            // echo "<script>window.location.href='?qlkhdn'</script>";
+            echo "<script>window.location.href='?qlkhdn'</script>";
           }else {
             echo "<script>alert('Cập nhật không thành công');</script>";
-            // echo "<script>window.location.href='?qlkhdn'</script>";
+            echo "<script>window.location.href='?qlkhdn'</script>";
           }
       
     }else {
@@ -354,10 +365,10 @@
           $update=$p->update_DN($MaDN, $TenDoanhNghiep, $SDT, $DiaChi, $Email, $MST, $NgayThanhLap, $GioiThieu, $TenNguoiDaiDien, $DiaChi_NDD, $SDT_NDD, $Email_NDD, $username, $MaXa);
           if($update==1){
             echo "<script>alert('Cập nhật thành công');</script>";
-            // echo "<script>window.location.href='?qlkhdn'</script>";
+            echo "<script>window.location.href='?qlkhdn'</script>";
           }else {
             echo "<script>alert('Cập nhật không thành công');</script>";
-            // echo "<script>window.location.href='?qlkhdn'</script>";
+            echo "<script>window.location.href='?qlkhdn'</script>";
           }
           
         }
@@ -366,16 +377,16 @@
         $update=$p->update_DN($MaDN, $TenDoanhNghiep, $SDT, $DiaChi, $Email, $MST, $NgayThanhLap, $GioiThieu, $TenNguoiDaiDien, $DiaChi_NDD, $SDT_NDD, $Email_NDD, $username, $MaXa);
           if($update==1){
             echo "<script>alert('Cập nhật thành công');</script>";
-            // echo "<script>window.location.href='?qlkhdn'</script>";
+            echo "<script>window.location.href='?qlkhdn'</script>";
           }else {
             echo "<script>alert('Cập nhật không thành công');</script>";
-            // echo "<script>window.location.href='?qlkhdn'</script>";
+            echo "<script>window.location.href='?qlkhdn'</script>";
           }
           
       }
     }
   }elseif (isset($_REQUEST["reset"])){
-    echo "<script>alert('Cập nhật không thành công')</script>";
+    // echo "<script>alert('Cập nhật không thành công')</script>";
       //echo header("refresh:0; url='index.php?qlbv'");
       echo "<script>window.location.href='?qlkhdn'</script>";
   }

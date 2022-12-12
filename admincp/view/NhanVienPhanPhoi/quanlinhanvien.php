@@ -89,7 +89,12 @@
                                     echo "<td>".$row['SDT']."</td>";
                                     echo "<td>".$row['DiaChiNha']."</td>";
                                     // echo "<td>".$row['NgaySinh']."</td>";
-                                    echo "<td><img src='assets/uploads/images/".$row['HinhAnh']."' alt='' height='100px' width='150px'></td>";
+                                    if ($row['HinhAnh']== NULL) {
+                                      echo "<td><img src='assets/uploads/images/user.png' alt='' height='100px' width='150px'></td>";
+                                    }else {
+                                      echo "<td><img src='assets/uploads/images/".$row['HinhAnh']."' alt='' height='100px' width='150px'></td>";
+                                    }
+                                    
                                     // echo "<td>".$row['Email']."</td>";
                                     if($row['GioiTinh']==0){
                                         echo "<td>Nam</td>";
@@ -98,7 +103,7 @@
                                     }
                                     
                                     
-                                    echo "<td><a href='?updatenvpp&&MaNVPP=".$row['MaNVPP']."'><i class='fa fa-pen' aria-hidden='true'></i></a> | <a href='#'><i class='fa fa-trash' aria-hidden='true'></i></a></td>";
+                                    echo "<td><a href='?updatenvpp&&MaNVPP=".$row['MaNVPP']."'><i class='fa fa-pen' aria-hidden='true'></i></a> | <a href='?delnvpp&&MaNVPP=".$row['MaNVPP']."' onclick='return confirm_delete();'><i class='fa fa-trash' aria-hidden='true'></i></a></td>";
                                     echo "</tr>";
 			                    }
 		                    }

@@ -18,7 +18,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+              <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
               <li class="breadcrumb-item active">Quản lý khách hàng</li>
             </ol>
           </div>
@@ -68,13 +68,13 @@
                     <tr>
                       <th style="text-align:center">Mã doanh nghiệp</th>
                       <th style="text-align:center">Tên doanh nghiệp</th>
-                      <th style="text-align:center">Số điện thoại</th>
+                      <!-- <th style="text-align:center">Số điện thoại</th> -->
                       <th style="text-align:center">Địa chỉ</th>
                       <!-- <th>Email</th> -->
                       <!-- <th>Mã số thuế</th> -->
                       <!-- <th>Ngày lập </th> -->
-                      <th style="text-align:center">Giới thiệu</th>
-                      <!-- <th>Tên người đại diện</th> -->
+                      <!-- <th style="text-align:center">Giới thiệu</th> -->
+                      <th style="text-align:center">Hình Ảnh</th>
                       <th style="text-align:center">Tác vụ</th>                 
                     </tr>
                   </thead>
@@ -85,17 +85,22 @@
 		                    if(mysqli_num_rows($table) > 0){
 			                    while($row = mysqli_fetch_assoc($table)) {
                                     echo "<tr>";
-                                    echo "<td>".$row['MaDN']."</td>";
-                                    echo "<td>".$row['TenDoanhNghiep']."</td>";
-                                    echo "<td>".$row['SDT']."</td>";
-                                    echo "<td>".$row['DiaChi']."</td>";
+                                    echo "<td style='text-align:center'>".$row['MaDN']."</td>";
+                                    echo "<td style='text-align:center'>".$row['TenDoanhNghiep']."</td>";
+                                    echo "<td style='text-align:center'>".$row['SDT']."</td>";
+                                    // echo "<td>".$row['DiaChi']."</td>";
                                     // echo "<td>".$row['Email']."</td>";
                                     // echo "<td>".$row['MST']."</td>";
                                     // echo "<td>".$row['NgayThanhLap']."</td>";
                                     //echo "<td>".$row['GioiThieu']."</td>";
-                                    echo "<td><textarea cols='45' rows='4'style='border-radius:10px'readonly>" . $row['GioiThieu'] . "</textarea></td>";
+                                    // echo "<td><textarea cols='45' rows='4'style='border-radius:10px'readonly>" . $row['GioiThieu'] . "</textarea></td>";
                                     // echo "<td>".$row['TenNguoiDaiDien']."</td>";
-                                    echo "<td><a href='?updatedn&&MaDN=".$row['MaDN']."'><i class='fa fa-pen' aria-hidden='true'></i></a> | <a href='#'><i class='fa fa-trash' aria-hidden='true'></i></a></td>";
+                                    if ($row['HinhAnh']== NULL) {
+                                      echo "<td style='text-align:center'><img src='assets/uploads/images/user.png' alt='' height='100px' width='150px'></td>";
+                                    }else {
+                                      echo "<td style='text-align:center'><img src='assets/uploads/images/".$row['HinhAnh']."' alt='' height='100px' width='150px'></td>";
+                                    }
+                                    echo "<td style='text-align:center'><a href='?updatedn&&MaDN=".$row['MaDN']."'><i class='fa fa-pen' aria-hidden='true'></i></a> | <a href='?deldn&&MaDN=".$row['MaDN']."' onclick='return confirm_delete();'><i class='fa fa-trash' aria-hidden='true'></i></a></td>";
                                     echo "</tr>";
 			                    }
 		                    }

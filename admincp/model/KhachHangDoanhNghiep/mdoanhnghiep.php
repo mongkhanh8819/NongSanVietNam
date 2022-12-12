@@ -35,22 +35,7 @@
 				return false;
 			}
 		}
-		#xem doanh nghiệp theo id
-		// public function select_KHDN_id($MaDN){
-            // $conn;
-            // $p = new ketnoi();
-            // if($p->moketnoi($conn)){
-                // $string="Select * from khachhangdoanhnghiep where MaDN ='".$MaDN."'";
-                //echo $string;
-                // $table=mysqli_query($conn,$string);
-                // $p->dongketnoi($conn);
-                //var_dump($table);
-                // return $table;
-                
-            // }else{
-                // return false;
-            // }
-		// }
+		
 		#them doanh nghiệp
 		public function add_KHDN($MaDN, $TenDoanhNghiep, $SDT, $DiaChi, $Email, $MST, $NgayThanhLap, $GioiThieu, $TenNguoiDaiDien, $DiaChi_NDD, $SDT_NDD, $Email_NDD,$username, $MaXa){
 			$conn;
@@ -73,7 +58,7 @@
                 return false;
             }
 		}
-		##Hiển thị update doanh nghiệp từ xã tỉnh huyện
+		##Hiển thị doanh nghiệp theo MADN
 		public function select_doanhnghiep_id($MaDN){
 			$conn;
 			$p= new ketnoi();
@@ -92,6 +77,7 @@
 			}
 			
 		}
+		#UPDATE KHACH HANG DOANH NGHIEP
 		public function update_KHDN($MaDN, $TenDoanhNghiep, $SDT, $DiaChi, $Email, $MST, $NgayThanhLap, $GioiThieu, $TenNguoiDaiDien, $DiaChi_NDD, $SDT_NDD, $Email_NDD, $username, $MaXa){
 			$conn;
 			$p= new ketnoi();
@@ -107,6 +93,7 @@
 				}
 				
 				echo $string;
+				echo $username;
 				$table =mysqli_query($conn,$string);
 				$p->dongketnoi($conn);
 				var_dump($table);
@@ -116,6 +103,7 @@
 				return false;
 			}
 		}
+		#KIEM TRA TAI KHOAN DOANH NGHIEP
 		public function checkuser($username){
 			$conn;
 			$p= new ketnoi();
@@ -127,6 +115,21 @@
 				var_dump($table);
 				return $table;
 			}else {
+				return false;
+			}
+		}
+		#XÓA DOANH NGHIỆP
+		function del_KHDN($MaDN){
+			$conn;
+			$p = new ketnoi();
+			if($p -> moketnoi($conn)){
+				$string = "Delete FROM khachhangdoanhnghiep where MaDN='".$MaDN."'";
+				//echo $string;
+				$table = mysqli_query($conn,$string);
+				$p -> dongketnoi($conn);
+				//var_dump($table);
+				return $table;
+			}else{
 				return false;
 			}
 		}

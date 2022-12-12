@@ -98,7 +98,7 @@
                                     // }
                                     
                                     
-                                    echo "<td><a href='?updatettpp&&MaTrungTamPP=".$row['MaTrungTamPP']."'><i class='fa fa-pen' aria-hidden='true'></i></a> | <a href='#'><i class='fa fa-trash' aria-hidden='true'></i></a></td>";
+                                    echo "<td><a href='?updatettpp&&MaTrungTamPP=".$row['MaTrungTamPP']."'><i class='fa fa-pen' aria-hidden='true'></i></a> | <a href='?delttpp&&MaTrungTamPP=".$row['MaTrungTamPP']."' onclick='return confirm_delete();'><i class='fa fa-trash' aria-hidden='true'></i></a></td>";
                                     echo "</tr>";
 			                    }
 		                    }

@@ -6,6 +6,26 @@
   $b= new cTTPP();
   $dstt=$b->select_trungtamphanphoi();
  ?>
+<script>
+ $(document).ready(function(){
+            function kiemsdt(){
+                var sdt=$("#sdt").val();
+                regsdt=/^\+?(0[389][0-9]{8})$/;
+
+                if(regsdt.test(sdt))
+                {
+                    $("#Sodienthoai").html("");
+                    return true;
+                }
+                else
+                {
+                    $("#Sodienthoai").html("Số điện thoại phải đủ 10 chữ số và bắt đầu 03,08,09 ");
+                    return false;
+                }
+            }
+            $("#sdt").blur(kiemsdt);
+ })
+</script>
 <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -79,7 +99,8 @@
                     <td>Ngày sinh</td>
                     <input type="date" class="form-control" id="ngaysinh" placeholder="Enter Ngày sinh" name="ngaysinh"></br>
                     <td>Số điện thoại</td>
-                    <input type="text" class="form-control" id="sdt" placeholder="Enter Số điện thoại" name="sdt"></br>
+                    <input type="text" class="form-control" id="sdt" placeholder="Enter Số điện thoại" name="sdt">
+                    <span id="Sodienthoai" style="color:red;"></span></br>
                     
                     
                   </div>
@@ -130,8 +151,8 @@
                   </div>
                     
                   <div class="col">   
-                    <td>Hình ảnh</td>
-                    <input type="file" class="form-control" id="hinhanh" placeholder="Chọn hình ảnh" name="hinhanh"></br>
+                    <!-- <td>Hình ảnh</td> -->
+                    <!-- <input type="file" class="form-control" id="hinhanh" placeholder="Chọn hình ảnh" name="hinhanh"></br> -->
                     <td>Trung tâm phân phối</td>
                     <!-- <input type="text" class="form-control" id="mattpp" placeholder="Enter Mã trung tâm phân phối" name="mattpp"></br> -->
                      <select name="mattpp" id="mattpp" class="form-control"> 
@@ -153,8 +174,8 @@
                     
                     <td>Username</td>
                     <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username"></br>
-                    <td>Password</td>
-                    <input type="text" class="form-control" id="password" placeholder="Enter Username" name="password"></br>
+                    <!-- <td>Password</td> -->
+                    <!-- <input type="text" class="form-control" id="password" placeholder="Enter Username" name="password"></br> -->
                         
 
 
@@ -187,56 +208,36 @@
     $SDT=$_REQUEST["sdt"];
     $DiaChiNha=$_REQUEST["diachi"];
     $NgaySinh=$_REQUEST["ngaysinh"];
-    $file=$_FILES["hinhanh"]["tmp_name"];
-    $type=$_FILES["hinhanh"]["type"];
-    $tenanh=$_FILES["hinhanh"]["name"];
-    $size=$_FILES["hinhanh"]["size"];
     $Email=$_REQUEST["email"];
     $GioiTinh=$_REQUEST["gioitinh"];
     $MaXa=$_REQUEST["xa"];
     $MaTrungTamPP=$_REQUEST["mattpp"];
     $username=$_REQUEST["username"];
-    $password=$_REQUEST["password"];
+    // $password=$_REQUEST["password"];
     $MaVaiTro=2;
-   
-  
-
-
     $tk= new cTaikhoan();
     $NVPP= new cNVPP();
 
     if($username !=""){
-      $insert=$tk->add_taikhoan($MaVaiTro, $username, $password);
+      $insert=$tk->add_taikhoan($MaVaiTro, $username);
       if($insert=1){
-        $insert=$NVPP->add_nhanvienphanphoi($MaNVPP, $TenNVPP, $SDT, $DiaChiNha, $NgaySinh,$file,$tenanh,$type,$size , $Email,$GioiTinh,$MaXa,$MaTrungTamPP, $username);
+        $insert=$NVPP->add_nhanvienphanphoi($MaNVPP, $TenNVPP, $SDT, $DiaChiNha, $NgaySinh, $Email,$GioiTinh,$MaXa,$MaTrungTamPP, $username);
         if($insert==1){
           echo "<script>alert('Thêm thành công');</script>";
           // echo "<script>window.location.href='?qlkhtv'</script>";
-        }elseif($insert==0){
+        }else {
           echo "<script>alert('Thêm không thành công');</script>";
           // echo "<script>window.location.href='?qlkhtv'</script>";
-        }elseif ($insert==-1) {
-          echo "<script>alert('Không thể Upload ảnh');</script>";
-        }elseif ($insert==-2) {
-          echo "<script>alert('Size ảnh không đủ');</script>";
-        }elseif ($insert==-3) {
-          echo "<script>alert('file ảnh không đúng định dạng');</script>";
         }
       }
     }else {
-      $insert=$NVPP->add_nhanvienphanphoi($MaNVPP, $TenNVPP, $SDT, $DiaChiNha, $NgaySinh,$file,$tenanh,$loaianh,$size , $Email,$GioiTinh,$MaXa,$MaTrungTamPP, $username);
+      $insert=$NVPP->add_nhanvienphanphoi($MaNVPP, $TenNVPP, $SDT, $DiaChiNha, $NgaySinh, $Email,$GioiTinh,$MaXa,$MaTrungTamPP, $username);
       if($insert==1){
         echo "<script>alert('Thêm thành công');</script>";
         // echo "<script>window.location.href='?qlkhtv'</script>";
-      }elseif($insert==0){
+      }else {
         echo "<script>alert('Thêm không thành công');</script>";
         // echo "<script>window.location.href='?qlkhtv'</script>";
-      }elseif ($insert==-1) {
-        echo "<script>alert('Không thể Upload ảnh');</script>";
-      }elseif ($insert==-2) {
-        echo "<script>alert('Size ảnh không đủ');</script>";
-      }elseif ($insert==-3) {
-        echo "<script>alert('file ảnh không đúng định dạng');</script>";
       }
     }
   }

@@ -66,15 +66,15 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th>Mã KHTV</th>
-                      <th>Tên KHTV</th>
+                      <th style="text-align:center">Mã KHTV</th>
+                      <th style="text-align:center">Tên KHTV</th>
                       <!-- <th>Số điện thoại</th> -->
-                      <th>Địa chỉ</th>
-                      <th>Ngày sinh</th>
-                      <td style="">Hình ảnh</td>
-                      <th>Email</th>
-                      <th>Giới tính</th>
-                      <th>Tác vụ</th>                 
+                      <th style="text-align:center">Địa chỉ</th>
+                      <!-- <th style="text-align:center">Ngày sinh</th> -->
+                      <th style="text-align:center">Hình ảnh</th>
+                      <!-- <th style="text-align:center">Email</th> -->
+                      <!-- <th style="text-align:center">Giới tính</th> -->
+                      <th style="text-align:center">Tác vụ</th>                 
                     </tr>
                   </thead>
                   <tbody>
@@ -84,21 +84,26 @@
 		                    if(mysqli_num_rows($table) > 0){
 			                    while($row = mysqli_fetch_assoc($table)) {
                                     echo "<tr>";
-                                    echo "<td>".$row['MaKHTV']."</td>";
-                                    echo "<td>".$row['Ten_KHTV']."</td>";
+                                    echo "<td style='text-align:center'>".$row['MaKHTV']."</td>";
+                                    echo "<td style='text-align:center'>".$row['Ten_KHTV']."</td>";
                                     // echo "<td>".$row['SDT']."</td>";
-                                    echo "<td>".$row['DiaChi']."</td>";
-                                    echo "<td>".$row['NgaySinh']."</td>";
-                                    echo "<td><img src='assets/uploads/images/".$row['HinhAnh']."' alt='' height='100px' width='150px'></td>";
-                                    echo "<td>".$row['Email']."</td>";
-                                    if($row['GioiTinh']==0){
-                                        echo "<td>Nam</td>";
+                                    echo "<td style='text-align:center'>".$row['DiaChi']."</td>";
+                                    // echo "<td>".$row['NgaySinh']."</td>";
+                                    // echo "<td style='text-align:center'><img src='assets/uploads/images/".$row['HinhAnh']."' alt='' height='100px' width='150px'></td>";
+                                    if ($row['HinhAnh']== NULL) {
+                                      echo "<td style='text-align:center'><img src='assets/uploads/images/user.png' alt='' height='100px' width='150px'></td>";
                                     }else {
-                                        echo "<td>Nữ</td>";
+                                      echo "<td style='text-align:center'><img src='assets/uploads/images/".$row['HinhAnh']."' alt='' height='100px' width='150px'></td>";
                                     }
+                                    // echo "<td>".$row['Email']."</td>";
+                                    // if($row['GioiTinh']==0){
+                                    //     echo "<td>Nam</td>";
+                                    // }else {
+                                    //     echo "<td>Nữ</td>";
+                                    // }
                                     
                                     
-                                    echo "<td><a href='?updatetv&&MaKHTV=".$row['MaKHTV']."'><i class='fa fa-pen' aria-hidden='true'></i></a> | <a href='#'><i class='fa fa-trash' aria-hidden='true'></i></a></td>";
+                                    echo "<td style='text-align:center'><a href='?updatetv&&MaKHTV=".$row['MaKHTV']."'><i class='fa fa-pen' aria-hidden='true'></i></a> | <a href='?deltv&&MaKHTV=".$row['MaKHTV']."' onclick='return confirm_delete();'><i class='fa fa-trash' aria-hidden='true'></i></a></td>";
                                     echo "</tr>";
 			                    }
 		                    }

@@ -167,16 +167,25 @@
                             while ($row=mysqli_fetch_assoc($table)) {
                     ?>
                     <div class="col-md-4">
-                      <td><img src='assets/uploads/images/<?php echo $row['HinhAnh'] ?>' alt='' height='200px' width='300px'style="border-radius:50px" ></td>
+                      <td>
+                      <?php
+                        if($row["HinhAnh"] == NULL){
+                          echo "<td><img src='assets/uploads/images/user.png' alt='' height='200px' width='300px'style='border-radius:50px' ></td>";
+                        }else {
+                          echo "<td><img src='assets/uploads/images/".$row['HinhAnh']."' alt='' height='200px' width='300px'style='border-radius:50px' ></td>";
+                          // echo "<td><img src='assets/uploads/images/".$row['HinhAnh']."' alt='' height='200px' width='300px'></td>";
+                        }
+                      ?>
+                      </td>
                     
                   </div>
                   <div class="col-md-4">
                     <td>Mã thành viên</td>
-                    <td><input type='text'class='form-control' name='MaKHTV' value="<?php echo $row['MaKHTV'] ?>"></td>
+                    <td><input type='text'class='form-control' name='MaKHTV' value="<?php echo $row['MaKHTV'] ?>" readonly></td>
                     <td>Tên khách hàng thành viên</td>
                     <td><input type='text'class='form-control' name='TenKHTV' value="<?php echo $row['Ten_KHTV'] ?>"></td>
                     <td>Địa chỉ</td>
-                    <td><input type='text'class='form-control' name='DiaChi' value=" <?php echo $row['DiaChi'] ?>"></td>
+                    <td><input type='text'class='form-control' name='DiaChi' value="<?php echo $row['DiaChi'] ?>"></td>
                     <td>Mã Xã</td>
                     
                       <div class="input-group mb-3">
@@ -245,9 +254,9 @@
                     <td> Số điện thoại </td>
                     <td><input type='text' class='form-control' name='SDT' value="<?php echo $row['SDT'] ?>"></td>
                     <td>Ngày sinh</td>
-                    <td><input type='text'class='form-control' name='NgaySinh' value=" <?php echo $row['NgaySinh'] ?>" readonly></td>
+                    <td><input type='text'class='form-control' name='NgaySinh' value="<?php echo $row['NgaySinh'] ?>" readonly></td>
                     <td>Email</td>
-                    <td><input type='text' class='form-control' name='Email' value=" <?php echo $row['Email'] ?>"></td>
+                    <td><input type='text' class='form-control' name='Email' value="<?php echo $row['Email'] ?>"></td>
                     <td>Giới Tính</td>
                             
                     <td>
@@ -259,7 +268,7 @@
                            
                             
                     <td>Username</td>
-                    <td><input type='text'class='form-control' name='Username' value=" <?php echo $row['username'] ?>"></td>
+                    <td><input type='text'class='form-control' name='Username' value="<?php echo $row['username'] ?>"></td>
                   </div>
                   
                   <div>
@@ -271,8 +280,8 @@
                   </div>
                   
                 </div>
-                <button type="submit" class="btn btn-primary" name ="submit"style="margin-left:45%">Submit</button>
-                <button type="submit" class="btn btn-primary" name="Reset" >Reset</button>
+                <button type="submit" class="btn btn-primary" name ="submit"style="margin-left:45%">Cập nhật</button>
+                <button type="submit" class="btn btn-primary" name="Reset" >Hủy</button>
                 <!-- <input type="submit" value="Thêm Doanh Nghiệp" style="text-align:center"> -->
               </form>
               
@@ -299,9 +308,11 @@
       $username=$_REQUEST["Username"];
       $MaXa=$_REQUEST["xa"];
       $MaVaiTro=5;
+      //echo $username;
       $p = new cKHTV();
       $tk = new ctaikhoan();
       $check= $p->check_user($username);
+      //var_dump ($check);
       if(mysqli_num_rows($check)>0){
         $update=$p->update_thanhvien($MaKHTV, $Ten_KHTV, $SDT, $DiaChi, $NgaySinh, $Email, $GioiTinh, $username, $MaXa);
         if($update==1){
@@ -311,27 +322,28 @@
           echo "<script>alert('Cập nhật không thành công');</script>";
           echo "<script>window.location.href='?qlkhtv'</script>";
         }
-      }else {
+      }else{
         if($username !=""){
           $update=$tk->add_taikhoan($MaVaiTro, $username);
           if($update==1){
             $update=$p->update_thanhvien($MaKHTV, $Ten_KHTV, $SDT, $DiaChi, $NgaySinh, $Email, $GioiTinh, $username, $MaXa);
             if($update==1){
               echo "<script>alert('Cập nhật thành công');</script>";
-              // echo "<script>window.location.href='?qlkhtv'</script>";
+              echo "<script>window.location.href='?qlkhtv'</script>";
             }else {
               echo "<script>alert('Cập nhật không thành công');</script>";
-              // echo "<script>window.location.href='?qlkhtv'</script>";
+              echo "<script>window.location.href='?qlkhtv'</script>";
             }
           }
         }else {
+          //echo "<script>alert(".$username.")</script>";
           $update=$p->update_thanhvien($MaKHTV, $Ten_KHTV, $SDT, $DiaChi, $NgaySinh, $Email, $GioiTinh, $username, $MaXa);
           if($update==1){
             echo "<script>alert('Cập nhật thành công');</script>";
-            // echo "<script>window.location.href='?qlkhtv'</script>";
+            echo "<script>window.location.href='?qlkhtv'</script>";
           }else {
-            echo "<script>alert('Cập nhật không thành công');</script>";
-            // echo "<script>window.location.href='?qlkhtv'</script>";
+           echo "<script>alert('Cập nhật không thành công');</script>";
+            echo "<script>window.location.href='?qlkhtv'</script>";
           }
           
         }

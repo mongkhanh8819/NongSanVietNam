@@ -35,5 +35,12 @@
                 return 0; //thất bại
             }
         }
+        #xóa trung tâm phân phối
+        function delete_trungtamphanphoi($MaTrungTamPP){
+			$p = new mTTPP();
+			$table  = $p -> del_TTPP($MaTrungTamPP);
+			var_dump($table);
+			return $table;
+		}
     }
 ?>

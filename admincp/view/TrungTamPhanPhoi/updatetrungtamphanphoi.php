@@ -170,12 +170,10 @@
         $update=$p->update_trungtamphanphoi($MaTrungTamPP, $TenTrungTam,$DiaChi,$ChucNang,$NguoiDaiDien,$MaXa);
         if($update){
             echo "<script>alert('Cập nhật thành công')</script>";
-            //echo header("refresh:0; url='index.php?qlbv'");
-            // echo "<script>window.location.href='index.php?qlbv'</script>";
+            echo "<script>window.location.href='?qlttpp'</script>";
         }else {
             echo "<script>alert('Cập nhật không thành công')</script>";
-            //echo header("refresh:0; url='index.php?qlbv'");
-            // echo "<script>window.location.href='index.php?qlbv'</script>";
+            echo "<script>window.location.href='?qlttpp'</script>";
         }
     }
 ?>

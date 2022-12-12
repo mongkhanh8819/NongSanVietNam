@@ -50,16 +50,16 @@
             }
         }
         #thêm khách hàng thành viên
-        public function add_KHTV($MaKHTV, $Ten_KHTV, $SDT, $DiaChi, $NgaySinh, $HinhAnh, $Email, $GioiTinh, $username, $MaXa){
+        public function add_KHTV($Ten_KHTV, $SDT, $DiaChi, $NgaySinh, $Email, $GioiTinh, $username, $MaXa){
             $conn;
             $p = new ketnoi();
             if($p->moketnoi($conn)){
                 if($username !=""){
-                    $string = "INSERT INTO khachhangthanhvien(MaKHTV, Ten_KHTV, SDT, DiaChi, NgaySinh, HinhAnh, Email, GioiTinh, username, MaXa) VALUES ";
-                    $string .="(".$MaKHTV.",'".$Ten_KHTV."','".$SDT."','".$DiaChi."','".$NgaySinh."','".$HinhAnh."','".$Email."',".$GioiTinh.",'".$username."',".$MaXa.")";
+                    $string = "INSERT INTO khachhangthanhvien(Ten_KHTV, SDT, DiaChi, NgaySinh, Email, GioiTinh, username, MaXa) VALUES ";
+                    $string .="('".$Ten_KHTV."','".$SDT."','".$DiaChi."','".$NgaySinh."','".$Email."',".$GioiTinh.",'".$username."',".$MaXa.")";
                 }else{
-                    $string = "INSERT INTO khachhangthanhvien(MaKHTV, Ten_KHTV, SDT, DiaChi, NgaySinh, HinhAnh, Email, GioiTinh , MaXa) VALUES ";
-                    $string .="(".$MaKHTV.",'".$Ten_KHTV."','".$SDT."','".$DiaChi."','".$NgaySinh."','".$HinhAnh."','".$Email."',".$GioiTinh.",".$MaXa.")";
+                    $string = "INSERT INTO khachhangthanhvien(Ten_KHTV, SDT, DiaChi, NgaySinh, Email, GioiTinh , MaXa) VALUES ";
+                    $string .="('".$Ten_KHTV."','".$SDT."','".$DiaChi."','".$NgaySinh."','".$Email."',".$GioiTinh.",".$MaXa.")";
                 }
                 $table=mysqli_query($conn,$string);
                 echo $string;
@@ -70,6 +70,7 @@
                 return false;
             }
         }
+        #update thành viên
         public function update_KHTV($MaKHTV, $Ten_KHTV, $SDT, $DiaChi, $NgaySinh, $Email, $GioiTinh, $username, $MaXa){
 			$conn;
 			$p= new ketnoi();
@@ -84,8 +85,10 @@
 					$string .= " Where MaKHTV='".$MaKHTV."'";
 				}
 				
-				// echo $string;
+				echo $string;
+                echo $username;
 				$table =mysqli_query($conn,$string);
+                var_dump ($table);
 				$p->dongketnoi($conn);
 				return $table;
 
@@ -93,17 +96,33 @@
 				return false;
 			}
 		}
+        # kiểm tra user
         public function checkuser($username){
 			$conn;
 			$p= new ketnoi();
 			if($p->moketnoi($conn)){
-				$string="SELECT * FROM khachhangthanhvien WHERE username IN (SELECT username FROM taikhoan) && username = '".$username."'";
-				echo $string;
+				$string="SELECT * FROM khachhangthanhvien WHERE username IN (SELECT username FROM taikhoan) && username ='".$username."'";
+				//echo $string;
 				$table= mysqli_query($conn,$string);
 				$p->dongketnoi($conn);
 				var_dump($table);
 				return $table;
 			}else {
+				return false;
+			}
+		}
+        #XÓA Thành viên
+		function del_KHTV($MaKHTV){
+			$conn;
+			$p = new ketnoi();
+			if($p -> moketnoi($conn)){
+				$string = "Delete FROM khachhangthanhvien where MaKHTV='".$MaKHTV."'";
+				//echo $string;
+				$table = mysqli_query($conn,$string);
+				$p -> dongketnoi($conn);
+				//var_dump($table);
+				return $table;
+			}else{
 				return false;
 			}
 		}

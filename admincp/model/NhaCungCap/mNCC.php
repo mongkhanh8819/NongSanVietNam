@@ -48,16 +48,16 @@
             }
         }
         #Thêm nhà cung cấp nông sản mới
-        public function add_NCC($MaNCC, $TenNCC, $TenNDD, $HinhAnh, $DiaChi_NCC, $DiaChi_NDD, $SDT_NCC,$SDT_NDD,$Email_NCC,$Email_NDD, $username, $MaXa){
+        public function add_NCC($TenNCC, $TenNDD, $DiaChi_NCC, $DiaChi_NDD, $SDT_NCC,$SDT_NDD,$Email_NCC,$Email_NDD, $username, $MaXa){
             $conn;
             $p = new ketnoi();
             if($p->moketnoi($conn)){
                 if($username !=""){
-                    $string = "INSERT INTO nhacungcapnongsan(MaNCC, TenNhaCungCap, TenNguoiDaiDien, HinhAnh, DiaChi_NCC, DiaChi_NDD, SDT_NCC,SDT_NDD, EmailNCC,EmailNDD, username, MaXa) VALUES ";
-                    $string .="(".$MaNCC.",'".$TenNCC."','".$TenNDD."','".$HinhAnh."','".$DiaChi_NCC."','".$DiaChi_NDD."','".$SDT_NCC."','".$SDT_NDD."','".$Email_NCC."','".$Email_NDD."','".$username."',".$MaXa.")";
+                    $string = "INSERT INTO nhacungcapnongsan(TenNhaCungCap, TenNguoiDaiDien, DiaChi_NCC, DiaChi_NDD, SDT_NCC,SDT_NDD, EmailNCC,EmailNDD, username, MaXa) VALUES ";
+                    $string .="('".$TenNCC."','".$TenNDD."','".$DiaChi_NCC."','".$DiaChi_NDD."','".$SDT_NCC."','".$SDT_NDD."','".$Email_NCC."','".$Email_NDD."','".$username."',".$MaXa.")";
                 }else{
-                    $string = "INSERT INTO nhacungcapnongsan(MaNCC, TenNhaCungCap, TenNguoiDaiDien  , HinhAnh, DiaChi_NCC, DiaChi_NDD, SDT_NCC,SDT_NDD, EmailNCC,EmailNDD, MaXa) VALUES ";
-                    $string .="(".$MaNCC.",'".$TenNCC."','".$TenNDD."','".$HinhAnh."','".$DiaChi_NCC."','".$DiaChi_NDD."','".$SDT_NCC."','".$SDT_NDD."','".$Email_NCC."','".$Email_NDD."',".$MaXa.")";
+                    $string = "INSERT INTO nhacungcapnongsan(TenNhaCungCap, TenNguoiDaiDien  , DiaChi_NCC, DiaChi_NDD, SDT_NCC,SDT_NDD, EmailNCC,EmailNDD, MaXa) VALUES ";
+                    $string .="('".$TenNCC."','".$TenNDD."','".$DiaChi_NCC."','".$DiaChi_NDD."','".$SDT_NCC."','".$SDT_NDD."','".$Email_NCC."','".$Email_NDD."',".$MaXa.")";
                 }
                 $table=mysqli_query($conn,$string);
                 echo $string;
@@ -89,6 +89,36 @@
 				return $table;
 
 			}else {
+				return false;
+			}
+		}
+        #Kiểm Tra User
+        public function checkuser($username){
+			$conn;
+			$p= new ketnoi();
+			if($p->moketnoi($conn)){
+				$string="SELECT * FROM nhacungcapnongsan WHERE username IN (SELECT username FROM taikhoan) && username = '".$username."'";
+				echo $string;
+				$table= mysqli_query($conn,$string);
+				$p->dongketnoi($conn);
+				var_dump($table);
+				return $table;
+			}else {
+				return false;
+			}
+		}
+        #xóa nhà cung cấp
+        function del_NCC($MaNCC){
+			$conn;
+			$p = new ketnoi();
+			if($p -> moketnoi($conn)){
+				$string = "Delete FROM nhacungcapnongsan where MaNCC='".$MaNCC."'";
+				//echo $string;
+				$table = mysqli_query($conn,$string);
+				$p -> dongketnoi($conn);
+				//var_dump($table);
+				return $table;
+			}else{
 				return false;
 			}
 		}

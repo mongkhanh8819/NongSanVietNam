@@ -19,13 +19,7 @@
 			$table = $p -> select_KHDN();
 			return $table;
 		}
-        #xem doanh nghiệp byid
-		// public function select_DN_byid($MaDN){
-            // $p= new mKhachHangDoanhNghiep();
-            // $table = $p->select_KHDN_id($MaDN);
-            //var_dump($table);
-            // return $table;
-        // }
+        
         #Hiển thị  doanh nghiệp id
         public function select_doanhnghiep_byid_xa($MaDN){
             $p= new mKhachHangDoanhNghiep();
@@ -55,12 +49,18 @@
                 return 0;//thêm không thành công
             }
            
-           
-           
         }
+        #kiem tra user
         public function check_user($username){
             $p= new mKhachHangDoanhNghiep();
             $table = $p -> checkuser($username);
+			return $table;
+		}
+        #xóa khách hàng doanh nghiệp
+        function delete_khachhangdoanhnghiep($MaDN){
+			$p = new mKhachHangDoanhNghiep();
+			$table  = $p -> del_KHDN($MaDN);
+			var_dump($table);
 			return $table;
 		}
 	}

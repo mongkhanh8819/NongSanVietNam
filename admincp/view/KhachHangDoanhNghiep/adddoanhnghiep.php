@@ -5,6 +5,48 @@
   //$dn = new cKHDN();
   
  ?>
+ <script>
+  $(document).ready(function(){
+            function kiemsdt(){
+                var sdt=$("#sdt").val();
+                regsdt=/^\+?(0[389][0-9]{8})$/;
+
+                if(regsdt.test(sdt))
+                {
+                    $("#Sodienthoai").html("");
+                    return true;
+                }
+                else
+                {
+                    $("#Sodienthoai").html("Số điện thoại phải đủ 10 chữ số và bắt đầu 03,08,09 ");
+                    return false;
+                }
+            }
+            $("#sdt").blur(kiemsdt);
+
+            function kiemsdtndd(){
+                var sdt=$("#sdtndd").val();
+                regsdt=/^\+?(0[389][0-9]{8})$/;
+
+                if(regsdt.test(sdt))
+                {
+                    $("#Sodienthoaindd").html("");
+                    return true;
+                }
+                else
+                {
+                    $("#Sodienthoaindd").html("Số điện thoại phải đủ 10 chữ số và bắt đầu 03,08,09");
+                    return false;
+                }
+            }
+            $("#sdtndd").blur(kiemsdtndd);
+            
+            
+            
+            
+
+        })
+ </script>
  <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -66,7 +108,8 @@
                     <td>Mã doanh nghiệp</td>
                     <input type="text" class="form-control" id="madn" placeholder="Enter Mã doanh nghiệp" name="madn"></br>
                     <td>Tên doanh nghiệp</td>
-                    <input type="text" class="form-control" id="tendn" placeholder="Enter Tên doanh nghiệp" name="tendn"></br>
+                    <input type="text" class="form-control" id="tendn" placeholder="Enter Tên doanh nghiệp" name="tendn">
+                    <span id="Tendoanhnghiep" style="color:red;"></span></br>
                     
                     <td>Địa chỉ</td>
                     <input type="text" class="form-control" id="diachi" placeholder="Enter Địa chỉ" name="diachi"></br>
@@ -109,9 +152,10 @@
                   </div>
                   <div class="col-md-4">
                     <td>Số điện thoại</td>
-                    <input type="text" class="form-control" id="sdt" placeholder="Enter Số điện thoại" name="sdt"></br>
+                    <input type="text" class="form-control" id="sdt" placeholder="Enter Số điện thoại" name="sdt">
+                    <span id="Sodienthoai" style="color:red;"></span></br>
                     <td>Email</td>
-                    <input type="text" class="form-control" id="email" placeholder="Enter Email" name="email"></br>
+                    <input type="mail" class="form-control" id="email" placeholder="Enter Email" name="email" required=""></br>
                     <td>Mã số thuế</td>
                     <input type="text" class="form-control" id="mst" placeholder="Enter Mã số thuế" name="mst"></br>
                     
@@ -127,9 +171,10 @@
                     <td>Địa chỉ người đại diện</td>
                     <input type="text" class="form-control" id="diachindd" placeholder="Enter Địa chỉ người đại diện" name="diachindd"></br>
                     <td>Số điện thoại người đại diện</td>
-                    <input type="text" class="form-control" id="sdtndd" placeholder="Enter Số điện thoại người đại diện" name="sdtndd"></br>  
+                    <input type="text" class="form-control" id="sdtndd" placeholder="Enter Số điện thoại người đại diện" name="sdtndd">
+                    <span id="Sodienthoaindd" style="color:red;"></span></br>  
                     <td>Email người đại diện</td>
-                    <input type="text" class="form-control" id="emailndd" placeholder="Enter Email người đại diện" name="emailndd"></br>
+                    <input type="mail" class="form-control" id="emailndd" placeholder="Enter Email người đại diện" name="emailndd" required=""></br>
                     <td>Username</td>
                     <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username"></br> 
                     <!-- <select name="username" id="username" class="form-control"> -->
@@ -152,7 +197,7 @@
                     
                   </div>
                 </div>
-                <button type="submit" class="btn btn-primary" name="submit" style="margin-left:45%">Thêm doanh nghiệp</button>
+                <button type="submit" id="button" class="btn btn-primary" name="submit" style="margin-left:45%">Thêm doanh nghiệp</button>
                 <!-- <button type="submit" class="btn btn-primary" name="reset" >Reset</button> -->
                 <!-- <input type="submit" value="Thêm Doanh Nghiệp" style="text-align:center"> -->
               </form>

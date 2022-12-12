@@ -149,6 +149,44 @@
 
           </ul>
         </li>
+        <!-- Quản lí loại nông sản -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+              Quản lý loại nông sản
+              <i class="fas fa-angle-left right"></i>
+              <span class="badge badge-info right">2</span>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="?quanliloainongsan" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Danh sách loại nông sản</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+              Quản lý nhóm nông sản
+              <i class="fas fa-angle-left right"></i>
+              <span class="badge badge-info right">2</span>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="?qlnhomns" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Danh sách nhóm nông sản</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
 
         <!-- Phân Quyền + Thống kê báo cáo -->
         <li class="nav-item">

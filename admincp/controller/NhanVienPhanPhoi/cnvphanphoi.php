@@ -25,28 +25,42 @@
              return $table;
          }
         #thêm nhân viên phân phối
-        public function add_nhanvienphanphoi($MaNVPP, $TenNVPP, $SDT, $DiaChiNha, $NgaySinh,$file,$tenanh,$loaianh,$size , $Email,$GioiTinh,$MaXa,$MaTrungTamPP, $username){
-            if($loaianh == "image/jpeg" || $loaianh == "image/png" || $loaianh== "image/jpg"){
-				if($size <= 2*1024*1024){
-					if(move_uploaded_file($file,"assets/uploads/images/".$tenanh)){
-						$p= new mNVPP();
-						$insert=$p->add_NVPP($MaNVPP, $TenNVPP, $SDT, $DiaChiNha, $NgaySinh, $tenanh, $Email,$GioiTinh,$MaXa,$MaTrungTamPP, $username);
-						var_dump($insert);
-						if($insert){
-							return 1;
-						}
-						else{
-							return 0; //không thể insert
-						}
-					}else{
-						return -1; //không thể upload
-					}
-				}else{
-					return -2; //Size kích thước lơn
-				}
-			}else{
-				return -3; //Không đúng loại file
-			}
+        public function add_nhanvienphanphoi($MaNVPP, $TenNVPP, $SDT, $DiaChiNha, $NgaySinh, $Email,$GioiTinh,$MaXa,$MaTrungTamPP, $username){
+            $p = new mNVPP();
+            $insert = $p->add_NVPP($MaNVPP, $TenNVPP, $SDT, $DiaChiNha, $NgaySinh, $Email,$GioiTinh,$MaXa,$MaTrungTamPP, $username);
+            var_dump($insert);
+            if($insert){
+                return 1;// thêm thành công
+            }else {
+                return 0;//thêm không thành công
+            }
+           
+           
         }
+		#kiem tra user
+		public function check_user($username){
+            $p= new mNVPP();
+            $table = $p -> checkuser($username);
+			return $table;
+		}
+		#Cap nhap thong tin nhan vien
+		public function update_nhanvienphanphoi($MaNVPP, $TenNVPP, $SDT, $DiaChiNha, $NgaySinh,$Email,$GioiTinh,$MaXa,$MaTrungTamPP, $username){
+			$p=new mNVPP();
+			$update=$p->update_NVPP($MaNVPP, $TenNVPP, $SDT, $DiaChiNha, $NgaySinh,$Email,$GioiTinh,$MaXa,$MaTrungTamPP, $username);
+			var_dump($update);
+			if($update){
+				return 1;// update thành công
+			}else{
+				return 0;// update không thành công
+			}
+				
+		}
+        #xoa nhan vien
+        function delete_nhanvienphanphoi($MaNVPP){
+			$p = new mNVPP();
+			$table  = $p -> del_NVPP($MaNVPP);
+			var_dump($table);
+			return $table;
+		}
     }
 ?>

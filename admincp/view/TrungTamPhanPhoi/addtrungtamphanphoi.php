@@ -146,11 +146,10 @@
         $table=$p-> Add_trungtamphanphoi($MaTrungTamPP,$TenTrungTam,$DiaChi,$ChucNang,$NguoiDaiDien,$MaXa);
         if($table==1){
             echo "<script>alert('Thêm trung tâm thành công')</script>";
-            echo header("refresh:0; url='index.php?qlttpp'");
-            echo "<script>window.location.href='index.php?qlbv'</script>";
+            echo "<script>window.location.href='?qlttpp'</script>";
         }else{
             echo "<script>alert('Thêm Thất bại')</script>";
-            //echo "error";
+            echo "<script>window.location.href='?qlttpp'</script>";
         }
     }
 ?>
